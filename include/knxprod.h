@@ -11,11 +11,11 @@
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 49
 #define MAIN_ApplicationVersion 1
-#define MAIN_ParameterSize 4938
+#define MAIN_ParameterSize 5694
 #define MAIN_MaxKoNumber 1123
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
 #define BASE_ModuleVersion 18
-#define UCT_ModuleVersion 1
+#define UCT_ModuleVersion 2
 #define SHC_ModuleVersion 0
 #define LOG_ModuleVersion 51
 // Parameter with single occurrence
@@ -1353,7 +1353,7 @@
 // Buzzer sperren
 #define KoLOG_BuzzerLock                          (knx.getGroupObject(LOG_KoBuzzerLock))
 
-#define LOG_ChannelCount 1
+#define LOG_ChannelCount 10
 
 // Parameter per channel
 #define LOG_ParamBlockOffset 4854
@@ -3030,7 +3030,7 @@
 #define BASE_KommentarModuleModuleParamSize 0
 #define BASE_KommentarModuleSubmodulesParamSize 0
 #define BASE_KommentarModuleParamSize 0
-#define BASE_KommentarModuleParamOffset 4938
+#define BASE_KommentarModuleParamOffset 5694
 #define BASE_KommentarModuleCalcIndex(index, m1) (index + BASE_KommentarModuleParamOffset + _channelIndex * BASE_KommentarModuleCount * BASE_KommentarModuleParamSize + m1 * BASE_KommentarModuleParamSize)
 
 
