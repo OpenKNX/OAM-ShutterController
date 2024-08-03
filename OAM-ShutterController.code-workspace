@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../OFM-ShutterControllerModule"
+		},
+		{
+			"path": "../OFM-Network"
+		},
+		{
+			"path": "../OGM-Common"
+		},
+		{
+			"path": "../knx"
+		},
+	],
+	"settings": {
+		"cSpell.language": "en,de,de-DE",
+		"C_Cpp.autoAddFileAssociations": false,
+		"files.associations": {
+			"new": "cpp"
+		}
+		
+	}
+}

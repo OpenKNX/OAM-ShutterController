@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
+
+  <op:config href="ShutterController.conf.xml" />
+
+  <!-- %NET_VerifyVersion% -->
+
+  <op:ETS 
+    OpenKnxId="0xAE" 
+    ApplicationNumber="0x31" 
+    ApplicationVersion="0.1" 
+    ReplacesVersions="0" 
+    ApplicationRevision="0" 
+    ProductName="Jalousiensteuerung" 
+    BusCurrent="30" 
+    BuildSuffix="-Dev" 
+    BuildSuffixText=" (Dev)" 
+    OrderNumber="OpenKnx-MG-JAL" />
+
+  <op:define prefix="BASE" ModuleType="10" share="../lib/OGM-Common/src/Common.share.xml">
+    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="%BASE_VerifyVersion%" />
+  </op:define>
+
+  <!-- <op:define prefix="NET" ModuleType="11" share="../lib/OFM-Network/src/Network.share.xml">
+    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="%NET_VerifyVersion%" /> 
+  </op:define> -->
+
+  <op:define prefix="UCT" share="../lib/OFM-ConfigTransfer/src/ConfigTransfer.share.xml" ModuleType="19">
+    <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="%UCT_VerifyVersion%" />
+  </op:define>
+
+  <op:define prefix="SHC" ModuleType="23" share=   "../lib/OFM-ShutterControllerModule/src/ShutterControllerModule.share.xml" template="../lib/OFM-ShutterControllerModule/src/ShutterControllerModule.templ.xml" NumChannels="16" KoSingleOffset="400" KoOffset="420">
+    <op:verify File="../lib/OFM-ShutterControllerModule/library.json" ModuleVersion="%SHC_VerifyVersion%" />
+  </op:define>
+
+  <op:define prefix="LOG" ModuleType="10" share="../lib/OFM-LogicModule/src/Logikmodul.share.xml" template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" NumChannels="10" KoOffset="100">
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="%LOG_VerifyVersion%" />
+  </op:define>
+
+  <generate />
+</KNX>
