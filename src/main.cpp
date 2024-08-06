@@ -29,10 +29,13 @@ void setup()
     openknx.setup();
 }
 
+#ifdef tskKERNEL_VERSION_NUMBER
+  
 void loop()
 {
     openknx.loop();
 }
+#endif
 
 #ifdef OPENKNX_DUALCORE
 void setup1()

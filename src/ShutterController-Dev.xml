@@ -9,8 +9,8 @@
   <op:ETS 
     OpenKnxId="0xAE" 
     ApplicationNumber="0x31" 
-    ApplicationVersion="0.1" 
-    ReplacesVersions="0" 
+    ApplicationVersion="0.6" 
+    ReplacesVersions="0.5" 
     ApplicationRevision="0" 
     ProductName="Jalousiensteuerung" 
     BusCurrent="30" 
@@ -21,10 +21,6 @@
   <op:define prefix="BASE" ModuleType="10" share="../lib/OGM-Common/src/Common.share.xml">
     <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="%BASE_VerifyVersion%" />
   </op:define>
-
-  <!-- <op:define prefix="NET" ModuleType="11" share="../lib/OFM-Network/src/Network.share.xml">
-    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="%NET_VerifyVersion%" /> 
-  </op:define> -->
 
   <op:define prefix="UCT" share="../lib/OFM-ConfigTransfer/src/ConfigTransfer.share.xml" ModuleType="19">
     <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="%UCT_VerifyVersion%" />
