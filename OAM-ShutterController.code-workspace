@@ -1,20 +1,23 @@
 {
 	"folders": [
 		{
-			"path": ".",
+			"path": "."
 		},
 		{
-			"path": "../OFM-ShutterControllerModule"
+			"path": "./lib/OFM-ShutterControllerModule"
 		},
 		{
-			"path": "../OFM-Network"
+			"path": "./lib/OFM-Network"
 		},
 		{
-			"path": "../OGM-Common"
+			"path": "./lib/OGM-Common"
 		},
 		{
-			"path": "../knx"
+			"path": "./lib/knx"
 		},
+		{
+			"path": "./lib/OFM-LogicModule"
+		}
 	],
 	"settings": {
 		"cSpell.language": "en,de,de-DE",

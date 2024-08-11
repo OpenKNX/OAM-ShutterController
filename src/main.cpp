@@ -27,6 +27,8 @@ void setup()
     openknx.addModule(2, openknxShutterControllerModule);
     openknx.addModule(1, openknxLogic);
     openknx.setup();
+
+    Serial.printf("OpenKNX flash size: %lu\r\n", (unsigned long) openknx.openknxFlash.size());
 }
 
 #ifdef tskKERNEL_VERSION_NUMBER
