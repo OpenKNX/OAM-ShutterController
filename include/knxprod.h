@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 49
-#define MAIN_ApplicationVersion 8
+#define MAIN_ApplicationVersion 9
 #define MAIN_ParameterSize 5726
 #define MAIN_MaxKoNumber 1155
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
@@ -481,7 +481,7 @@
 #define     SHC_CShading1WindowTiltAllowedShift 5
 #define SHC_CShading1MaxHeatingValue            69      // uint8_t
 #define SHC_CShading1RoomTemperaturMinimum      70      // float
-#define SHC_CShading1HeatingActive              74      // 8 Bits, Bit 6--1
+#define SHC_CShading1HeatingActive              74      // 8 Bits, Bit 7-0
 #define SHC_CShading2TempActive                 75      // 1 Bit, Bit 7
 #define     SHC_CShading2TempActiveMask 0x80
 #define     SHC_CShading2TempActiveShift 7
@@ -542,7 +542,7 @@
 #define     SHC_CShading2WindowTiltAllowedShift 5
 #define SHC_CShading2MaxHeatingValue            107      // uint8_t
 #define SHC_CShading2RoomTemperaturMinimum      108      // float
-#define SHC_CShading2HeatingActive              112      // 8 Bits, Bit 6--1
+#define SHC_CShading2HeatingActive              112      // 8 Bits, Bit 7-0
 
 // Geräteart
 #define ParamSHC_CType                               (knx.paramByte(SHC_ParamCalcIndex(SHC_CType)))

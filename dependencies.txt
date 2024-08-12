@@ -3,6 +3,6 @@ b2bcba7 v1dev lib/knx https://github.com/thelsing/knx.git
 4edefd3 v1 lib/OFM-ConfigTransfer https://github.com/OpenKNX/OFM-ConfigTransfer
 db4a240 v1 lib/OFM-FileTransferModule https://github.com/OpenKNX/OFM-FileTransferModule.git
 b2c81b7 v1 lib/OFM-LogicModule https://github.com/OpenKNX/OFM-LogicModule.git
-8008acd main lib/OFM-ShutterControllerModule https://github.com/OpenKNX/OFM-ShutterControllerModule
+26cc2a5 main lib/OFM-ShutterControllerModule https://github.com/OpenKNX/OFM-ShutterControllerModule
 1ce7a13 v1 lib/OFM-UsbExchange https://github.com/OpenKNX/OFM-UsbExchange.git
 8410b2a v1 lib/OGM-Common https://github.com/OpenKNX/OGM-Common
