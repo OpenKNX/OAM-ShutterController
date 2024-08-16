@@ -7,9 +7,6 @@
 			"path": "./lib/OFM-ShutterControllerModule"
 		},
 		{
-			"path": "./lib/OFM-Network"
-		},
-		{
 			"path": "./lib/OGM-Common"
 		},
 		{
@@ -17,6 +14,9 @@
 		},
 		{
 			"path": "./lib/OFM-LogicModule"
+		},
+		{
+			"path": "../OFM-ConfigTransfer"
 		}
 	],
 	"settings": {
