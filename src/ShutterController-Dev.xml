@@ -9,8 +9,8 @@
   <op:ETS 
     OpenKnxId="0xAE" 
     ApplicationNumber="0x31" 
-    ApplicationVersion="0.9" 
-    ReplacesVersions="0.5 0.6 0.7 0.8" 
+    ApplicationVersion="0.10" 
+    ReplacesVersions="0.5 0.6 0.7 0.8 0.9" 
     ApplicationRevision="0" 
     ProductName="Jalousiensteuerung" 
     BusCurrent="30" 
