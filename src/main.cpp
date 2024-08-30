@@ -5,6 +5,7 @@
     #include "FileTransferModule.h"
     #include "UsbExchangeModule.h"
 #endif
+#include "FunctionBlocksModule.h"
 #ifdef ARDUINO_ARCH_RP2040
     #pragma message "Pico Core Version: " ARDUINO_PICO_VERSION_STR
 #endif
@@ -18,11 +19,10 @@ void setup()
     openknx.addModule(9, openknxFileTransferModule);
     openknx.addModule(8, openknxUsbExchangeModule);
 #endif
-    openknx.addModule(2, openknxShutterControllerModule);
+    openknx.addModule(3, openknxShutterControllerModule);
     openknx.addModule(1, openknxLogic);
+    openknx.addModule(2, openknxFunctionBlocksModule);
     openknx.setup();
-
-    Serial.printf("OpenKNX flash size: %lu\r\n", (unsigned long) openknx.openknxFlash.size());
 }
   
 void loop()
