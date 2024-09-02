@@ -6,3 +6,4 @@
 ShutterController.baggages
 *.debug.xml
 *.baggages
+release/*
