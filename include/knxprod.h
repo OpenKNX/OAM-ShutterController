@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 49
-#define MAIN_ApplicationVersion 15
+#define MAIN_ApplicationVersion 16
 #define MAIN_ParameterSize 9403
 #define MAIN_MaxKoNumber 1187
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
@@ -226,9 +226,9 @@
 #define ParamSHC_HasUVIInput                         ((bool)(knx.paramByte(SHC_HasUVIInput) & SHC_HasUVIInputMask))
 // Regen
 #define ParamSHC_HasRainInput                        ((bool)(knx.paramByte(SHC_HasRainInput) & SHC_HasRainInputMask))
-// Wolken
+// Wolkenbedeckung
 #define ParamSHC_HasCloudsInput                      ((bool)(knx.paramByte(SHC_HasCloudsInput) & SHC_HasCloudsInputMask))
-// Tägliche aktivierung
+// Tägliche Aktivierung
 #define ParamSHC_ShadingActivation                   (knx.paramByte(SHC_ShadingActivation))
 // Ausfallsüberwachung
 #define ParamSHC_TempWatchdog                        ((knx.paramByte(SHC_TempWatchdog) & SHC_TempWatchdogMask) >> SHC_TempWatchdogShift)
@@ -452,7 +452,7 @@
 #define SHC_CShading1TempMin                    49      // uint8_t
 #define SHC_CShading1TempForecastMin            50      // uint8_t
 #define SHC_CShading1BrightnessMin              51      // uint8_t
-#define SHC_CShading1Hysterese                  52      // uint8_t
+#define SHC_CShading1BrightnessHyst             52      // uint8_t
 #define SHC_CShading1UVIMin                     53      // float
 #define SHC_CShading1Clouds                     57      // 8 Bits, Bit 7-0
 #define SHC_CShading1OnlyIfLessThan             58      // 7 Bits, Bit 7-1
@@ -516,7 +516,7 @@
 #define SHC_CShading2TempMin                    87      // uint8_t
 #define SHC_CShading2TempForecastMin            88      // uint8_t
 #define SHC_CShading2BrightnessMin              89      // uint8_t
-#define SHC_CShading2Hysterese                  90      // uint8_t
+#define SHC_CShading2BrightnessHyst             90      // uint8_t
 #define SHC_CShading2UVIMin                     91      // float
 #define SHC_CShading2Clouds                     95      // 8 Bits, Bit 7-0
 #define SHC_CShading2OnlyIfLessThan             96      // 7 Bits, Bit 7-1
@@ -557,7 +557,7 @@
 #define ParamSHC_CType                               (knx.paramByte(SHC_ParamCalcIndex(SHC_CType)))
 // Kanal deaktivieren (zu Testzwecken)
 #define ParamSHC_CDeactivated                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CDeactivated)) & SHC_CDeactivatedMask))
-// Erstes manuelles AUF in ignorieren, wenn bei Beschattungstart geschlossen
+// Erstes manuelles AUF ignorieren, wenn bei Beschattungstart geschlossen
 #define ParamSHC_CIgnoreFirstManualCommandIfShadingActiv ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CIgnoreFirstManualCommandIfShadingActiv)) & SHC_CIgnoreFirstManualCommandIfShadingActivMask))
 // Nachtmodus
 #define ParamSHC_CNight                              ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CNight)) & SHC_CNightMask))
@@ -607,7 +607,7 @@
 #define ParamSHC_CNightStopPosition                  (knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStopPosition)) & SHC_CNightStopPositionMask)
 // Lamellenstellung
 #define ParamSHC_CNightStopSlatPosition              (knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStopSlatPosition)) & SHC_CNightStopSlatPositionMask)
-// Fenster Offen
+// Fenster offen
 #define ParamSHC_CWindowOpenCount                    ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenCount)) & SHC_CWindowOpenCountMask) >> SHC_CWindowOpenCountShift)
 // Beschattungsmodus Anzahl
 #define ParamSHC_CShadingCount                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CShadingCount)) & SHC_CShadingCountMask)
@@ -680,7 +680,7 @@
 // Minimale Helligkeit
 #define ParamSHC_CShading1BrightnessMin              (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1BrightnessMin)))
 // Helligkeit Hysterese
-#define ParamSHC_CShading1Hysterese                  (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1Hysterese)))
+#define ParamSHC_CShading1BrightnessHyst             (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1BrightnessHyst)))
 // Minimaler UV-Index
 #define ParamSHC_CShading1UVIMin                     (knx.paramFloat(SHC_ParamCalcIndex(SHC_CShading1UVIMin), Float_Enc_IEEE754Single))
 // Maximale Bewölkung
@@ -752,7 +752,7 @@
 // Minimale Helligkeit
 #define ParamSHC_CShading2BrightnessMin              (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2BrightnessMin)))
 // Helligkeit Hysterese
-#define ParamSHC_CShading2Hysterese                  (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2Hysterese)))
+#define ParamSHC_CShading2BrightnessHyst             (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2BrightnessHyst)))
 // Minimaler UV-Index
 #define ParamSHC_CShading2UVIMin                     (knx.paramFloat(SHC_ParamCalcIndex(SHC_CShading2UVIMin), Float_Enc_IEEE754Single))
 // Maximale Bewölkung

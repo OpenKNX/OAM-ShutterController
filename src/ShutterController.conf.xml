@@ -8,8 +8,8 @@
   <op:config name="%SHC_VerifyVersion%" value="0.1" />
   <op:config name="%FCB_VerifyVersion%" value="0.1" />
 
-  <op:config name="%ReleaseApplicationVersion%" value="0.0" />
-  <op:config name="%ReleaseReplacesVersions%" value="" />
+  <op:config name="%ReleaseApplicationVersion%" value="0.1" />
+  <op:config name="%ReleaseReplacesVersions%" value="0.0" />
 
   <op:config name="%SHC_NumChannelsDefault%" value="4" />
   <op:config name="%LOG_NumChannelsDefault%" value="1" />
