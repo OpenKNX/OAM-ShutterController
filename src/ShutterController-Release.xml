@@ -12,8 +12,8 @@
     ApplicationRevision="0" 
     ProductName="Jalousiensteuerung" 
     BusCurrent="30" 
-    BuildSuffix="-Dev" 
-    BuildSuffixText=" (Dev)" 
+    BuildSuffix="-Beta" 
+    BuildSuffixText=" (Beta)" 
     OrderNumber="OpenKnx-MG-JAL" />
 
   <op:define prefix="BASE" ModuleType="10" share="../lib/OGM-Common/src/Common.share.xml">

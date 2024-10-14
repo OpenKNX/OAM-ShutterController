@@ -48,20 +48,20 @@ if (!$?) { exit 1 }
 lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OpenKNX_REG1_BASE_V1 firmware-OpenKNX-REG1-BASE-V1 uf2
 if (!$?) { exit 1 }
 
-# build firmware for RP2040 sensormodule breakout board
-lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_Breakout_RP2040 firmware-Sensormodul-Breakout-RP2040 uf2 Sensormodul-Breakout-Board-Just-for-testers
-if (!$?) { exit 1 }
+# # build firmware for RP2040 sensormodule breakout board
+# lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_Breakout_RP2040 firmware-Sensormodul-Breakout-RP2040 uf2 Sensormodul-Breakout-Board-Just-for-testers
+# if (!$?) { exit 1 }
 
-# build firmware for RP2040 sensormodule 
-lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v40_RP2040 firmware-Sensormodul-v40-RP2040 uf2 Sensormodul-v4.x-RP2040
-if (!$?) { exit 1 }
+# # build firmware for RP2040 sensormodule 
+# lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v40_RP2040 firmware-Sensormodul-v40-RP2040 uf2 Sensormodul-v4.x-RP2040
+# if (!$?) { exit 1 }
 
-# build firmware based on generated headerfile for SAMD
-lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v31_SAMD firmware-Sensormodul-v31-SAMD bin Sensormodul-v3.1-SAMD
-if (!$?) { exit 1 }
+# # build firmware based on generated headerfile for SAMD
+# lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v31_SAMD firmware-Sensormodul-v31-SAMD bin Sensormodul-v3.1-SAMD
+# if (!$?) { exit 1 }
 
-lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v30_SAMD firmware-Sensormodul-v30-SAMD bin Sensormodul-v3.0-SAMD
-if (!$?) { exit 1 }
+# lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v30_SAMD firmware-Sensormodul-v30-SAMD bin Sensormodul-v3.0-SAMD
+# if (!$?) { exit 1 }
 
 # TEMPORARY: We use our own generic updload files for this version
 Copy-Item scripts/data/* release/data -Force
