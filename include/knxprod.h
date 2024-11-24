@@ -9,12 +9,12 @@
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
 #define MAIN_OpenKnxId 0xAE
-#define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 2
+#define MAIN_ApplicationNumber 49
+#define MAIN_ApplicationVersion 20
 #define MAIN_ParameterSize 9419
 #define MAIN_MaxKoNumber 1187
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
-#define BASE_ModuleVersion 18
+#define BASE_ModuleVersion 19
 #define UCT_ModuleVersion 2
 #define SHC_ModuleVersion 2
 #define LOG_ModuleVersion 51
@@ -58,6 +58,9 @@
 #define BASE_SummertimeKO                         4      // 2 Bits, Bit 1-0
 #define     BASE_SummertimeKOMask 0x03
 #define     BASE_SummertimeKOShift 0
+#define BASE_InternalTime                         4      // 1 Bit, Bit 0
+#define     BASE_InternalTimeMask 0x01
+#define     BASE_InternalTimeShift 0
 #define BASE_Latitude                             5      // float
 #define BASE_Longitude                            9      // float
 #define BASE_Diagnose                            14      // 1 Bit, Bit 7
@@ -106,6 +109,8 @@
 #define ParamBASE_SummertimeWorld                     (knx.paramByte(BASE_SummertimeWorld) & BASE_SummertimeWorldMask)
 // Sommerzeit ermitteln durch
 #define ParamBASE_SummertimeKO                        (knx.paramByte(BASE_SummertimeKO) & BASE_SummertimeKOMask)
+// InternalTime
+#define ParamBASE_InternalTime                        ((bool)(knx.paramByte(BASE_InternalTime) & BASE_InternalTimeMask))
 // Breitengrad
 #define ParamBASE_Latitude                            (knx.paramFloat(BASE_Latitude, Float_Enc_IEEE754Single))
 // Längengrad
@@ -131,6 +136,7 @@
 #define BASE_KoDiagnose 7
 #define BASE_KoIsSummertime 10
 #define BASE_KoManualSave 11
+#define BASE_KoDateTime 12
 
 // In Betrieb
 #define KoBASE_Heartbeat                           (knx.getGroupObject(BASE_KoHeartbeat))
@@ -144,6 +150,8 @@
 #define KoBASE_IsSummertime                        (knx.getGroupObject(BASE_KoIsSummertime))
 // Speichern
 #define KoBASE_ManualSave                          (knx.getGroupObject(BASE_KoManualSave))
+// Uhrzeit/Datum
+#define KoBASE_DateTime                            (knx.getGroupObject(BASE_KoDateTime))
 
 
 
