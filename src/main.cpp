@@ -1,8 +1,9 @@
 #include "OpenKNX.h"
 #include "ShutterControllerModule.h"
 #include "Logic.h"
+#include "FileTransferModule.h"
+ 
 #ifdef ARDUINO_ARCH_RP2040
-    #include "FileTransferModule.h"
     #include "UsbExchangeModule.h"
 #endif
 #include "FunctionBlocksModule.h"
@@ -15,8 +16,11 @@ void setup()
     // change this also in library.json
     const uint8_t firmwareRevision = 1;
     openknx.init(firmwareRevision);
- #ifdef ARDUINO_ARCH_RP2040
+#ifndef OPENKNX_FILE_TRANSFER_IGNORE
     openknx.addModule(9, openknxFileTransferModule);
+#endif
+ 
+ #ifdef ARDUINO_ARCH_RP2040
     openknx.addModule(8, openknxUsbExchangeModule);
 #endif
     openknx.addModule(3, openknxShutterControllerModule);

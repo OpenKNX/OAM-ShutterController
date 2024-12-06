@@ -10,9 +10,9 @@
                                              
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 49
-#define MAIN_ApplicationVersion 20
+#define MAIN_ApplicationVersion 21
 #define MAIN_ParameterSize 9419
-#define MAIN_MaxKoNumber 1187
+#define MAIN_MaxKoNumber 1203
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
 #define BASE_ModuleVersion 19
 #define UCT_ModuleVersion 2
@@ -825,7 +825,7 @@
 
 // Communication objects per channel (multiple occurrence)
 #define SHC_KoBlockOffset 420
-#define SHC_KoBlockSize 48
+#define SHC_KoBlockSize 49
 
 #define SHC_KoCalcNumber(index) (index + SHC_KoBlockOffset + _channelIndex * SHC_KoBlockSize)
 #define SHC_KoCalcIndex(number) ((number >= SHC_KoCalcNumber(0) && number < SHC_KoCalcNumber(SHC_KoBlockSize)) ? (number - SHC_KoBlockOffset) % SHC_KoBlockSize : -1)
@@ -848,37 +848,38 @@
 #define SHC_KoCManualLock 14
 #define SHC_KoCManualLockActive 15
 #define SHC_KoCManualUpDown 16
-#define SHC_KoCManualStepStop 17
-#define SHC_KoCManualPercent 18
-#define SHC_KoCManualSlatPercent 19
-#define SHC_KoCNight 20
-#define SHC_KoCNightActive 21
-#define SHC_KoCNightLock 22
-#define SHC_KoCNightLockActive 23
-#define SHC_KoCHeading 24
-#define SHC_KoCRoomTemp 25
-#define SHC_KoCWindowOpenModeActive1 26
-#define SHC_KoCWindowOpenOpened1 27
-#define SHC_KoCWindowOpenLock1 28
-#define SHC_KoCWindowOpenLockActive1 29
-#define SHC_KoCWindowOpenModeActive2 30
-#define SHC_KoCWindowOpenOpened2 31
-#define SHC_KoCWindowOpenLock2 32
-#define SHC_KoCWindowOpenLockActive2 33
-#define SHC_KoCShading1Active 34
-#define SHC_KoCShading1Lock 35
-#define SHC_KoCShading1LockActive 36
-#define SHC_KoCShading1BreakLock 37
-#define SHC_KoCShading1BreakLockActive 38
-#define SHC_KoCShading1DiagnoseNotAllowedBit 39
-#define SHC_KoCShading1DiagnoseNotAllowedReason 40
-#define SHC_KoCShading2Active 41
-#define SHC_KoCShading2Lock 42
-#define SHC_KoCShading2LockActive 43
-#define SHC_KoCShading2BreakLock 44
-#define SHC_KoCShading2BreakLockActive 45
-#define SHC_KoCShading2DiagnoseNotAllowedBit 46
-#define SHC_KoCShading2DiagnoseNotAllowedReason 47
+#define SHC_KoCManualUpDownWithoutSpecialFunction 17
+#define SHC_KoCManualStepStop 18
+#define SHC_KoCManualPercent 19
+#define SHC_KoCManualSlatPercent 20
+#define SHC_KoCNight 21
+#define SHC_KoCNightActive 22
+#define SHC_KoCNightLock 23
+#define SHC_KoCNightLockActive 24
+#define SHC_KoCHeading 25
+#define SHC_KoCRoomTemp 26
+#define SHC_KoCWindowOpenModeActive1 27
+#define SHC_KoCWindowOpenOpened1 28
+#define SHC_KoCWindowOpenLock1 29
+#define SHC_KoCWindowOpenLockActive1 30
+#define SHC_KoCWindowOpenModeActive2 31
+#define SHC_KoCWindowOpenOpened2 32
+#define SHC_KoCWindowOpenLock2 33
+#define SHC_KoCWindowOpenLockActive2 34
+#define SHC_KoCShading1Active 35
+#define SHC_KoCShading1Lock 36
+#define SHC_KoCShading1LockActive 37
+#define SHC_KoCShading1BreakLock 38
+#define SHC_KoCShading1BreakLockActive 39
+#define SHC_KoCShading1DiagnoseNotAllowedBit 40
+#define SHC_KoCShading1DiagnoseNotAllowedReason 41
+#define SHC_KoCShading2Active 42
+#define SHC_KoCShading2Lock 43
+#define SHC_KoCShading2LockActive 44
+#define SHC_KoCShading2BreakLock 45
+#define SHC_KoCShading2BreakLockActive 46
+#define SHC_KoCShading2DiagnoseNotAllowedBit 47
+#define SHC_KoCShading2DiagnoseNotAllowedReason 48
 
 // 
 #define KoSHC_CShutterPercentOutput               (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCShutterPercentOutput)))
@@ -914,6 +915,8 @@
 #define KoSHC_CManualLockActive                   (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCManualLockActive)))
 // 
 #define KoSHC_CManualUpDown                       (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCManualUpDown)))
+// 
+#define KoSHC_CManualUpDownWithoutSpecialFunction (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCManualUpDownWithoutSpecialFunction)))
 // 
 #define KoSHC_CManualStepStop                     (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCManualStepStop)))
 // 
