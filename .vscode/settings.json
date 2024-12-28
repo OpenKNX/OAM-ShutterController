@@ -52,6 +52,20 @@
         "istream": "cpp",
         "sstream": "cpp",
         "optional": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "bitset": "cpp",
+        "charconv": "cpp",
+        "condition_variable": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "netfwd": "cpp",
+        "format": "cpp",
+        "iomanip": "cpp",
+        "mutex": "cpp",
+        "semaphore": "cpp",
+        "span": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "variant": "cpp"
     }
 }
