@@ -7,3 +7,4 @@ ShutterController.baggages
 *.debug.xml
 *.baggages
 release/*
+*.knxprod
