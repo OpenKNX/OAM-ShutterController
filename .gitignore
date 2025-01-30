@@ -8,3 +8,4 @@ ShutterController.baggages
 *.baggages
 release/*
 *.knxprod
+include/versions.h
