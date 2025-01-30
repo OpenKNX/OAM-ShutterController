@@ -36,29 +36,21 @@ Folgende Hauptfunktionen können konfiguriert werden:
 - **Kippstellung:** Lamelle in waagrechte Stellung für optimale Luftdurchzug.
 - **Offenes Fenster:** Hochfahren von Jalousien bei Terrassentüren.
 
-### Konfigurationstransfer
+## Anwenderdokumentation
 
-Mit Hilfe des Konfigurationstransfer kann die Konfiguration leicht auf eine neue Hardware übertragen werden.
+Die Anwenderdokumentation ist [hier](./doc/Applikationsbeschreibung.md) zu finden.
 
-### Logiken
 
-Für zusätzliche besondere Anforderungen stehen bis zu 10 Logikkanäle bereit.
+## Firmware
 
-## Anwendungsdokumentation
+Eine vorkomplierte Firmware ist [hier](https://github.com/OpenKNX/OAM-ShutterController/releases) zu finden. ZIP Datei herunterladen, entpacken und der Anleitung im Readme folgen.
 
-Die detaillierte Beschreibungen der Anwendung ist in folgenden Abschnitten zu finden:
+## Hardware
 
-- [OpenKNX Applikationsbeschreibung](https://github.com/OpenKNX/OGM-Common/blob/v1/doc/Applikationsbeschreibung-Common.md)
-- [Konfigurationstransfer](https://github.com/OpenKNX/OFM-ConfigTransfer/blob/v1/doc/Applikationsbeschreibung-ConfigTransfer.md)
-- [Jalousiensteuerung](https://github.com/OpenKNX/OFM-ShutterControllerModule/blob/v1/doc/Applikationsbeschreibung-ShutterController.md)
-- [Logikmodule](https://github.com/OpenKNX/OFM-LogicModule/blob/v1/doc/Applikationsbeschreibung-Logik.md)
-- [Funktionsblöcke](https://github.com/mgeramb/OFM-FunctionBlocks/blob/v1/doc/Applikationsbeschreibung-FunctionBlocks.md)
+Als Hardware kann jede OpenKNX oder OpenKNX-Ready Hardware mit LAN oder WLAN verwendet werden.
+Die vorkompilierte Firmware unterstützt:
 
-## Empfohlene Hardware
-
-Die Anwendung wurde erfolgreich auf folgenden Plattformen getestet:
-- **RP2040**
-- **ESP32**
+- [REG1-Base](https://github.com/OpenKNX/OpenKNX/wiki/REG1-Base)
 
 Verwendungshinweis:
 - Entwicklerboards mit angeschlossener [Nano BCU](https://github.com/OpenKNX/OpenKNX/wiki/NanoBCU) ([Bezugsquelle](https://muster.ing-dom.de/Busankoppler/NanoBCU-Standard.html)) oder Siemens Busankoppler werden unterstützt.
