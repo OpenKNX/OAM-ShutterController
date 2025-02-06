@@ -615,13 +615,13 @@
 #define ParamSHC_CAfterShading                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CAfterShading)))
 // Nach Beschattung
 #define ParamSHC_CAfterShadingJalousie               (knx.paramByte(SHC_ParamCalcIndex(SHC_CAfterShadingJalousie)))
-// Position anfahren
+// Aktion
 #define ParamSHC_CNightStartPositionEnabled          ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStartPositionEnabled)) & SHC_CNightStartPositionEnabledMask))
 // Position
 #define ParamSHC_CNightStartPosition                 (knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStartPosition)) & SHC_CNightStartPositionMask)
 // Lamellenstellung
 #define ParamSHC_CNightStartSlatPosition             (knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStartSlatPosition)) & SHC_CNightStartSlatPositionMask)
-// Position anfahren
+// Aktion
 #define ParamSHC_CNightStopPositionEnabled           ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStopPositionEnabled)) & SHC_CNightStopPositionEnabledMask))
 // Position
 #define ParamSHC_CNightStopPosition                  (knx.paramByte(SHC_ParamCalcIndex(SHC_CNightStopPosition)) & SHC_CNightStopPositionMask)
