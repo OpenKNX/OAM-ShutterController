@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 4
+#define MAIN_ApplicationVersion 6
 #define MAIN_ParameterSize 10235
 #define MAIN_MaxKoNumber 1203
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
@@ -462,7 +462,6 @@
 #define SHC_CShading1SlatElevationDepending     39      // 1 Bit, Bit 2
 #define     SHC_CShading1SlatElevationDependingMask 0x04
 #define     SHC_CShading1SlatElevationDependingShift 2
-#define SHC_CShading1Break                      39      // 8 Bits, Bit 1--6
 #define SHC_CShading1WaitTimeStart              40      // uint16_t
 #define SHC_CShading1WaitTimeEnd                42      // uint16_t
 #define SHC_CShading1AzimutMin                  44      // uint16_t
@@ -507,7 +506,12 @@
 #define     SHC_CShading1WindowTiltAllowedShift 3
 #define SHC_CShading1MaxHeatingValue            71      // uint8_t
 #define SHC_CShading1RoomTemperaturMinimum      72      // float
-#define SHC_CShading1HeatingActive              76      // 8 Bits, Bit 7-0
+#define SHC_CShading1HeatingActive              76      // 4 Bits, Bit 7-4
+#define     SHC_CShading1HeatingActiveMask 0xF0
+#define     SHC_CShading1HeatingActiveShift 4
+#define SHC_CShading1Break                      76      // 4 Bits, Bit 3-0
+#define     SHC_CShading1BreakMask 0x0F
+#define     SHC_CShading1BreakShift 0
 #define SHC_CShading2TempActive                 77      // 1 Bit, Bit 7
 #define     SHC_CShading2TempActiveMask 0x80
 #define     SHC_CShading2TempActiveShift 7
@@ -526,7 +530,6 @@
 #define SHC_CShading2SlatElevationDepending     77      // 1 Bit, Bit 2
 #define     SHC_CShading2SlatElevationDependingMask 0x04
 #define     SHC_CShading2SlatElevationDependingShift 2
-#define SHC_CShading2Break                      77      // 8 Bits, Bit 1--6
 #define SHC_CShading2WaitTimeStart              78      // uint16_t
 #define SHC_CShading2WaitTimeEnd                80      // uint16_t
 #define SHC_CShading2AzimutMin                  82      // uint16_t
@@ -571,7 +574,12 @@
 #define     SHC_CShading2WindowTiltAllowedShift 3
 #define SHC_CShading2MaxHeatingValue            109      // uint8_t
 #define SHC_CShading2RoomTemperaturMinimum      110      // float
-#define SHC_CShading2HeatingActive              114      // 8 Bits, Bit 7-0
+#define SHC_CShading2HeatingActive              114      // 4 Bits, Bit 7-4
+#define     SHC_CShading2HeatingActiveMask 0xF0
+#define     SHC_CShading2HeatingActiveShift 4
+#define SHC_CShading2Break                      114      // 4 Bits, Bit 3-0
+#define     SHC_CShading2BreakMask 0x0F
+#define     SHC_CShading2BreakShift 0
 
 // Geräteart
 #define ParamSHC_CType                               (knx.paramByte(SHC_ParamCalcIndex(SHC_CType)))
@@ -687,8 +695,6 @@
 #define ParamSHC_CShading1RainActive                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1RainActive)) & SHC_CShading1RainActiveMask))
 // Lamellenstellenung an Sonnenstand anpassen
 #define ParamSHC_CShading1SlatElevationDepending     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1SlatElevationDepending)) & SHC_CShading1SlatElevationDependingMask))
-// Beschattungsunterbrechung
-#define ParamSHC_CShading1Break                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1Break)))
 // Beschattungsstart
 #define ParamSHC_CShading1WaitTimeStart              (knx.paramWord(SHC_ParamCalcIndex(SHC_CShading1WaitTimeStart)))
 // Beschattungsende
@@ -746,7 +752,9 @@
 // Minimale Raumtemperatur
 #define ParamSHC_CShading1RoomTemperaturMinimum      (knx.paramFloat(SHC_ParamCalcIndex(SHC_CShading1RoomTemperaturMinimum), Float_Enc_IEEE754Single))
 // Heizung
-#define ParamSHC_CShading1HeatingActive              (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1HeatingActive)))
+#define ParamSHC_CShading1HeatingActive              ((knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1HeatingActive)) & SHC_CShading1HeatingActiveMask) >> SHC_CShading1HeatingActiveShift)
+// Beschattungsunterbrechung
+#define ParamSHC_CShading1Break                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1Break)) & SHC_CShading1BreakMask)
 // Temperaturgrenze
 #define ParamSHC_CShading2TempActive                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2TempActive)) & SHC_CShading2TempActiveMask))
 // Temperaturprognose
@@ -759,8 +767,6 @@
 #define ParamSHC_CShading2RainActive                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2RainActive)) & SHC_CShading2RainActiveMask))
 // Lamellenstellenung an Sonnenstand anpassen
 #define ParamSHC_CShading2SlatElevationDepending     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2SlatElevationDepending)) & SHC_CShading2SlatElevationDependingMask))
-// Beschattungsunterbrechung
-#define ParamSHC_CShading2Break                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2Break)))
 // Beschattungsstart
 #define ParamSHC_CShading2WaitTimeStart              (knx.paramWord(SHC_ParamCalcIndex(SHC_CShading2WaitTimeStart)))
 // Beschattungsende
@@ -818,7 +824,9 @@
 // Minimale Raumtemperatur
 #define ParamSHC_CShading2RoomTemperaturMinimum      (knx.paramFloat(SHC_ParamCalcIndex(SHC_CShading2RoomTemperaturMinimum), Float_Enc_IEEE754Single))
 // Heizung
-#define ParamSHC_CShading2HeatingActive              (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2HeatingActive)))
+#define ParamSHC_CShading2HeatingActive              ((knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2HeatingActive)) & SHC_CShading2HeatingActiveMask) >> SHC_CShading2HeatingActiveShift)
+// Beschattungsunterbrechung
+#define ParamSHC_CShading2Break                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CShading2Break)) & SHC_CShading2BreakMask)
 
 // deprecated
 #define SHC_KoOffset 420
@@ -3532,7 +3540,7 @@
 #define     FCB_CHBlinkerStartAnzahlMask 0x80
 #define     FCB_CHBlinkerStartAnzahlShift 7
 
-// Funktionsblock %C%
+// Type
 #define ParamFCB_CHChannelType                       (knx.paramByte(FCB_ParamCalcIndex(FCB_CHChannelType)))
 // Kanal deaktivieren (zu Testzwecken)
 #define ParamFCB_CHChannelDisabled                   ((bool)(knx.paramByte(FCB_ParamCalcIndex(FCB_CHChannelDisabled)) & FCB_CHChannelDisabledMask))
