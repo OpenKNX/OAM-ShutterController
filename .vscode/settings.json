@@ -66,6 +66,11 @@
         "span": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "regex": "cpp",
+        "future": "cpp",
+        "iostream": "cpp",
+        "text_encoding": "cpp",
+        "cfenv": "cpp"
     }
 }
