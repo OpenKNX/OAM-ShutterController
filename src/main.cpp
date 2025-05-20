@@ -17,7 +17,7 @@
 void setup()
 {
     // change this also in library.json
-    const uint8_t firmwareRevision = 5;
+    const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
 #if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_ESP32)
 #ifndef OPENKNX_FILE_TRANSFER_IGNORE
