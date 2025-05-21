@@ -31,6 +31,7 @@ Folgende Hauptfunktionen können konfiguriert werden:
     - Wolkenbedeckung
     - Heizungsstatus
     - Raumtemperatur
+- Messwertüberwachung mit Notfallsbetrieb Konfiguration bei Ausfall
 
 ### Fensterabhängige Steuerung
 - **Kippstellung:** Lamelle in waagrechte Stellung für optimale Luftdurchzug.
