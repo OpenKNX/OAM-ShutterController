@@ -48,7 +48,7 @@ Eine vorkomplierte Firmware ist [hier](https://github.com/OpenKNX/OAM-ShutterCon
 
 ## Hardware
 
-Als Hardware kann jede OpenKNX oder OpenKNX-Ready Hardware mit LAN oder WLAN verwendet werden.
+Als Hardware kann jede OpenKNX oder OpenKNX-Ready Hardware verwendet werden.
 Die vorkompilierte Firmware unterstützt:
 
 - [REG1-Base](https://github.com/OpenKNX/OpenKNX/wiki/REG1-Base)
