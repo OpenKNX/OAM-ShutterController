@@ -28,9 +28,9 @@ void setup()
  #ifdef ARDUINO_ARCH_RP2040
     openknx.addModule(8, openknxUsbExchangeModule);
 #endif
-    openknx.addModule(3, openknxShutterControllerModule);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxFunctionBlocksModule);
+    openknx.addModule(3, openknxShutterControllerModule);
     openknx.setup();
 }
   

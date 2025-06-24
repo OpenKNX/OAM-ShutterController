@@ -37,7 +37,7 @@ lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connecto
 if (!$?) { exit 1 }
 
 # build firmware for 1TE-RP2040-SmartMF
-lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_1TE_RP2040_SmartMF firmware-1TE-RP2040-SmartMF uf2
+lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SMARTMF_1TE_REG firmware_SMARTMF_1TE_REG uf2
 if (!$?) { exit 1 }
 
 # build firmware for OpenKNX-REG1-Base
@@ -53,7 +53,7 @@ if (!$?) { exit 1 }
 # if (!$?) { exit 1 }
 
 # build firmware for RP2040 sensormodule 
-lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Sensormodul_v40_RP2040 firmware-Sensormodul-v40-RP2040 uf2 Sensormodul-v4.x-RP2040
+lib/OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SMARTMF_SENSORMODUL firmware-SMARTMF_SENSORMODUL uf2 Sensormodul-v4.x-RP2040
 if (!$?) { exit 1 }
 
 # # build firmware based on generated headerfile for SAMD
