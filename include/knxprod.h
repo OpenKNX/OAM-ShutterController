@@ -10,14 +10,14 @@
                                              
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 17
+#define MAIN_ApplicationVersion 18
 #define MAIN_ParameterSize 10299
 #define MAIN_MaxKoNumber 1203
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
-#define BASE_ModuleVersion 19
-#define UCT_ModuleVersion 3
+#define BASE_ModuleVersion 20
+#define UCT_ModuleVersion 4
 #define SHC_ModuleVersion 3
-#define LOG_ModuleVersion 54
+#define LOG_ModuleVersion 55
 #define FCB_ModuleVersion 5
 // Parameter with single occurrence
 
