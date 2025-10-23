@@ -16,9 +16,8 @@
 
 void setup()
 {
-    // change this also in library.json
-    const uint8_t firmwareRevision = 0;
-    openknx.init(firmwareRevision);
+    openknx.init(FIRMWARE_REVISION);
+
 #if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_ESP32)
 #ifndef OPENKNX_FILE_TRANSFER_IGNORE
     openknx.addModule(9, openknxFileTransferModule);
@@ -36,7 +35,7 @@ void setup()
   
 void loop()
 {
-    openknx.loop();
+   openknx.loop();
 }
 
 #ifdef OPENKNX_DUALCORE
