@@ -17,7 +17,7 @@
 #define MAIN_FirmwareName "Jalousiensteuerung (Dev)"
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 49
-#define MAIN_ApplicationVersion 29
+#define MAIN_ApplicationVersion 30
 #define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 10399
