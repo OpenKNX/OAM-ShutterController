@@ -16,7 +16,7 @@
 
 void setup()
 {
-    openknx.init(FIRMWARE_REVISION);
+    openknx.init();
 
 #if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_ESP32)
 #ifndef OPENKNX_FILE_TRANSFER_IGNORE
