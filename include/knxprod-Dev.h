@@ -14,18 +14,19 @@
 #define ETS_ModuleId_SHC 3
 #define ETS_ModuleId_LOG 4
 #define ETS_ModuleId_FCB 5
-#define MAIN_FirmwareName "Jalousiensteuerung"
+#ifndef FIRMWARE_NAME
+    #define FIRMWARE_NAME "Jalousiensteuerung (Dev)"
+#endif
 #define MAIN_OpenKnxId 0xAE
-#define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 19
-#define MAIN_FirmwareRevision 0
+#define MAIN_ApplicationNumber 49
+#define MAIN_ApplicationVersion 27
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 10399
 #define MAIN_MaxKoNumber 1203
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
 #define BASE_ModuleVersion 21
 #define UCT_ModuleVersion 4
-#define SHC_ModuleVersion 4
+#define SHC_ModuleVersion 3
 #define LOG_ModuleVersion 55
 #define FCB_ModuleVersion 6
 // Parameter with single occurrence
@@ -472,9 +473,9 @@
 #define SHC_CWindowOpenPositionN1               36      // 7 Bits, Bit 7-1
 #define     SHC_CWindowOpenPositionN1Mask 0xFE
 #define     SHC_CWindowOpenPositionN1Shift 1
-#define SHC_CWindowOpenSlatPositionN1           37      // 7 Bits, Bit 7-1
-#define     SHC_CWindowOpenSlatPositionN1Mask 0xFE
-#define     SHC_CWindowOpenSlatPositionN1Shift 1
+#define SHC_CWindowOpenSlatPositionM1           37      // 7 Bits, Bit 7-1
+#define     SHC_CWindowOpenSlatPositionM1Mask 0xFE
+#define     SHC_CWindowOpenSlatPositionM1Shift 1
 #define SHC_CWindowOpenPositionControl2         38      // 4 Bits, Bit 7-4
 #define     SHC_CWindowOpenPositionControl2Mask 0xF0
 #define     SHC_CWindowOpenPositionControl2Shift 4
@@ -505,9 +506,9 @@
 #define SHC_CWindowOpenPositionN2               43      // 7 Bits, Bit 7-1
 #define     SHC_CWindowOpenPositionN2Mask 0xFE
 #define     SHC_CWindowOpenPositionN2Shift 1
-#define SHC_CWindowOpenSlatPositionN2           44      // 7 Bits, Bit 7-1
-#define     SHC_CWindowOpenSlatPositionN2Mask 0xFE
-#define     SHC_CWindowOpenSlatPositionN2Shift 1
+#define SHC_CWindowOpenSlatPositionM2           44      // 7 Bits, Bit 7-1
+#define     SHC_CWindowOpenSlatPositionM2Mask 0xFE
+#define     SHC_CWindowOpenSlatPositionM2Shift 1
 #define SHC_CShading1TempActive                 45      // 1 Bit, Bit 7
 #define     SHC_CShading1TempActiveMask 0x80
 #define     SHC_CShading1TempActiveShift 7
@@ -752,7 +753,7 @@
 // Position
 #define ParamSHC_CWindowOpenPositionN1               ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenPositionN1)) & SHC_CWindowOpenPositionN1Mask) >> SHC_CWindowOpenPositionN1Shift)
 // Lamellenstellung
-#define ParamSHC_CWindowOpenSlatPositionN1           ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenSlatPositionN1)) & SHC_CWindowOpenSlatPositionN1Mask) >> SHC_CWindowOpenSlatPositionN1Shift)
+#define ParamSHC_CWindowOpenSlatPositionM1           ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenSlatPositionM1)) & SHC_CWindowOpenSlatPositionM1Mask) >> SHC_CWindowOpenSlatPositionM1Shift)
 // Position anfahren
 #define ParamSHC_CWindowOpenPositionControl2         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenPositionControl2)) & SHC_CWindowOpenPositionControl2Mask) >> SHC_CWindowOpenPositionControl2Shift)
 // Lamellen öffnen
@@ -774,7 +775,7 @@
 // Position
 #define ParamSHC_CWindowOpenPositionN2               ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenPositionN2)) & SHC_CWindowOpenPositionN2Mask) >> SHC_CWindowOpenPositionN2Shift)
 // Lamellenstellung
-#define ParamSHC_CWindowOpenSlatPositionN2           ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenSlatPositionN2)) & SHC_CWindowOpenSlatPositionN2Mask) >> SHC_CWindowOpenSlatPositionN2Shift)
+#define ParamSHC_CWindowOpenSlatPositionM2           ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenSlatPositionM2)) & SHC_CWindowOpenSlatPositionM2Mask) >> SHC_CWindowOpenSlatPositionM2Shift)
 // Temperaturgrenze
 #define ParamSHC_CShading1TempActive                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShading1TempActive)) & SHC_CShading1TempActiveMask))
 // Temperaturprognose
@@ -4161,13 +4162,3 @@
 
 
 
-#ifdef MAIN_FirmwareRevision
-#ifndef FIRMWARE_REVISION
-#define FIRMWARE_REVISION MAIN_FirmwareRevision
-#endif
-#endif
-#ifdef MAIN_FirmwareName
-#ifndef FIRMWARE_NAME
-#define FIRMWARE_NAME MAIN_FirmwareName
-#endif
-#endif

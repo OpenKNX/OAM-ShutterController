@@ -1,10 +1,8 @@
 #include "OpenKNX.h"
 #include "ShutterControllerModule.h"
 #include "Logic.h"
- 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
-    #include "UsbExchangeModule.h"
 #endif
 #ifdef ARDUINO_ARCH_ESP32
     #include "FileTransferModule.h"
@@ -16,18 +14,14 @@
 
 void setup()
 {
-    // change this also in library.json
-    const uint8_t firmwareRevision = 0;
-    openknx.init(firmwareRevision);
+    openknx.init();
+
 #if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_ESP32)
 #ifndef OPENKNX_FILE_TRANSFER_IGNORE
     openknx.addModule(9, openknxFileTransferModule);
 #endif
 #endif
 
- #ifdef ARDUINO_ARCH_RP2040
-    openknx.addModule(8, openknxUsbExchangeModule);
-#endif
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxFunctionBlocksModule);
     openknx.addModule(3, openknxShutterControllerModule);
@@ -36,7 +30,7 @@ void setup()
   
 void loop()
 {
-    openknx.loop();
+   openknx.loop();
 }
 
 #ifdef OPENKNX_DUALCORE
