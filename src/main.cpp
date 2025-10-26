@@ -1,10 +1,8 @@
 #include "OpenKNX.h"
 #include "ShutterControllerModule.h"
 #include "Logic.h"
- 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
-    #include "UsbExchangeModule.h"
 #endif
 #ifdef ARDUINO_ARCH_ESP32
     #include "FileTransferModule.h"
@@ -24,9 +22,6 @@ void setup()
 #endif
 #endif
 
- #ifdef ARDUINO_ARCH_RP2040
-    openknx.addModule(8, openknxUsbExchangeModule);
-#endif
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxFunctionBlocksModule);
     openknx.addModule(3, openknxShutterControllerModule);
