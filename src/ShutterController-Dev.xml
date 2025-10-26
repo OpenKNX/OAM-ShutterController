@@ -25,7 +25,7 @@
     <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="%UCT_VerifyVersion%" />
   </op:define>
 
-  <op:define prefix="SHC" ModuleType="23" share="../lib/OFM-ShutterControllerModule/src/ShutterControllerModule.share.xml" template="../lib/OFM-ShutterControllerModule/src/ShutterControllerModule.templ.xml" NumChannels="16" KoSingleOffset="400" KoOffset="420">
+  <op:define prefix="SHC" ModuleType="23" share="../lib/OFM-ShutterControllerModule/src/ShutterControllerModule.share.xml" template="../lib/OFM-ShutterControllerModule/src/ShutterControllerModule.templ.xml" NumChannels="32" KoSingleOffset="400" KoOffset="420">
     <op:verify File="../lib/OFM-ShutterControllerModule/library.json" ModuleVersion="%SHC_VerifyVersion%" />
   </op:define>
 
