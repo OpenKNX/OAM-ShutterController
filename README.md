@@ -6,7 +6,7 @@ Die OpenKNX Shutter Controller Anwendung ermöglicht eine automatisierte Steueru
 
 ## Funktionen
 
-Die Anwendung unterstützt die Steuerung von bis zu 16 Jalousien/Rollläden. 
+Die Anwendung unterstützt die Steuerung von bis zu 32 Jalousien/Rollläden. 
 Folgende Hauptfunktionen können konfiguriert werden:
 
 ### Manuelle Steuerung
