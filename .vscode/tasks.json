@@ -18,7 +18,7 @@
                 "create",
                 "--Debug",
                 "-h",
-                "include/knxprod-Dev.h",
+                "include/knxprod.h",
                 "src/ShutterController-Dev"
             ],
             "problemMatcher": [],
