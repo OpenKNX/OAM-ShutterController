@@ -14,11 +14,11 @@
 #define ETS_ModuleId_SHC 3
 #define ETS_ModuleId_LOG 4
 #define ETS_ModuleId_FCB 5
-#define MAIN_FirmwareName "Jalousiensteuerung (Beta)"
+#define MAIN_FirmwareName "Jalousiensteuerung (Dev)"
 #define MAIN_OpenKnxId 0xAE
-#define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 21
-#define MAIN_FirmwareRevision 1
+#define MAIN_ApplicationNumber 49
+#define MAIN_ApplicationVersion 32
+#define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 12718
 #define MAIN_MaxKoNumber 2051
