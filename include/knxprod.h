@@ -19,14 +19,14 @@
 #define MAIN_FirmwareName "Jalousiensteuerung"
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 25
+#define MAIN_ApplicationVersion 24
 #define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 13370
 #define MAIN_MaxKoNumber 2519
 #define MAIN_OrderNumber "OpenKnxShutterController"
 #define BASE_ModuleVersion 25
-#define NET_ModuleVersion 7
+#define NET_ModuleVersion 8
 #define UCT_ModuleVersion 5
 #define SHC_ModuleVersion 9
 #define LOG_ModuleVersion 68
