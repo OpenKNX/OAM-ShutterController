@@ -10,24 +10,28 @@
                                              
 #define ETS_ModuleId_NONE 0
 #define ETS_ModuleId_BASE 1
-#define ETS_ModuleId_UCT 2
-#define ETS_ModuleId_SHC 3
-#define ETS_ModuleId_LOG 4
-#define ETS_ModuleId_FCB 5
+#define ETS_ModuleId_NET 2
+#define ETS_ModuleId_UCT 3
+#define ETS_ModuleId_SHC 4
+#define ETS_ModuleId_LOG 5
+#define ETS_ModuleId_FCB 6
+#define ETS_ModuleId_IW 7
 #define MAIN_FirmwareName "Jalousiensteuerung"
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 23
+#define MAIN_ApplicationVersion 25
 #define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
-#define MAIN_ParameterSize 12882
-#define MAIN_MaxKoNumber 1987
-#define MAIN_OrderNumber "OpenKnx-MG-JAL"
-#define BASE_ModuleVersion 24
+#define MAIN_ParameterSize 13370
+#define MAIN_MaxKoNumber 2519
+#define MAIN_OrderNumber "OpenKnxShutterController"
+#define BASE_ModuleVersion 25
+#define NET_ModuleVersion 7
 #define UCT_ModuleVersion 5
 #define SHC_ModuleVersion 9
-#define LOG_ModuleVersion 67
+#define LOG_ModuleVersion 68
 #define FCB_ModuleVersion 10
+#define IW_ModuleVersion 5
 // Parameter with single occurrence
 
 
@@ -91,18 +95,24 @@
 #define     BASE_DefaultLedFuncMask 0x80
 #define     BASE_DefaultLedFuncShift 7
 #define BASE_Dummy                               109      // uint8_t
-#define BASE_ModuleEnabled_UCT                   110      // 1 Bit, Bit 6
-#define     BASE_ModuleEnabled_UCTMask 0x40
-#define     BASE_ModuleEnabled_UCTShift 6
-#define BASE_ModuleEnabled_SHC                   110      // 1 Bit, Bit 5
-#define     BASE_ModuleEnabled_SHCMask 0x20
-#define     BASE_ModuleEnabled_SHCShift 5
-#define BASE_ModuleEnabled_LOG                   110      // 1 Bit, Bit 4
-#define     BASE_ModuleEnabled_LOGMask 0x10
-#define     BASE_ModuleEnabled_LOGShift 4
-#define BASE_ModuleEnabled_FCB                   110      // 1 Bit, Bit 3
-#define     BASE_ModuleEnabled_FCBMask 0x08
-#define     BASE_ModuleEnabled_FCBShift 3
+#define BASE_ModuleEnabled_NET                   110      // 1 Bit, Bit 6
+#define     BASE_ModuleEnabled_NETMask 0x40
+#define     BASE_ModuleEnabled_NETShift 6
+#define BASE_ModuleEnabled_UCT                   110      // 1 Bit, Bit 5
+#define     BASE_ModuleEnabled_UCTMask 0x20
+#define     BASE_ModuleEnabled_UCTShift 5
+#define BASE_ModuleEnabled_SHC                   110      // 1 Bit, Bit 4
+#define     BASE_ModuleEnabled_SHCMask 0x10
+#define     BASE_ModuleEnabled_SHCShift 4
+#define BASE_ModuleEnabled_LOG                   110      // 1 Bit, Bit 3
+#define     BASE_ModuleEnabled_LOGMask 0x08
+#define     BASE_ModuleEnabled_LOGShift 3
+#define BASE_ModuleEnabled_FCB                   110      // 1 Bit, Bit 2
+#define     BASE_ModuleEnabled_FCBMask 0x04
+#define     BASE_ModuleEnabled_FCBShift 2
+#define BASE_ModuleEnabled_IW                    110      // 1 Bit, Bit 1
+#define     BASE_ModuleEnabled_IWMask 0x02
+#define     BASE_ModuleEnabled_IWShift 1
 
 // Zeitbasis
 #define ParamBASE_StartupDelayBase                    ((knx.paramByte(BASE_StartupDelayBase) & BASE_StartupDelayBaseMask) >> BASE_StartupDelayBaseShift)
@@ -159,6 +169,8 @@
 #define ParamBASE_DefaultLedFunc                      ((bool)(knx.paramByte(BASE_DefaultLedFunc) & BASE_DefaultLedFuncMask))
 // 
 #define ParamBASE_Dummy                               (knx.paramByte(BASE_Dummy))
+// NET
+#define ParamBASE_ModuleEnabled_NET                   ((bool)(knx.paramByte(BASE_ModuleEnabled_NET) & BASE_ModuleEnabled_NETMask))
 // UCT
 #define ParamBASE_ModuleEnabled_UCT                   ((bool)(knx.paramByte(BASE_ModuleEnabled_UCT) & BASE_ModuleEnabled_UCTMask))
 // SHC
@@ -167,6 +179,8 @@
 #define ParamBASE_ModuleEnabled_LOG                   ((bool)(knx.paramByte(BASE_ModuleEnabled_LOG) & BASE_ModuleEnabled_LOGMask))
 // FCB
 #define ParamBASE_ModuleEnabled_FCB                   ((bool)(knx.paramByte(BASE_ModuleEnabled_FCB) & BASE_ModuleEnabled_FCBMask))
+// IW
+#define ParamBASE_ModuleEnabled_IW                    ((bool)(knx.paramByte(BASE_ModuleEnabled_IW) & BASE_ModuleEnabled_IWMask))
 
 #define BASE_KoHeartbeat 1
 #define BASE_KoTime 2
@@ -191,81 +205,178 @@
 // Diagnose
 #define KoBASE_Diagnose                            (knx.getGroupObject(BASE_KoDiagnose))
 
+#define NET_HostAddress                         114      // IP address, 4 Byte
+#define NET_SubnetMask                          118      // IP address, 4 Byte
+#define NET_GatewayAddress                      122      // IP address, 4 Byte
+#define NET_NameserverAddress                   126      // IP address, 4 Byte
+#define NET_CustomHostname                      130      // 1 Bit, Bit 7
+#define     NET_CustomHostnameMask 0x80
+#define     NET_CustomHostnameShift 7
+#define NET_StaticIP                            130      // 1 Bit, Bit 6
+#define     NET_StaticIPMask 0x40
+#define     NET_StaticIPShift 6
+#define NET_mDNS                                131      // 1 Bit, Bit 7
+#define     NET_mDNSMask 0x80
+#define     NET_mDNSShift 7
+#define NET_HTTP                                131      // 1 Bit, Bit 6
+#define     NET_HTTPMask 0x40
+#define     NET_HTTPShift 6
+#define NET_NTP                                 131      // 1 Bit, Bit 5
+#define     NET_NTPMask 0x20
+#define     NET_NTPShift 5
+#define NET_OTAUpdate                           131      // 2 Bits, Bit 4-3
+#define     NET_OTAUpdateMask 0x18
+#define     NET_OTAUpdateShift 3
+#define NET_MQTT                                131      // 1 Bit, Bit 2
+#define     NET_MQTTMask 0x04
+#define     NET_MQTTShift 2
+#define NET_HostName                            132      // char*, 24 Byte
+#define     NET_HostNameLength 24
+#define NET_LanMode                             173      // 4 Bits, Bit 7-4
+#define     NET_LanModeMask 0xF0
+#define     NET_LanModeShift 4
+#define NET_NTPServer                           174      // char*, 50 Byte
+#define     NET_NTPServerLength 50
+#define NET_MQTTServer                          225      // char*, 20 Byte
+#define     NET_MQTTServerLength 20
+#define NET_MQTTUsername                        246      // char*, 20 Byte
+#define     NET_MQTTUsernameLength 20
+#define NET_MQTTPassword                        267      // char*, 20 Byte
+#define     NET_MQTTPasswordLength 20
+#define NET_MQTTPrefix                          288      // char*, 20 Byte
+#define     NET_MQTTPrefixLength 20
+#define NET_MQTTPort                            309      // uint16_t
+#define NET_MQTTTPRawData                       311      // 1 Bit, Bit 7
+#define     NET_MQTTTPRawDataMask 0x80
+#define     NET_MQTTTPRawDataShift 7
+#define NET_MQTTMode                            311      // 1 Bit, Bit 6
+#define     NET_MQTTModeMask 0x40
+#define     NET_MQTTModeShift 6
+
+// IP-Adresse
+#define ParamNET_HostAddress                         (knx.paramInt(NET_HostAddress))
+// Subnetzsmaske
+#define ParamNET_SubnetMask                          (knx.paramInt(NET_SubnetMask))
+// Standardgateway
+#define ParamNET_GatewayAddress                      (knx.paramInt(NET_GatewayAddress))
+// Nameserver
+#define ParamNET_NameserverAddress                   (knx.paramInt(NET_NameserverAddress))
+// Hostname anpassen
+#define ParamNET_CustomHostname                      ((bool)(knx.paramByte(NET_CustomHostname) & NET_CustomHostnameMask))
+// DHCP
+#define ParamNET_StaticIP                            ((bool)(knx.paramByte(NET_StaticIP) & NET_StaticIPMask))
+// mDNS
+#define ParamNET_mDNS                                ((bool)(knx.paramByte(NET_mDNS) & NET_mDNSMask))
+// Weberver
+#define ParamNET_HTTP                                ((bool)(knx.paramByte(NET_HTTP) & NET_HTTPMask))
+// NTP-Client
+#define ParamNET_NTP                                 ((bool)(knx.paramByte(NET_NTP) & NET_NTPMask))
+// OTA-Update
+#define ParamNET_OTAUpdate                           ((knx.paramByte(NET_OTAUpdate) & NET_OTAUpdateMask) >> NET_OTAUpdateShift)
+// MQTT
+#define ParamNET_MQTT                                ((bool)(knx.paramByte(NET_MQTT) & NET_MQTTMask))
+// Hostname
+#define ParamNET_HostName                            (knx.paramData(NET_HostName))
+#define ParamNET_HostNameStr                         (knx.paramString(NET_HostName, NET_HostNameLength))
+// LAN-Modus
+#define ParamNET_LanMode                             ((knx.paramByte(NET_LanMode) & NET_LanModeMask) >> NET_LanModeShift)
+// Zeitserver
+#define ParamNET_NTPServer                           (knx.paramData(NET_NTPServer))
+#define ParamNET_NTPServerStr                        (knx.paramString(NET_NTPServer, NET_NTPServerLength))
+// Server
+#define ParamNET_MQTTServer                          (knx.paramData(NET_MQTTServer))
+#define ParamNET_MQTTServerStr                       (knx.paramString(NET_MQTTServer, NET_MQTTServerLength))
+// Benutzer
+#define ParamNET_MQTTUsername                        (knx.paramData(NET_MQTTUsername))
+#define ParamNET_MQTTUsernameStr                     (knx.paramString(NET_MQTTUsername, NET_MQTTUsernameLength))
+// Passwort
+#define ParamNET_MQTTPassword                        (knx.paramData(NET_MQTTPassword))
+#define ParamNET_MQTTPasswordStr                     (knx.paramString(NET_MQTTPassword, NET_MQTTPasswordLength))
+// Prefix
+#define ParamNET_MQTTPrefix                          (knx.paramData(NET_MQTTPrefix))
+#define ParamNET_MQTTPrefixStr                       (knx.paramString(NET_MQTTPrefix, NET_MQTTPrefixLength))
+// Port
+#define ParamNET_MQTTPort                            (knx.paramWord(NET_MQTTPort))
+// Sende KNX TP Rohdaten
+#define ParamNET_MQTTTPRawData                       ((bool)(knx.paramByte(NET_MQTTTPRawData) & NET_MQTTTPRawDataMask))
+// Modus
+#define ParamNET_MQTTMode                            ((bool)(knx.paramByte(NET_MQTTMode) & NET_MQTTModeMask))
 
 
-#define SHC_VisibleChannels                     114      // uint8_t
-#define SHC_HasTemperaturInput                  115      // 1 Bit, Bit 7
+
+#define SHC_VisibleChannels                     312      // uint8_t
+#define SHC_HasTemperaturInput                  313      // 1 Bit, Bit 7
 #define     SHC_HasTemperaturInputMask 0x80
 #define     SHC_HasTemperaturInputShift 7
-#define SHC_HasTemperaturForecastInput          115      // 1 Bit, Bit 6
+#define SHC_HasTemperaturForecastInput          313      // 1 Bit, Bit 6
 #define     SHC_HasTemperaturForecastInputMask 0x40
 #define     SHC_HasTemperaturForecastInputShift 6
-#define SHC_HasBrightnessInput                  115      // 1 Bit, Bit 5
+#define SHC_HasBrightnessInput                  313      // 1 Bit, Bit 5
 #define     SHC_HasBrightnessInputMask 0x20
 #define     SHC_HasBrightnessInputShift 5
-#define SHC_HasUVIInput                         115      // 1 Bit, Bit 4
+#define SHC_HasUVIInput                         313      // 1 Bit, Bit 4
 #define     SHC_HasUVIInputMask 0x10
 #define     SHC_HasUVIInputShift 4
-#define SHC_HasRainInput                        115      // 1 Bit, Bit 3
+#define SHC_HasRainInput                        313      // 1 Bit, Bit 3
 #define     SHC_HasRainInputMask 0x08
 #define     SHC_HasRainInputShift 3
-#define SHC_HasCloudsInput                      115      // 1 Bit, Bit 2
+#define SHC_HasCloudsInput                      313      // 1 Bit, Bit 2
 #define     SHC_HasCloudsInputMask 0x04
 #define     SHC_HasCloudsInputShift 2
-#define SHC_ShadingActivation                   116      // 8 Bits, Bit 7-0
-#define SHC_TempWatchdog                        117      // 4 Bits, Bit 7-4
+#define SHC_ShadingActivation                   314      // 8 Bits, Bit 7-0
+#define SHC_TempWatchdog                        315      // 4 Bits, Bit 7-4
 #define     SHC_TempWatchdogMask 0xF0
 #define     SHC_TempWatchdogShift 4
-#define SHC_TempFallbackMode                    117      // 4 Bits, Bit 3-0
+#define SHC_TempFallbackMode                    315      // 4 Bits, Bit 3-0
 #define     SHC_TempFallbackModeMask 0x0F
 #define     SHC_TempFallbackModeShift 0
-#define SHC_TempFallback                        118      // uint8_t
-#define SHC_TempForecastWatchdog                119      // 4 Bits, Bit 7-4
+#define SHC_TempFallback                        316      // uint8_t
+#define SHC_TempForecastWatchdog                317      // 4 Bits, Bit 7-4
 #define     SHC_TempForecastWatchdogMask 0xF0
 #define     SHC_TempForecastWatchdogShift 4
-#define SHC_TempForecastFallbackMode            119      // 4 Bits, Bit 3-0
+#define SHC_TempForecastFallbackMode            317      // 4 Bits, Bit 3-0
 #define     SHC_TempForecastFallbackModeMask 0x0F
 #define     SHC_TempForecastFallbackModeShift 0
-#define SHC_TempForecastFallback                120      // uint8_t
-#define SHC_BrightnessWatchdog                  121      // 4 Bits, Bit 7-4
+#define SHC_TempForecastFallback                318      // uint8_t
+#define SHC_BrightnessWatchdog                  319      // 4 Bits, Bit 7-4
 #define     SHC_BrightnessWatchdogMask 0xF0
 #define     SHC_BrightnessWatchdogShift 4
-#define SHC_BrightnessFallbackMode              121      // 4 Bits, Bit 3-0
+#define SHC_BrightnessFallbackMode              319      // 4 Bits, Bit 3-0
 #define     SHC_BrightnessFallbackModeMask 0x0F
 #define     SHC_BrightnessFallbackModeShift 0
-#define SHC_BrightnessFallback                  122      // uint8_t
-#define SHC_UVIWatchdog                         123      // 4 Bits, Bit 7-4
+#define SHC_BrightnessFallback                  320      // uint8_t
+#define SHC_UVIWatchdog                         321      // 4 Bits, Bit 7-4
 #define     SHC_UVIWatchdogMask 0xF0
 #define     SHC_UVIWatchdogShift 4
-#define SHC_UVIFallbackMode                     123      // 4 Bits, Bit 3-0
+#define SHC_UVIFallbackMode                     321      // 4 Bits, Bit 3-0
 #define     SHC_UVIFallbackModeMask 0x0F
 #define     SHC_UVIFallbackModeShift 0
-#define SHC_UVIFallback                         124      // float (4 Byte)
-#define SHC_RainWatchdog                        128      // 4 Bits, Bit 7-4
+#define SHC_UVIFallback                         322      // float (4 Byte)
+#define SHC_RainWatchdog                        326      // 4 Bits, Bit 7-4
 #define     SHC_RainWatchdogMask 0xF0
 #define     SHC_RainWatchdogShift 4
-#define SHC_RainFallbackMode                    128      // 4 Bits, Bit 3-0
+#define SHC_RainFallbackMode                    326      // 4 Bits, Bit 3-0
 #define     SHC_RainFallbackModeMask 0x0F
 #define     SHC_RainFallbackModeShift 0
-#define SHC_RainFallback                        129      // 1 Bit, Bit 7
+#define SHC_RainFallback                        327      // 1 Bit, Bit 7
 #define     SHC_RainFallbackMask 0x80
 #define     SHC_RainFallbackShift 7
-#define SHC_CloudsWatchdog                      130      // 4 Bits, Bit 7-4
+#define SHC_CloudsWatchdog                      328      // 4 Bits, Bit 7-4
 #define     SHC_CloudsWatchdogMask 0xF0
 #define     SHC_CloudsWatchdogShift 4
-#define SHC_CloudsFallbackMode                  131      // 4 Bits, Bit 3-0
+#define SHC_CloudsFallbackMode                  329      // 4 Bits, Bit 3-0
 #define     SHC_CloudsFallbackModeMask 0x0F
 #define     SHC_CloudsFallbackModeShift 0
-#define SHC_CloudsFallback                      132      // 7 Bits, Bit 7-1
+#define SHC_CloudsFallback                      330      // 7 Bits, Bit 7-1
 #define     SHC_CloudsFallbackMask 0xFE
 #define     SHC_CloudsFallbackShift 1
-#define SHC_BrightnessSensorCount               133      // 8 Bits, Bit 7-0
-#define SHC_BrightnessAggregation               134      // 8 Bits, Bit 7-0
-#define SHC_BrightnessAzimuth1                  135      // 16 Bits, Bit 15-0
-#define SHC_BrightnessAzimuth2                  137      // 16 Bits, Bit 15-0
-#define SHC_BrightnessAzimuth3                  139      // 16 Bits, Bit 15-0
-#define SHC_BrightnessAzimuth4                  141      // 16 Bits, Bit 15-0
-#define SHC_BrightnessAzimuth5                  143      // 16 Bits, Bit 15-0
+#define SHC_BrightnessSensorCount               331      // 8 Bits, Bit 7-0
+#define SHC_BrightnessAggregation               332      // 8 Bits, Bit 7-0
+#define SHC_BrightnessAzimuth1                  333      // 16 Bits, Bit 15-0
+#define SHC_BrightnessAzimuth2                  335      // 16 Bits, Bit 15-0
+#define SHC_BrightnessAzimuth3                  337      // 16 Bits, Bit 15-0
+#define SHC_BrightnessAzimuth4                  339      // 16 Bits, Bit 15-0
+#define SHC_BrightnessAzimuth5                  341      // 16 Bits, Bit 15-0
 
 // Verfügbare Kanäle
 #define ParamSHC_VisibleChannels                     (knx.paramByte(SHC_VisibleChannels))
@@ -378,7 +489,7 @@
 #define SHC_ChannelCount 32
 
 // Parameter per channel
-#define SHC_ParamBlockOffset 145
+#define SHC_ParamBlockOffset 343
 #define SHC_ParamBlockSize 127
 #define SHC_ParamCalcIndex(index) (index + SHC_ParamBlockOffset + _channelIndex * SHC_ParamBlockSize)
 
@@ -1179,272 +1290,272 @@
 // 
 #define KoSHC_CShading2DiagnoseNotAllowedReason   (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCShading2DiagnoseNotAllowedReason)))
 
-#define LOG_VisibleChannels                     4209      // uint8_t
-#define LOG_VacationKo                          4210      // 1 Bit, Bit 7
+#define LOG_VisibleChannels                     4407      // uint8_t
+#define LOG_VacationKo                          4408      // 1 Bit, Bit 7
 #define     LOG_VacationKoMask 0x80
 #define     LOG_VacationKoShift 7
-#define LOG_HolidayKo                           4210      // 1 Bit, Bit 6
+#define LOG_HolidayKo                           4408      // 1 Bit, Bit 6
 #define     LOG_HolidayKoMask 0x40
 #define     LOG_HolidayKoShift 6
-#define LOG_VacationRead                        4210      // 1 Bit, Bit 5
+#define LOG_VacationRead                        4408      // 1 Bit, Bit 5
 #define     LOG_VacationReadMask 0x20
 #define     LOG_VacationReadShift 5
-#define LOG_HolidaySend                         4210      // 1 Bit, Bit 4
+#define LOG_HolidaySend                         4408      // 1 Bit, Bit 4
 #define     LOG_HolidaySendMask 0x10
 #define     LOG_HolidaySendShift 4
-#define LOG_Neujahr                             4211      // 1 Bit, Bit 7
+#define LOG_Neujahr                             4409      // 1 Bit, Bit 7
 #define     LOG_NeujahrMask 0x80
 #define     LOG_NeujahrShift 7
-#define LOG_DreiKoenige                         4211      // 1 Bit, Bit 6
+#define LOG_DreiKoenige                         4409      // 1 Bit, Bit 6
 #define     LOG_DreiKoenigeMask 0x40
 #define     LOG_DreiKoenigeShift 6
-#define LOG_Weiberfastnacht                     4211      // 1 Bit, Bit 5
+#define LOG_Weiberfastnacht                     4409      // 1 Bit, Bit 5
 #define     LOG_WeiberfastnachtMask 0x20
 #define     LOG_WeiberfastnachtShift 5
-#define LOG_Rosenmontag                         4211      // 1 Bit, Bit 4
+#define LOG_Rosenmontag                         4409      // 1 Bit, Bit 4
 #define     LOG_RosenmontagMask 0x10
 #define     LOG_RosenmontagShift 4
-#define LOG_Fastnachtsdienstag                  4211      // 1 Bit, Bit 3
+#define LOG_Fastnachtsdienstag                  4409      // 1 Bit, Bit 3
 #define     LOG_FastnachtsdienstagMask 0x08
 #define     LOG_FastnachtsdienstagShift 3
-#define LOG_Aschermittwoch                      4211      // 1 Bit, Bit 2
+#define LOG_Aschermittwoch                      4409      // 1 Bit, Bit 2
 #define     LOG_AschermittwochMask 0x04
 #define     LOG_AschermittwochShift 2
-#define LOG_Frauentag                           4211      // 1 Bit, Bit 1
+#define LOG_Frauentag                           4409      // 1 Bit, Bit 1
 #define     LOG_FrauentagMask 0x02
 #define     LOG_FrauentagShift 1
-#define LOG_Gruendonnerstag                     4211      // 1 Bit, Bit 0
+#define LOG_Gruendonnerstag                     4409      // 1 Bit, Bit 0
 #define     LOG_GruendonnerstagMask 0x01
 #define     LOG_GruendonnerstagShift 0
-#define LOG_Karfreitag                          4212      // 1 Bit, Bit 7
+#define LOG_Karfreitag                          4410      // 1 Bit, Bit 7
 #define     LOG_KarfreitagMask 0x80
 #define     LOG_KarfreitagShift 7
-#define LOG_Ostersonntag                        4212      // 1 Bit, Bit 6
+#define LOG_Ostersonntag                        4410      // 1 Bit, Bit 6
 #define     LOG_OstersonntagMask 0x40
 #define     LOG_OstersonntagShift 6
-#define LOG_Ostermontag                         4212      // 1 Bit, Bit 5
+#define LOG_Ostermontag                         4410      // 1 Bit, Bit 5
 #define     LOG_OstermontagMask 0x20
 #define     LOG_OstermontagShift 5
-#define LOG_TagDerArbeit                        4212      // 1 Bit, Bit 4
+#define LOG_TagDerArbeit                        4410      // 1 Bit, Bit 4
 #define     LOG_TagDerArbeitMask 0x10
 #define     LOG_TagDerArbeitShift 4
-#define LOG_Himmelfahrt                         4212      // 1 Bit, Bit 3
+#define LOG_Himmelfahrt                         4410      // 1 Bit, Bit 3
 #define     LOG_HimmelfahrtMask 0x08
 #define     LOG_HimmelfahrtShift 3
-#define LOG_Pfingstsonntag                      4212      // 1 Bit, Bit 2
+#define LOG_Pfingstsonntag                      4410      // 1 Bit, Bit 2
 #define     LOG_PfingstsonntagMask 0x04
 #define     LOG_PfingstsonntagShift 2
-#define LOG_Pfingstmontag                       4212      // 1 Bit, Bit 1
+#define LOG_Pfingstmontag                       4410      // 1 Bit, Bit 1
 #define     LOG_PfingstmontagMask 0x02
 #define     LOG_PfingstmontagShift 1
-#define LOG_Fronleichnam                        4212      // 1 Bit, Bit 0
+#define LOG_Fronleichnam                        4410      // 1 Bit, Bit 0
 #define     LOG_FronleichnamMask 0x01
 #define     LOG_FronleichnamShift 0
-#define LOG_Friedensfest                        4213      // 1 Bit, Bit 7
+#define LOG_Friedensfest                        4411      // 1 Bit, Bit 7
 #define     LOG_FriedensfestMask 0x80
 #define     LOG_FriedensfestShift 7
-#define LOG_MariaHimmelfahrt                    4213      // 1 Bit, Bit 6
+#define LOG_MariaHimmelfahrt                    4411      // 1 Bit, Bit 6
 #define     LOG_MariaHimmelfahrtMask 0x40
 #define     LOG_MariaHimmelfahrtShift 6
-#define LOG_DeutscheEinheit                     4213      // 1 Bit, Bit 5
+#define LOG_DeutscheEinheit                     4411      // 1 Bit, Bit 5
 #define     LOG_DeutscheEinheitMask 0x20
 #define     LOG_DeutscheEinheitShift 5
-#define LOG_Reformationstag                     4213      // 1 Bit, Bit 4
+#define LOG_Reformationstag                     4411      // 1 Bit, Bit 4
 #define     LOG_ReformationstagMask 0x10
 #define     LOG_ReformationstagShift 4
-#define LOG_Allerheiligen                       4213      // 1 Bit, Bit 3
+#define LOG_Allerheiligen                       4411      // 1 Bit, Bit 3
 #define     LOG_AllerheiligenMask 0x08
 #define     LOG_AllerheiligenShift 3
-#define LOG_BussBettag                          4213      // 1 Bit, Bit 2
+#define LOG_BussBettag                          4411      // 1 Bit, Bit 2
 #define     LOG_BussBettagMask 0x04
 #define     LOG_BussBettagShift 2
-#define LOG_Advent1                             4213      // 1 Bit, Bit 1
+#define LOG_Advent1                             4411      // 1 Bit, Bit 1
 #define     LOG_Advent1Mask 0x02
 #define     LOG_Advent1Shift 1
-#define LOG_Advent2                             4213      // 1 Bit, Bit 0
+#define LOG_Advent2                             4411      // 1 Bit, Bit 0
 #define     LOG_Advent2Mask 0x01
 #define     LOG_Advent2Shift 0
-#define LOG_Advent3                             4214      // 1 Bit, Bit 7
+#define LOG_Advent3                             4412      // 1 Bit, Bit 7
 #define     LOG_Advent3Mask 0x80
 #define     LOG_Advent3Shift 7
-#define LOG_Advent4                             4214      // 1 Bit, Bit 6
+#define LOG_Advent4                             4412      // 1 Bit, Bit 6
 #define     LOG_Advent4Mask 0x40
 #define     LOG_Advent4Shift 6
-#define LOG_Heiligabend                         4214      // 1 Bit, Bit 5
+#define LOG_Heiligabend                         4412      // 1 Bit, Bit 5
 #define     LOG_HeiligabendMask 0x20
 #define     LOG_HeiligabendShift 5
-#define LOG_Weihnachtstag1                      4214      // 1 Bit, Bit 4
+#define LOG_Weihnachtstag1                      4412      // 1 Bit, Bit 4
 #define     LOG_Weihnachtstag1Mask 0x10
 #define     LOG_Weihnachtstag1Shift 4
-#define LOG_Weihnachtstag2                      4214      // 1 Bit, Bit 3
+#define LOG_Weihnachtstag2                      4412      // 1 Bit, Bit 3
 #define     LOG_Weihnachtstag2Mask 0x08
 #define     LOG_Weihnachtstag2Shift 3
-#define LOG_Silvester                           4214      // 1 Bit, Bit 2
+#define LOG_Silvester                           4412      // 1 Bit, Bit 2
 #define     LOG_SilvesterMask 0x04
 #define     LOG_SilvesterShift 2
-#define LOG_Nationalfeiertag                    4214      // 1 Bit, Bit 1
+#define LOG_Nationalfeiertag                    4412      // 1 Bit, Bit 1
 #define     LOG_NationalfeiertagMask 0x02
 #define     LOG_NationalfeiertagShift 1
-#define LOG_MariaEmpfaengnis                    4214      // 1 Bit, Bit 0
+#define LOG_MariaEmpfaengnis                    4412      // 1 Bit, Bit 0
 #define     LOG_MariaEmpfaengnisMask 0x01
 #define     LOG_MariaEmpfaengnisShift 0
-#define LOG_NationalfeiertagSchweiz             4215      // 1 Bit, Bit 7
+#define LOG_NationalfeiertagSchweiz             4413      // 1 Bit, Bit 7
 #define     LOG_NationalfeiertagSchweizMask 0x80
 #define     LOG_NationalfeiertagSchweizShift 7
-#define LOG_Totensonntag                        4215      // 1 Bit, Bit 6
+#define LOG_Totensonntag                        4413      // 1 Bit, Bit 6
 #define     LOG_TotensonntagMask 0x40
 #define     LOG_TotensonntagShift 6
-#define LOG_Weltkindertag                       4215      // 1 Bit, Bit 5
+#define LOG_Weltkindertag                       4413      // 1 Bit, Bit 5
 #define     LOG_WeltkindertagMask 0x20
 #define     LOG_WeltkindertagShift 5
-#define LOG_UserFormula1                        4216      // char*, 99 Byte
+#define LOG_UserFormula1                        4414      // char*, 99 Byte
 #define     LOG_UserFormula1Length 99
-#define LOG_UserFormula1Active                  4315      // 1 Bit, Bit 7
+#define LOG_UserFormula1Active                  4513      // 1 Bit, Bit 7
 #define     LOG_UserFormula1ActiveMask 0x80
 #define     LOG_UserFormula1ActiveShift 7
-#define LOG_UserFormula2                        4316      // char*, 99 Byte
+#define LOG_UserFormula2                        4514      // char*, 99 Byte
 #define     LOG_UserFormula2Length 99
-#define LOG_UserFormula2Active                  4415      // 1 Bit, Bit 7
+#define LOG_UserFormula2Active                  4613      // 1 Bit, Bit 7
 #define     LOG_UserFormula2ActiveMask 0x80
 #define     LOG_UserFormula2ActiveShift 7
-#define LOG_UserFormula3                        4416      // char*, 99 Byte
+#define LOG_UserFormula3                        4614      // char*, 99 Byte
 #define     LOG_UserFormula3Length 99
-#define LOG_UserFormula3Active                  4515      // 1 Bit, Bit 7
+#define LOG_UserFormula3Active                  4713      // 1 Bit, Bit 7
 #define     LOG_UserFormula3ActiveMask 0x80
 #define     LOG_UserFormula3ActiveShift 7
-#define LOG_UserFormula4                        4516      // char*, 99 Byte
+#define LOG_UserFormula4                        4714      // char*, 99 Byte
 #define     LOG_UserFormula4Length 99
-#define LOG_UserFormula4Active                  4615      // 1 Bit, Bit 7
+#define LOG_UserFormula4Active                  4813      // 1 Bit, Bit 7
 #define     LOG_UserFormula4ActiveMask 0x80
 #define     LOG_UserFormula4ActiveShift 7
-#define LOG_UserFormula5                        4616      // char*, 99 Byte
+#define LOG_UserFormula5                        4814      // char*, 99 Byte
 #define     LOG_UserFormula5Length 99
-#define LOG_UserFormula5Active                  4715      // 1 Bit, Bit 7
+#define LOG_UserFormula5Active                  4913      // 1 Bit, Bit 7
 #define     LOG_UserFormula5ActiveMask 0x80
 #define     LOG_UserFormula5ActiveShift 7
-#define LOG_UserFormula6                        4716      // char*, 99 Byte
+#define LOG_UserFormula6                        4914      // char*, 99 Byte
 #define     LOG_UserFormula6Length 99
-#define LOG_UserFormula6Active                  4815      // 1 Bit, Bit 7
+#define LOG_UserFormula6Active                  5013      // 1 Bit, Bit 7
 #define     LOG_UserFormula6ActiveMask 0x80
 #define     LOG_UserFormula6ActiveShift 7
-#define LOG_UserFormula7                        4816      // char*, 99 Byte
+#define LOG_UserFormula7                        5014      // char*, 99 Byte
 #define     LOG_UserFormula7Length 99
-#define LOG_UserFormula7Active                  4915      // 1 Bit, Bit 7
+#define LOG_UserFormula7Active                  5113      // 1 Bit, Bit 7
 #define     LOG_UserFormula7ActiveMask 0x80
 #define     LOG_UserFormula7ActiveShift 7
-#define LOG_UserFormula8                        4916      // char*, 99 Byte
+#define LOG_UserFormula8                        5114      // char*, 99 Byte
 #define     LOG_UserFormula8Length 99
-#define LOG_UserFormula8Active                  5015      // 1 Bit, Bit 7
+#define LOG_UserFormula8Active                  5213      // 1 Bit, Bit 7
 #define     LOG_UserFormula8ActiveMask 0x80
 #define     LOG_UserFormula8ActiveShift 7
-#define LOG_UserFormula9                        5016      // char*, 99 Byte
+#define LOG_UserFormula9                        5214      // char*, 99 Byte
 #define     LOG_UserFormula9Length 99
-#define LOG_UserFormula9Active                  5115      // 1 Bit, Bit 7
+#define LOG_UserFormula9Active                  5313      // 1 Bit, Bit 7
 #define     LOG_UserFormula9ActiveMask 0x80
 #define     LOG_UserFormula9ActiveShift 7
-#define LOG_UserFormula10                       5116      // char*, 99 Byte
+#define LOG_UserFormula10                       5314      // char*, 99 Byte
 #define     LOG_UserFormula10Length 99
-#define LOG_UserFormula10Active                 5215      // 1 Bit, Bit 7
+#define LOG_UserFormula10Active                 5413      // 1 Bit, Bit 7
 #define     LOG_UserFormula10ActiveMask 0x80
 #define     LOG_UserFormula10ActiveShift 7
-#define LOG_UserFormula11                       5216      // char*, 99 Byte
+#define LOG_UserFormula11                       5414      // char*, 99 Byte
 #define     LOG_UserFormula11Length 99
-#define LOG_UserFormula11Active                 5315      // 1 Bit, Bit 7
+#define LOG_UserFormula11Active                 5513      // 1 Bit, Bit 7
 #define     LOG_UserFormula11ActiveMask 0x80
 #define     LOG_UserFormula11ActiveShift 7
-#define LOG_UserFormula12                       5316      // char*, 99 Byte
+#define LOG_UserFormula12                       5514      // char*, 99 Byte
 #define     LOG_UserFormula12Length 99
-#define LOG_UserFormula12Active                 5415      // 1 Bit, Bit 7
+#define LOG_UserFormula12Active                 5613      // 1 Bit, Bit 7
 #define     LOG_UserFormula12ActiveMask 0x80
 #define     LOG_UserFormula12ActiveShift 7
-#define LOG_UserFormula13                       5416      // char*, 99 Byte
+#define LOG_UserFormula13                       5614      // char*, 99 Byte
 #define     LOG_UserFormula13Length 99
-#define LOG_UserFormula13Active                 5515      // 1 Bit, Bit 7
+#define LOG_UserFormula13Active                 5713      // 1 Bit, Bit 7
 #define     LOG_UserFormula13ActiveMask 0x80
 #define     LOG_UserFormula13ActiveShift 7
-#define LOG_UserFormula14                       5516      // char*, 99 Byte
+#define LOG_UserFormula14                       5714      // char*, 99 Byte
 #define     LOG_UserFormula14Length 99
-#define LOG_UserFormula14Active                 5615      // 1 Bit, Bit 7
+#define LOG_UserFormula14Active                 5813      // 1 Bit, Bit 7
 #define     LOG_UserFormula14ActiveMask 0x80
 #define     LOG_UserFormula14ActiveShift 7
-#define LOG_UserFormula15                       5616      // char*, 99 Byte
+#define LOG_UserFormula15                       5814      // char*, 99 Byte
 #define     LOG_UserFormula15Length 99
-#define LOG_UserFormula15Active                 5715      // 1 Bit, Bit 7
+#define LOG_UserFormula15Active                 5913      // 1 Bit, Bit 7
 #define     LOG_UserFormula15ActiveMask 0x80
 #define     LOG_UserFormula15ActiveShift 7
-#define LOG_UserFormula16                       5716      // char*, 99 Byte
+#define LOG_UserFormula16                       5914      // char*, 99 Byte
 #define     LOG_UserFormula16Length 99
-#define LOG_UserFormula16Active                 5815      // 1 Bit, Bit 7
+#define LOG_UserFormula16Active                 6013      // 1 Bit, Bit 7
 #define     LOG_UserFormula16ActiveMask 0x80
 #define     LOG_UserFormula16ActiveShift 7
-#define LOG_UserFormula17                       5816      // char*, 99 Byte
+#define LOG_UserFormula17                       6014      // char*, 99 Byte
 #define     LOG_UserFormula17Length 99
-#define LOG_UserFormula17Active                 5915      // 1 Bit, Bit 7
+#define LOG_UserFormula17Active                 6113      // 1 Bit, Bit 7
 #define     LOG_UserFormula17ActiveMask 0x80
 #define     LOG_UserFormula17ActiveShift 7
-#define LOG_UserFormula18                       5916      // char*, 99 Byte
+#define LOG_UserFormula18                       6114      // char*, 99 Byte
 #define     LOG_UserFormula18Length 99
-#define LOG_UserFormula18Active                 6015      // 1 Bit, Bit 7
+#define LOG_UserFormula18Active                 6213      // 1 Bit, Bit 7
 #define     LOG_UserFormula18ActiveMask 0x80
 #define     LOG_UserFormula18ActiveShift 7
-#define LOG_UserFormula19                       6016      // char*, 99 Byte
+#define LOG_UserFormula19                       6214      // char*, 99 Byte
 #define     LOG_UserFormula19Length 99
-#define LOG_UserFormula19Active                 6115      // 1 Bit, Bit 7
+#define LOG_UserFormula19Active                 6313      // 1 Bit, Bit 7
 #define     LOG_UserFormula19ActiveMask 0x80
 #define     LOG_UserFormula19ActiveShift 7
-#define LOG_UserFormula20                       6116      // char*, 99 Byte
+#define LOG_UserFormula20                       6314      // char*, 99 Byte
 #define     LOG_UserFormula20Length 99
-#define LOG_UserFormula20Active                 6215      // 1 Bit, Bit 7
+#define LOG_UserFormula20Active                 6413      // 1 Bit, Bit 7
 #define     LOG_UserFormula20ActiveMask 0x80
 #define     LOG_UserFormula20ActiveShift 7
-#define LOG_UserFormula21                       6216      // char*, 99 Byte
+#define LOG_UserFormula21                       6414      // char*, 99 Byte
 #define     LOG_UserFormula21Length 99
-#define LOG_UserFormula21Active                 6315      // 1 Bit, Bit 7
+#define LOG_UserFormula21Active                 6513      // 1 Bit, Bit 7
 #define     LOG_UserFormula21ActiveMask 0x80
 #define     LOG_UserFormula21ActiveShift 7
-#define LOG_UserFormula22                       6316      // char*, 99 Byte
+#define LOG_UserFormula22                       6514      // char*, 99 Byte
 #define     LOG_UserFormula22Length 99
-#define LOG_UserFormula22Active                 6415      // 1 Bit, Bit 7
+#define LOG_UserFormula22Active                 6613      // 1 Bit, Bit 7
 #define     LOG_UserFormula22ActiveMask 0x80
 #define     LOG_UserFormula22ActiveShift 7
-#define LOG_UserFormula23                       6416      // char*, 99 Byte
+#define LOG_UserFormula23                       6614      // char*, 99 Byte
 #define     LOG_UserFormula23Length 99
-#define LOG_UserFormula23Active                 6515      // 1 Bit, Bit 7
+#define LOG_UserFormula23Active                 6713      // 1 Bit, Bit 7
 #define     LOG_UserFormula23ActiveMask 0x80
 #define     LOG_UserFormula23ActiveShift 7
-#define LOG_UserFormula24                       6516      // char*, 99 Byte
+#define LOG_UserFormula24                       6714      // char*, 99 Byte
 #define     LOG_UserFormula24Length 99
-#define LOG_UserFormula24Active                 6615      // 1 Bit, Bit 7
+#define LOG_UserFormula24Active                 6813      // 1 Bit, Bit 7
 #define     LOG_UserFormula24ActiveMask 0x80
 #define     LOG_UserFormula24ActiveShift 7
-#define LOG_UserFormula25                       6616      // char*, 99 Byte
+#define LOG_UserFormula25                       6814      // char*, 99 Byte
 #define     LOG_UserFormula25Length 99
-#define LOG_UserFormula25Active                 6715      // 1 Bit, Bit 7
+#define LOG_UserFormula25Active                 6913      // 1 Bit, Bit 7
 #define     LOG_UserFormula25ActiveMask 0x80
 #define     LOG_UserFormula25ActiveShift 7
-#define LOG_UserFormula26                       6716      // char*, 99 Byte
+#define LOG_UserFormula26                       6914      // char*, 99 Byte
 #define     LOG_UserFormula26Length 99
-#define LOG_UserFormula26Active                 6815      // 1 Bit, Bit 7
+#define LOG_UserFormula26Active                 7013      // 1 Bit, Bit 7
 #define     LOG_UserFormula26ActiveMask 0x80
 #define     LOG_UserFormula26ActiveShift 7
-#define LOG_UserFormula27                       6816      // char*, 99 Byte
+#define LOG_UserFormula27                       7014      // char*, 99 Byte
 #define     LOG_UserFormula27Length 99
-#define LOG_UserFormula27Active                 6915      // 1 Bit, Bit 7
+#define LOG_UserFormula27Active                 7113      // 1 Bit, Bit 7
 #define     LOG_UserFormula27ActiveMask 0x80
 #define     LOG_UserFormula27ActiveShift 7
-#define LOG_UserFormula28                       6916      // char*, 99 Byte
+#define LOG_UserFormula28                       7114      // char*, 99 Byte
 #define     LOG_UserFormula28Length 99
-#define LOG_UserFormula28Active                 7015      // 1 Bit, Bit 7
+#define LOG_UserFormula28Active                 7213      // 1 Bit, Bit 7
 #define     LOG_UserFormula28ActiveMask 0x80
 #define     LOG_UserFormula28ActiveShift 7
-#define LOG_UserFormula29                       7016      // char*, 99 Byte
+#define LOG_UserFormula29                       7214      // char*, 99 Byte
 #define     LOG_UserFormula29Length 99
-#define LOG_UserFormula29Active                 7115      // 1 Bit, Bit 7
+#define LOG_UserFormula29Active                 7313      // 1 Bit, Bit 7
 #define     LOG_UserFormula29ActiveMask 0x80
 #define     LOG_UserFormula29ActiveShift 7
-#define LOG_UserFormula30                       7116      // char*, 99 Byte
+#define LOG_UserFormula30                       7314      // char*, 99 Byte
 #define     LOG_UserFormula30Length 99
-#define LOG_UserFormula30Active                 7215      // 1 Bit, Bit 7
+#define LOG_UserFormula30Active                 7413      // 1 Bit, Bit 7
 #define     LOG_UserFormula30ActiveMask 0x80
 #define     LOG_UserFormula30ActiveShift 7
 
@@ -1693,7 +1804,7 @@
 #define LOG_ChannelCount 50
 
 // Parameter per channel
-#define LOG_ParamBlockOffset 7216
+#define LOG_ParamBlockOffset 7414
 #define LOG_ParamBlockSize 89
 #define LOG_ParamCalcIndex(index) (index + LOG_ParamBlockOffset + _channelIndex * LOG_ParamBlockSize)
 
@@ -2621,17 +2732,17 @@
 #define LOG_fOOffKOSendNumber                   81      // uint16_t
 #define LOG_fOOffKOSendNumberRel                81      // int16_t
 
-// Zeit bis der Kanal nach einem Neustart aktiv wird
+// Startverzögerung
 #define ParamLOG_fChannelDelayBase                   ((knx.paramByte(LOG_ParamCalcIndex(LOG_fChannelDelayBase)) & LOG_fChannelDelayBaseMask) >> LOG_fChannelDelayBaseShift)
-// Zeit bis der Kanal nach einem Neustart aktiv wird
+// Startverzögerung
 #define ParamLOG_fChannelDelayTime                   (knx.paramWord(LOG_ParamCalcIndex(LOG_fChannelDelayTime)) & LOG_fChannelDelayTimeMask)
-// Zeit bis der Kanal nach einem Neustart aktiv wird (in Millisekunden)
+// Startverzögerung (in Millisekunden)
 #define ParamLOG_fChannelDelayTimeMS                 (paramDelay(knx.paramWord(LOG_ParamCalcIndex(LOG_fChannelDelayTime))))
 // Logik-Operation
 #define ParamLOG_fLogic                              (PT_Logic)(knx.paramByte(LOG_ParamCalcIndex(LOG_fLogic)))
 // Logik auswerten
 #define ParamLOG_fCalculate                          (PT_Calculate)(knx.paramByte(LOG_ParamCalcIndex(LOG_fCalculate)) & LOG_fCalculateMask)
-// Kanal deaktivieren (zu Testzwecken)
+// Suspendiert
 #define ParamLOG_fDisable                            ((bool)(knx.paramByte(LOG_ParamCalcIndex(LOG_fDisable)) & LOG_fDisableMask))
 // Tor geht sofort wieder zu
 #define ParamLOG_fTGate                              ((bool)(knx.paramByte(LOG_ParamCalcIndex(LOG_fTGate)) & LOG_fTGateMask))
@@ -3598,7 +3709,7 @@
 // Ausgang
 #define KoLOG_KOfO                                (knx.getGroupObject(LOG_KoCalcNumber(LOG_KoKOfO)))
 
-#define FCB_VisibleChannels                     11666      // uint8_t
+#define FCB_VisibleChannels                     11864      // uint8_t
 
 // Verfügbare Kanäle
 #define ParamFCB_VisibleChannels                     (knx.paramByte(FCB_VisibleChannels))
@@ -3606,7 +3717,7 @@
 #define FCB_ChannelCount 15
 
 // Parameter per channel
-#define FCB_ParamBlockOffset 11667
+#define FCB_ParamBlockOffset 11865
 #define FCB_ParamBlockSize 81
 #define FCB_ParamCalcIndex(index) (index + FCB_ParamBlockOffset + _channelIndex * FCB_ParamBlockSize)
 
@@ -4670,18 +4781,440 @@
 // 
 #define KoFCB_CHKO9                               (knx.getGroupObject(FCB_KoCalcNumber(FCB_KoCHKO9)))
 
+#define IW_VisibleChannels                     13080      // uint8_t
+#define IW_OpenWeatherMap_APIKey               13081      // char*, 40 Byte
+#define     IW_OpenWeatherMap_APIKeyLength 40
+#define IW_OpenMeteo_UsageLicense              13122      // 2 Bits, Bit 7-6
+#define     IW_OpenMeteo_UsageLicenseMask 0xC0
+#define     IW_OpenMeteo_UsageLicenseShift 6
+#define IW_OpenMeteo_ServerURL                 13123      // char*, 80 Byte
+#define     IW_OpenMeteo_ServerURLLength 80
+#define IW_OpenMeteo_APIKey                    13204      // char*, 40 Byte
+#define     IW_OpenMeteo_APIKeyLength 40
+#define IW_WeatherRefreshInterval              13245      // 8 Bits, Bit 7-0
+#define IW_TextPrefixDayCurrent                13246      // char*, 1 Byte
+#define     IW_TextPrefixDayCurrentLength 1
+#define IW_TextPrefixDayNext                   13248      // char*, 1 Byte
+#define     IW_TextPrefixDayNextLength 1
+#define IW_TextSun                             13250      // char*, 13 Byte
+#define     IW_TextSunLength 13
+#define IW_TextClouds                          13265      // char*, 13 Byte
+#define     IW_TextCloudsLength 13
+#define IW_TextRain                            13280      // char*, 13 Byte
+#define     IW_TextRainLength 13
+#define IW_TextSnow                            13295      // char*, 13 Byte
+#define     IW_TextSnowLength 13
 
+// Verfügbare Kanäle
+#define ParamIW_VisibleChannels                     (knx.paramByte(IW_VisibleChannels))
+// API Key
+#define ParamIW_OpenWeatherMap_APIKey               (knx.paramData(IW_OpenWeatherMap_APIKey))
+#define ParamIW_OpenWeatherMap_APIKeyStr            (knx.paramString(IW_OpenWeatherMap_APIKey, IW_OpenWeatherMap_APIKeyLength))
+// Nutzung/Lizenz
+#define ParamIW_OpenMeteo_UsageLicense              ((knx.paramByte(IW_OpenMeteo_UsageLicense) & IW_OpenMeteo_UsageLicenseMask) >> IW_OpenMeteo_UsageLicenseShift)
+// Server-Basis-URL
+#define ParamIW_OpenMeteo_ServerURL                 (knx.paramData(IW_OpenMeteo_ServerURL))
+#define ParamIW_OpenMeteo_ServerURLStr              (knx.paramString(IW_OpenMeteo_ServerURL, IW_OpenMeteo_ServerURLLength))
+// API Key
+#define ParamIW_OpenMeteo_APIKey                    (knx.paramData(IW_OpenMeteo_APIKey))
+#define ParamIW_OpenMeteo_APIKeyStr                 (knx.paramString(IW_OpenMeteo_APIKey, IW_OpenMeteo_APIKeyLength))
+// Automatische Aktualisierung
+#define ParamIW_WeatherRefreshInterval              (knx.paramByte(IW_WeatherRefreshInterval))
+// Aktueller Tag
+#define ParamIW_TextPrefixDayCurrent                (knx.paramData(IW_TextPrefixDayCurrent))
+#define ParamIW_TextPrefixDayCurrentStr             (knx.paramString(IW_TextPrefixDayCurrent, IW_TextPrefixDayCurrentLength))
+// Nächster Tag
+#define ParamIW_TextPrefixDayNext                   (knx.paramData(IW_TextPrefixDayNext))
+#define ParamIW_TextPrefixDayNextStr                (knx.paramString(IW_TextPrefixDayNext, IW_TextPrefixDayNextLength))
+// Wolkenlos
+#define ParamIW_TextSun                             (knx.paramData(IW_TextSun))
+#define ParamIW_TextSunStr                          (knx.paramString(IW_TextSun, IW_TextSunLength))
+// Wolken
+#define ParamIW_TextClouds                          (knx.paramData(IW_TextClouds))
+#define ParamIW_TextCloudsStr                       (knx.paramString(IW_TextClouds, IW_TextCloudsLength))
+// Regen
+#define ParamIW_TextRain                            (knx.paramData(IW_TextRain))
+#define ParamIW_TextRainStr                         (knx.paramString(IW_TextRain, IW_TextRainLength))
+// Schnee
+#define ParamIW_TextSnow                            (knx.paramData(IW_TextSnow))
+#define ParamIW_TextSnowStr                         (knx.paramString(IW_TextSnow, IW_TextSnowLength))
 
-// Header generation for Module 'BASE_KommentarModule'
+#define IW_KoRefreshWeatherData 2000
 
-#define BASE_KommentarModuleCount 0
-#define BASE_KommentarModuleModuleParamSize 0
-#define BASE_KommentarModuleSubmodulesParamSize 0
-#define BASE_KommentarModuleParamSize 0
-#define BASE_KommentarModuleParamOffset 12882
-#define BASE_KommentarModuleCalcIndex(index, m1) (index + BASE_KommentarModuleParamOffset + _channelIndex * BASE_KommentarModuleCount * BASE_KommentarModuleParamSize + m1 * BASE_KommentarModuleParamSize)
+// Wetterdaten aktualisieren
+#define KoIW_RefreshWeatherData                  (knx.getGroupObject(IW_KoRefreshWeatherData))
 
+#define IW_ChannelCount 5
 
+// Parameter per channel
+#define IW_ParamBlockOffset 13310
+#define IW_ParamBlockSize 12
+#define IW_ParamCalcIndex(index) (index + IW_ParamBlockOffset + _channelIndex * IW_ParamBlockSize)
+
+#define IW_CHOutCurrent                         0      // 1 Bit, Bit 7
+#define     IW_CHOutCurrentMask 0x80
+#define     IW_CHOutCurrentShift 7
+#define IW_CHOutToday                           0      // 1 Bit, Bit 6
+#define     IW_CHOutTodayMask 0x40
+#define     IW_CHOutTodayShift 6
+#define IW_CHOutTomorrow                        0      // 1 Bit, Bit 5
+#define     IW_CHOutTomorrowMask 0x20
+#define     IW_CHOutTomorrowShift 5
+#define IW_CHOutForecast                        0      // 1 Bit, Bit 4
+#define     IW_CHOutForecastMask 0x10
+#define     IW_CHOutForecastShift 4
+#define IW_CHOutHour1                           0      // 1 Bit, Bit 3
+#define     IW_CHOutHour1Mask 0x08
+#define     IW_CHOutHour1Shift 3
+#define IW_CHOutHour2                           0      // 1 Bit, Bit 2
+#define     IW_CHOutHour2Mask 0x04
+#define     IW_CHOutHour2Shift 2
+#define IW_CHWeatherChannelType                 2      // 8 Bits, Bit 7-0
+#define IW_CHWeatherLocationType                3      // 1 Bit, Bit 7
+#define     IW_CHWeatherLocationTypeMask 0x80
+#define     IW_CHWeatherLocationTypeShift 7
+#define IW_CHLatitude                           4      // float (4 Byte)
+#define IW_CHLongitude                          8      // float (4 Byte)
+
+// Aktuelles Wetter
+#define ParamIW_CHOutCurrent                        ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHOutCurrent)) & IW_CHOutCurrentMask))
+// Prognose Heute
+#define ParamIW_CHOutToday                          ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHOutToday)) & IW_CHOutTodayMask))
+// Prognose Morgen
+#define ParamIW_CHOutTomorrow                       ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHOutTomorrow)) & IW_CHOutTomorrowMask))
+// Prognose Heute/Morgen Umschaltbar
+#define ParamIW_CHOutForecast                       ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHOutForecast)) & IW_CHOutForecastMask))
+// Prognose nächste Stunde
+#define ParamIW_CHOutHour1                          ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHOutHour1)) & IW_CHOutHour1Mask))
+// Prognose übernächste Stunde
+#define ParamIW_CHOutHour2                          ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHOutHour2)) & IW_CHOutHour2Mask))
+// Wetterdienst
+#define ParamIW_CHWeatherChannelType                (knx.paramByte(IW_ParamCalcIndex(IW_CHWeatherChannelType)))
+// Ort für Wetter
+#define ParamIW_CHWeatherLocationType               ((bool)(knx.paramByte(IW_ParamCalcIndex(IW_CHWeatherLocationType)) & IW_CHWeatherLocationTypeMask))
+// Breitengrad
+#define ParamIW_CHLatitude                          (knx.paramFloat(IW_ParamCalcIndex(IW_CHLatitude), Float_Enc_IEEE754Single))
+// Längengrad
+#define ParamIW_CHLongitude                         (knx.paramFloat(IW_ParamCalcIndex(IW_CHLongitude), Float_Enc_IEEE754Single))
+
+// deprecated
+#define IW_KoOffset 2010
+
+// Communication objects per channel (multiple occurrence)
+#define IW_KoBlockOffset 2010
+#define IW_KoBlockSize 102
+
+#define IW_KoCalcNumber(index) (index + IW_KoBlockOffset + _channelIndex * IW_KoBlockSize)
+#define IW_KoCalcIndex(number) ((number >= IW_KoCalcNumber(0) && number < IW_KoCalcNumber(IW_KoBlockSize)) ? (number - IW_KoBlockOffset) % IW_KoBlockSize : -1)
+#define IW_KoCalcChannel(number) ((number >= IW_KoBlockOffset && number < IW_KoBlockOffset + IW_ChannelCount * IW_KoBlockSize) ? (number - IW_KoBlockOffset) / IW_KoBlockSize : -1)
+
+#define IW_KoCHHTTPStatus 0
+#define IW_KoCHCurrentTemperatur 1
+#define IW_KoCHCurrentTemperaturFeelsLike 2
+#define IW_KoCHCurrentHumidity 3
+#define IW_KoCHCurrentPressure 4
+#define IW_KoCHCurrentWind 5
+#define IW_KoCHCurrentWindGust 6
+#define IW_KoCHCurrentWindDirection 7
+#define IW_KoCHCurrentRain 8
+#define IW_KoCHCurrentSnow 9
+#define IW_KoCHCurrentUVI 10
+#define IW_KoCHCurrentClouds 11
+#define IW_KoCHTodayDescription 12
+#define IW_KoCHTodayTemperaturDay 13
+#define IW_KoCHTodayTemperaturNight 14
+#define IW_KoCHTodayTemperaturMorning 15
+#define IW_KoCHTodayTemperaturEvening 16
+#define IW_KoCHTodayTemperaturMin 17
+#define IW_KoCHTodayTemperaturMax 18
+#define IW_KoCHTodayTemperaturDayFeelsLike 19
+#define IW_KoCHTodayTemperaturNightFeelsLike 20
+#define IW_KoCHTodayTemperaturMorningFeelsLike 21
+#define IW_KoCHTodayTemperaturEveningFeelsLike 22
+#define IW_KoCHTodayHumidity 23
+#define IW_KoCHTodayPressure 24
+#define IW_KoCHTodayWind 25
+#define IW_KoCHTodayWindGust 26
+#define IW_KoCHTodayWindDirection 27
+#define IW_KoCHTodayRain 28
+#define IW_KoCHTodaySnow 29
+#define IW_KoCHTodayProbabilityOfPrecipitation 30
+#define IW_KoCHTodayUVI 31
+#define IW_KoCHTodayClouds 32
+#define IW_KoCHTomorrowDescription 33
+#define IW_KoCHTomorrowTemperaturDay 34
+#define IW_KoCHTomorrowTemperaturNight 35
+#define IW_KoCHTomorrowTemperaturMorning 36
+#define IW_KoCHTomorrowTemperaturEvening 37
+#define IW_KoCHTomorrowTemperaturMin 38
+#define IW_KoCHTomorrowTemperaturMax 39
+#define IW_KoCHTomorrowTemperaturDayFeelsLike 40
+#define IW_KoCHTomorrowTemperaturNightFeelsLike 41
+#define IW_KoCHTomorrowTemperaturMorningFeelsLike 42
+#define IW_KoCHTomorrowTemperaturEveningFeelsLike 43
+#define IW_KoCHTomorrowHumidity 44
+#define IW_KoCHTomorrowPressure 45
+#define IW_KoCHTomorrowWind 46
+#define IW_KoCHTomorrowWindGust 47
+#define IW_KoCHTomorrowWindDirection 48
+#define IW_KoCHTomorrowRain 49
+#define IW_KoCHTomorrowSnow 50
+#define IW_KoCHTomorrowProbabilityOfPrecipitation 51
+#define IW_KoCHTomorrowUVI 52
+#define IW_KoCHTomorrowClouds 53
+#define IW_KoCHForecastSelection 54
+#define IW_KoCHForecastDescription 55
+#define IW_KoCHForecastTemperaturDay 56
+#define IW_KoCHForecastTemperaturNight 57
+#define IW_KoCHForecastTemperaturMorning 58
+#define IW_KoCHForecastTemperaturEvening 59
+#define IW_KoCHForecastTemperaturMin 60
+#define IW_KoCHForecastTemperaturMax 61
+#define IW_KoCHForecastTemperaturDayFeelsLike 62
+#define IW_KoCHForecastTemperaturNightFeelsLike 63
+#define IW_KoCHForecastTemperaturMorningFeelsLike 64
+#define IW_KoCHForecastTemperaturEveningFeelsLike 65
+#define IW_KoCHForecastHumidity 66
+#define IW_KoCHForecastPressure 67
+#define IW_KoCHForecastWind 68
+#define IW_KoCHForecastWindGust 69
+#define IW_KoCHForecastWindDirection 70
+#define IW_KoCHForecastRain 71
+#define IW_KoCHForecastSnow 72
+#define IW_KoCHForecastProbabilityOfPrecipitation 73
+#define IW_KoCHForecastUVI 74
+#define IW_KoCHForecastClouds 75
+#define IW_KoCHHour1Description 76
+#define IW_KoCHHour1Temperatur 77
+#define IW_KoCHHour1TemperaturFeelsLike 78
+#define IW_KoCHHour1Humidity 79
+#define IW_KoCHHour1Pressure 80
+#define IW_KoCHHour1Wind 81
+#define IW_KoCHHour1WindGust 82
+#define IW_KoCHHour1WindDirection 83
+#define IW_KoCHHour1Rain 84
+#define IW_KoCHHour1Snow 85
+#define IW_KoCHHour1ProbabilityOfPrecipitation 86
+#define IW_KoCHHour1UVI 87
+#define IW_KoCHHour1Clouds 88
+#define IW_KoCHHour2Description 89
+#define IW_KoCHHour2Temperatur 90
+#define IW_KoCHHour2TemperaturFeelsLike 91
+#define IW_KoCHHour2Humidity 92
+#define IW_KoCHHour2Pressure 93
+#define IW_KoCHHour2Wind 94
+#define IW_KoCHHour2WindGust 95
+#define IW_KoCHHour2WindDirection 96
+#define IW_KoCHHour2Rain 97
+#define IW_KoCHHour2Snow 98
+#define IW_KoCHHour2ProbabilityOfPrecipitation 99
+#define IW_KoCHHour2UVI 100
+#define IW_KoCHHour2Clouds 101
+
+// 
+#define KoIW_CHHTTPStatus                        (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHTTPStatus)))
+// 
+#define KoIW_CHCurrentTemperatur                 (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentTemperatur)))
+// 
+#define KoIW_CHCurrentTemperaturFeelsLike        (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentTemperaturFeelsLike)))
+// 
+#define KoIW_CHCurrentHumidity                   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentHumidity)))
+// 
+#define KoIW_CHCurrentPressure                   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentPressure)))
+// 
+#define KoIW_CHCurrentWind                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentWind)))
+// 
+#define KoIW_CHCurrentWindGust                   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentWindGust)))
+// 
+#define KoIW_CHCurrentWindDirection              (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentWindDirection)))
+// 
+#define KoIW_CHCurrentRain                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentRain)))
+// 
+#define KoIW_CHCurrentSnow                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentSnow)))
+// 
+#define KoIW_CHCurrentUVI                        (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentUVI)))
+// 
+#define KoIW_CHCurrentClouds                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHCurrentClouds)))
+// 
+#define KoIW_CHTodayDescription                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayDescription)))
+// 
+#define KoIW_CHTodayTemperaturDay                (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturDay)))
+// 
+#define KoIW_CHTodayTemperaturNight              (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturNight)))
+// 
+#define KoIW_CHTodayTemperaturMorning            (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturMorning)))
+// 
+#define KoIW_CHTodayTemperaturEvening            (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturEvening)))
+// 
+#define KoIW_CHTodayTemperaturMin                (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturMin)))
+// 
+#define KoIW_CHTodayTemperaturMax                (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturMax)))
+// 
+#define KoIW_CHTodayTemperaturDayFeelsLike       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturDayFeelsLike)))
+// 
+#define KoIW_CHTodayTemperaturNightFeelsLike     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturNightFeelsLike)))
+// 
+#define KoIW_CHTodayTemperaturMorningFeelsLike   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturMorningFeelsLike)))
+// 
+#define KoIW_CHTodayTemperaturEveningFeelsLike   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayTemperaturEveningFeelsLike)))
+// 
+#define KoIW_CHTodayHumidity                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayHumidity)))
+// 
+#define KoIW_CHTodayPressure                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayPressure)))
+// 
+#define KoIW_CHTodayWind                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayWind)))
+// 
+#define KoIW_CHTodayWindGust                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayWindGust)))
+// 
+#define KoIW_CHTodayWindDirection                (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayWindDirection)))
+// 
+#define KoIW_CHTodayRain                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayRain)))
+// 
+#define KoIW_CHTodaySnow                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodaySnow)))
+// 
+#define KoIW_CHTodayProbabilityOfPrecipitation   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayProbabilityOfPrecipitation)))
+// 
+#define KoIW_CHTodayUVI                          (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayUVI)))
+// 
+#define KoIW_CHTodayClouds                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTodayClouds)))
+// 
+#define KoIW_CHTomorrowDescription               (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowDescription)))
+// 
+#define KoIW_CHTomorrowTemperaturDay             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturDay)))
+// 
+#define KoIW_CHTomorrowTemperaturNight           (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturNight)))
+// 
+#define KoIW_CHTomorrowTemperaturMorning         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturMorning)))
+// 
+#define KoIW_CHTomorrowTemperaturEvening         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturEvening)))
+// 
+#define KoIW_CHTomorrowTemperaturMin             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturMin)))
+// 
+#define KoIW_CHTomorrowTemperaturMax             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturMax)))
+// 
+#define KoIW_CHTomorrowTemperaturDayFeelsLike    (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturDayFeelsLike)))
+// 
+#define KoIW_CHTomorrowTemperaturNightFeelsLike  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturNightFeelsLike)))
+// 
+#define KoIW_CHTomorrowTemperaturMorningFeelsLike (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturMorningFeelsLike)))
+// 
+#define KoIW_CHTomorrowTemperaturEveningFeelsLike (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowTemperaturEveningFeelsLike)))
+// 
+#define KoIW_CHTomorrowHumidity                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowHumidity)))
+// 
+#define KoIW_CHTomorrowPressure                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowPressure)))
+// 
+#define KoIW_CHTomorrowWind                      (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowWind)))
+// 
+#define KoIW_CHTomorrowWindGust                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowWindGust)))
+// 
+#define KoIW_CHTomorrowWindDirection             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowWindDirection)))
+// 
+#define KoIW_CHTomorrowRain                      (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowRain)))
+// 
+#define KoIW_CHTomorrowSnow                      (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowSnow)))
+// 
+#define KoIW_CHTomorrowProbabilityOfPrecipitation (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowProbabilityOfPrecipitation)))
+// 
+#define KoIW_CHTomorrowUVI                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowUVI)))
+// 
+#define KoIW_CHTomorrowClouds                    (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHTomorrowClouds)))
+// 
+#define KoIW_CHForecastSelection                 (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastSelection)))
+// 
+#define KoIW_CHForecastDescription               (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastDescription)))
+// 
+#define KoIW_CHForecastTemperaturDay             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturDay)))
+// 
+#define KoIW_CHForecastTemperaturNight           (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturNight)))
+// 
+#define KoIW_CHForecastTemperaturMorning         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturMorning)))
+// 
+#define KoIW_CHForecastTemperaturEvening         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturEvening)))
+// 
+#define KoIW_CHForecastTemperaturMin             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturMin)))
+// 
+#define KoIW_CHForecastTemperaturMax             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturMax)))
+// 
+#define KoIW_CHForecastTemperaturDayFeelsLike    (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturDayFeelsLike)))
+// 
+#define KoIW_CHForecastTemperaturNightFeelsLike  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturNightFeelsLike)))
+// 
+#define KoIW_CHForecastTemperaturMorningFeelsLike (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturMorningFeelsLike)))
+// 
+#define KoIW_CHForecastTemperaturEveningFeelsLike (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastTemperaturEveningFeelsLike)))
+// 
+#define KoIW_CHForecastHumidity                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastHumidity)))
+// 
+#define KoIW_CHForecastPressure                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastPressure)))
+// 
+#define KoIW_CHForecastWind                      (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastWind)))
+// 
+#define KoIW_CHForecastWindGust                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastWindGust)))
+// 
+#define KoIW_CHForecastWindDirection             (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastWindDirection)))
+// 
+#define KoIW_CHForecastRain                      (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastRain)))
+// 
+#define KoIW_CHForecastSnow                      (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastSnow)))
+// 
+#define KoIW_CHForecastProbabilityOfPrecipitation (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastProbabilityOfPrecipitation)))
+// 
+#define KoIW_CHForecastUVI                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastUVI)))
+// 
+#define KoIW_CHForecastClouds                    (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHForecastClouds)))
+// 
+#define KoIW_CHHour1Description                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Description)))
+// 
+#define KoIW_CHHour1Temperatur                   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Temperatur)))
+// 
+#define KoIW_CHHour1TemperaturFeelsLike          (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1TemperaturFeelsLike)))
+// 
+#define KoIW_CHHour1Humidity                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Humidity)))
+// 
+#define KoIW_CHHour1Pressure                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Pressure)))
+// 
+#define KoIW_CHHour1Wind                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Wind)))
+// 
+#define KoIW_CHHour1WindGust                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1WindGust)))
+// 
+#define KoIW_CHHour1WindDirection                (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1WindDirection)))
+// 
+#define KoIW_CHHour1Rain                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Rain)))
+// 
+#define KoIW_CHHour1Snow                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Snow)))
+// 
+#define KoIW_CHHour1ProbabilityOfPrecipitation   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1ProbabilityOfPrecipitation)))
+// 
+#define KoIW_CHHour1UVI                          (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1UVI)))
+// 
+#define KoIW_CHHour1Clouds                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour1Clouds)))
+// 
+#define KoIW_CHHour2Description                  (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Description)))
+// 
+#define KoIW_CHHour2Temperatur                   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Temperatur)))
+// 
+#define KoIW_CHHour2TemperaturFeelsLike          (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2TemperaturFeelsLike)))
+// 
+#define KoIW_CHHour2Humidity                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Humidity)))
+// 
+#define KoIW_CHHour2Pressure                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Pressure)))
+// 
+#define KoIW_CHHour2Wind                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Wind)))
+// 
+#define KoIW_CHHour2WindGust                     (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2WindGust)))
+// 
+#define KoIW_CHHour2WindDirection                (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2WindDirection)))
+// 
+#define KoIW_CHHour2Rain                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Rain)))
+// 
+#define KoIW_CHHour2Snow                         (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Snow)))
+// 
+#define KoIW_CHHour2ProbabilityOfPrecipitation   (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2ProbabilityOfPrecipitation)))
+// 
+#define KoIW_CHHour2UVI                          (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2UVI)))
+// 
+#define KoIW_CHHour2Clouds                       (knx.getGroupObject(IW_KoCalcNumber(IW_KoCHHour2Clouds)))
 
 
 // enumeration types
