@@ -4,6 +4,6 @@ eca6977 v1 lib/OFM-ConfigTransfer https://github.com/OpenKNX/OFM-ConfigTransfer.
 178f186 v1 lib/OFM-FileTransferModule https://github.com/OpenKNX/OFM-FileTransferModule.git
 142bd5b v1 lib/OFM-FunctionBlocks https://github.com/OpenKNX/OFM-FunctionBlocks.git
 cd1b5cc v1 lib/OFM-LogicModule https://github.com/OpenKNX/OFM-LogicModule.git
-df89654 v1dev_addShadowEdgeTracking lib/OFM-ShutterControllerModule https://github.com/estebanri87/OFM-ShutterControllerModule.git
-4f0b46c v1dev lib/OGM-Common https://github.com/OpenKNX/OGM-Common.git
+b75c2e1 feature/scenes_and_channel_select lib/OFM-ShutterControllerModule https://github.com/OpenKNX/OFM-ShutterControllerModule.git
+e5276c0 v1dev lib/OGM-Common https://github.com/OpenKNX/OGM-Common.git
 51dc43e v1 lib/OGM-HardwareConfig https://github.com/OpenKNX/OGM-HardwareConfig.git
