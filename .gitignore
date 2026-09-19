@@ -10,3 +10,4 @@ release/*
 *.knxprod
 include/versions.h
 Archiv Build/
+.claude/CLAUDE.md
