@@ -839,7 +839,7 @@
 
 // Geräteart
 #define ParamSHC_CType                               (knx.paramByte(SHC_ParamCalcIndex(SHC_CType)))
-// Kanal deaktivieren (zu Testzwecken)
+// Suspendiert
 #define ParamSHC_CDeactivated                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CDeactivated)) & SHC_CDeactivatedMask))
 // Erstes manuelles AUF ignorieren, wenn bei Beschattungstart geschlossen
 #define ParamSHC_CIgnoreFirstManualCommandIfShadingActiv ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CIgnoreFirstManualCommandIfShadingActiv)) & SHC_CIgnoreFirstManualCommandIfShadingActivMask))
