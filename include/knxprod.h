@@ -17,15 +17,15 @@
 #define MAIN_FirmwareName "Jalousiensteuerung (Beta)"
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 50
-#define MAIN_ApplicationVersion 24
-#define MAIN_FirmwareRevision 1
+#define MAIN_ApplicationVersion 25
+#define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
-#define MAIN_ParameterSize 14706
-#define MAIN_MaxKoNumber 2083
+#define MAIN_ParameterSize 17810
+#define MAIN_MaxKoNumber 2115
 #define MAIN_OrderNumber "OpenKnx-MG-JAL"
 #define BASE_ModuleVersion 25
 #define UCT_ModuleVersion 5
-#define SHC_ModuleVersion 10
+#define SHC_ModuleVersion 11
 #define LOG_ModuleVersion 68
 #define FCB_ModuleVersion 10
 // Parameter with single occurrence
@@ -379,7 +379,7 @@
 
 // Parameter per channel
 #define SHC_ParamBlockOffset 145
-#define SHC_ParamBlockSize 184
+#define SHC_ParamBlockSize 281
 #define SHC_ParamCalcIndex(index) (index + SHC_ParamBlockOffset + _channelIndex * SHC_ParamBlockSize)
 
 #define SHC_CType                                0      // 8 Bits, Bit 7-0
@@ -510,6 +510,457 @@
 #define SHC_CShadingEndSlatPosition             33      // 7 Bits, Bit 6-0
 #define     SHC_CShadingEndSlatPositionMask 0x7F
 #define     SHC_CShadingEndSlatPositionShift 0
+#define SHC_CScenes                             184      // 1 Bit, Bit 7
+#define     SHC_CScenesMask 0x80
+#define     SHC_CScenesShift 7
+#define SHC_CScene1Active                       185      // 1 Bit, Bit 7
+#define     SHC_CScene1ActiveMask 0x80
+#define     SHC_CScene1ActiveShift 7
+#define SHC_CScene1Number                       185      // 7 Bits, Bit 6-0
+#define     SHC_CScene1NumberMask 0x7F
+#define     SHC_CScene1NumberShift 0
+#define SHC_CScene1Storable                     186      // 1 Bit, Bit 7
+#define     SHC_CScene1StorableMask 0x80
+#define     SHC_CScene1StorableShift 7
+#define SHC_CScene1HeightEnabled                186      // 1 Bit, Bit 6
+#define     SHC_CScene1HeightEnabledMask 0x40
+#define     SHC_CScene1HeightEnabledShift 6
+#define SHC_CScene1SlatEnabled                  186      // 1 Bit, Bit 5
+#define     SHC_CScene1SlatEnabledMask 0x20
+#define     SHC_CScene1SlatEnabledShift 5
+#define SHC_CScene1Height                       187      // 7 Bits, Bit 7-1
+#define     SHC_CScene1HeightMask 0xFE
+#define     SHC_CScene1HeightShift 1
+#define SHC_CScene1Slat                         188      // 7 Bits, Bit 7-1
+#define     SHC_CScene1SlatMask 0xFE
+#define     SHC_CScene1SlatShift 1
+#define SHC_CScene1Lock27                       186      // 5 Bits, Bit 4-0
+#define     SHC_CScene1Lock27Mask 0x1F
+#define     SHC_CScene1Lock27Shift 0
+#define SHC_CScene1Lock9                        186      // 5 Bits, Bit 4-0
+#define     SHC_CScene1Lock9Mask 0x1F
+#define     SHC_CScene1Lock9Shift 0
+#define SHC_CScene1Delay                        189      // 16 Bits, Bit 15-0
+#define SHC_CScene2Active                       191      // 1 Bit, Bit 7
+#define     SHC_CScene2ActiveMask 0x80
+#define     SHC_CScene2ActiveShift 7
+#define SHC_CScene2Number                       191      // 7 Bits, Bit 6-0
+#define     SHC_CScene2NumberMask 0x7F
+#define     SHC_CScene2NumberShift 0
+#define SHC_CScene2Storable                     192      // 1 Bit, Bit 7
+#define     SHC_CScene2StorableMask 0x80
+#define     SHC_CScene2StorableShift 7
+#define SHC_CScene2HeightEnabled                192      // 1 Bit, Bit 6
+#define     SHC_CScene2HeightEnabledMask 0x40
+#define     SHC_CScene2HeightEnabledShift 6
+#define SHC_CScene2SlatEnabled                  192      // 1 Bit, Bit 5
+#define     SHC_CScene2SlatEnabledMask 0x20
+#define     SHC_CScene2SlatEnabledShift 5
+#define SHC_CScene2Height                       193      // 7 Bits, Bit 7-1
+#define     SHC_CScene2HeightMask 0xFE
+#define     SHC_CScene2HeightShift 1
+#define SHC_CScene2Slat                         194      // 7 Bits, Bit 7-1
+#define     SHC_CScene2SlatMask 0xFE
+#define     SHC_CScene2SlatShift 1
+#define SHC_CScene2Lock27                       192      // 5 Bits, Bit 4-0
+#define     SHC_CScene2Lock27Mask 0x1F
+#define     SHC_CScene2Lock27Shift 0
+#define SHC_CScene2Lock9                        192      // 5 Bits, Bit 4-0
+#define     SHC_CScene2Lock9Mask 0x1F
+#define     SHC_CScene2Lock9Shift 0
+#define SHC_CScene2Delay                        195      // 16 Bits, Bit 15-0
+#define SHC_CScene3Active                       197      // 1 Bit, Bit 7
+#define     SHC_CScene3ActiveMask 0x80
+#define     SHC_CScene3ActiveShift 7
+#define SHC_CScene3Number                       197      // 7 Bits, Bit 6-0
+#define     SHC_CScene3NumberMask 0x7F
+#define     SHC_CScene3NumberShift 0
+#define SHC_CScene3Storable                     198      // 1 Bit, Bit 7
+#define     SHC_CScene3StorableMask 0x80
+#define     SHC_CScene3StorableShift 7
+#define SHC_CScene3HeightEnabled                198      // 1 Bit, Bit 6
+#define     SHC_CScene3HeightEnabledMask 0x40
+#define     SHC_CScene3HeightEnabledShift 6
+#define SHC_CScene3SlatEnabled                  198      // 1 Bit, Bit 5
+#define     SHC_CScene3SlatEnabledMask 0x20
+#define     SHC_CScene3SlatEnabledShift 5
+#define SHC_CScene3Height                       199      // 7 Bits, Bit 7-1
+#define     SHC_CScene3HeightMask 0xFE
+#define     SHC_CScene3HeightShift 1
+#define SHC_CScene3Slat                         200      // 7 Bits, Bit 7-1
+#define     SHC_CScene3SlatMask 0xFE
+#define     SHC_CScene3SlatShift 1
+#define SHC_CScene3Lock27                       198      // 5 Bits, Bit 4-0
+#define     SHC_CScene3Lock27Mask 0x1F
+#define     SHC_CScene3Lock27Shift 0
+#define SHC_CScene3Lock9                        198      // 5 Bits, Bit 4-0
+#define     SHC_CScene3Lock9Mask 0x1F
+#define     SHC_CScene3Lock9Shift 0
+#define SHC_CScene3Delay                        201      // 16 Bits, Bit 15-0
+#define SHC_CScene4Active                       203      // 1 Bit, Bit 7
+#define     SHC_CScene4ActiveMask 0x80
+#define     SHC_CScene4ActiveShift 7
+#define SHC_CScene4Number                       203      // 7 Bits, Bit 6-0
+#define     SHC_CScene4NumberMask 0x7F
+#define     SHC_CScene4NumberShift 0
+#define SHC_CScene4Storable                     204      // 1 Bit, Bit 7
+#define     SHC_CScene4StorableMask 0x80
+#define     SHC_CScene4StorableShift 7
+#define SHC_CScene4HeightEnabled                204      // 1 Bit, Bit 6
+#define     SHC_CScene4HeightEnabledMask 0x40
+#define     SHC_CScene4HeightEnabledShift 6
+#define SHC_CScene4SlatEnabled                  204      // 1 Bit, Bit 5
+#define     SHC_CScene4SlatEnabledMask 0x20
+#define     SHC_CScene4SlatEnabledShift 5
+#define SHC_CScene4Height                       205      // 7 Bits, Bit 7-1
+#define     SHC_CScene4HeightMask 0xFE
+#define     SHC_CScene4HeightShift 1
+#define SHC_CScene4Slat                         206      // 7 Bits, Bit 7-1
+#define     SHC_CScene4SlatMask 0xFE
+#define     SHC_CScene4SlatShift 1
+#define SHC_CScene4Lock27                       204      // 5 Bits, Bit 4-0
+#define     SHC_CScene4Lock27Mask 0x1F
+#define     SHC_CScene4Lock27Shift 0
+#define SHC_CScene4Lock9                        204      // 5 Bits, Bit 4-0
+#define     SHC_CScene4Lock9Mask 0x1F
+#define     SHC_CScene4Lock9Shift 0
+#define SHC_CScene4Delay                        207      // 16 Bits, Bit 15-0
+#define SHC_CScene5Active                       209      // 1 Bit, Bit 7
+#define     SHC_CScene5ActiveMask 0x80
+#define     SHC_CScene5ActiveShift 7
+#define SHC_CScene5Number                       209      // 7 Bits, Bit 6-0
+#define     SHC_CScene5NumberMask 0x7F
+#define     SHC_CScene5NumberShift 0
+#define SHC_CScene5Storable                     210      // 1 Bit, Bit 7
+#define     SHC_CScene5StorableMask 0x80
+#define     SHC_CScene5StorableShift 7
+#define SHC_CScene5HeightEnabled                210      // 1 Bit, Bit 6
+#define     SHC_CScene5HeightEnabledMask 0x40
+#define     SHC_CScene5HeightEnabledShift 6
+#define SHC_CScene5SlatEnabled                  210      // 1 Bit, Bit 5
+#define     SHC_CScene5SlatEnabledMask 0x20
+#define     SHC_CScene5SlatEnabledShift 5
+#define SHC_CScene5Height                       211      // 7 Bits, Bit 7-1
+#define     SHC_CScene5HeightMask 0xFE
+#define     SHC_CScene5HeightShift 1
+#define SHC_CScene5Slat                         212      // 7 Bits, Bit 7-1
+#define     SHC_CScene5SlatMask 0xFE
+#define     SHC_CScene5SlatShift 1
+#define SHC_CScene5Lock27                       210      // 5 Bits, Bit 4-0
+#define     SHC_CScene5Lock27Mask 0x1F
+#define     SHC_CScene5Lock27Shift 0
+#define SHC_CScene5Lock9                        210      // 5 Bits, Bit 4-0
+#define     SHC_CScene5Lock9Mask 0x1F
+#define     SHC_CScene5Lock9Shift 0
+#define SHC_CScene5Delay                        213      // 16 Bits, Bit 15-0
+#define SHC_CScene6Active                       215      // 1 Bit, Bit 7
+#define     SHC_CScene6ActiveMask 0x80
+#define     SHC_CScene6ActiveShift 7
+#define SHC_CScene6Number                       215      // 7 Bits, Bit 6-0
+#define     SHC_CScene6NumberMask 0x7F
+#define     SHC_CScene6NumberShift 0
+#define SHC_CScene6Storable                     216      // 1 Bit, Bit 7
+#define     SHC_CScene6StorableMask 0x80
+#define     SHC_CScene6StorableShift 7
+#define SHC_CScene6HeightEnabled                216      // 1 Bit, Bit 6
+#define     SHC_CScene6HeightEnabledMask 0x40
+#define     SHC_CScene6HeightEnabledShift 6
+#define SHC_CScene6SlatEnabled                  216      // 1 Bit, Bit 5
+#define     SHC_CScene6SlatEnabledMask 0x20
+#define     SHC_CScene6SlatEnabledShift 5
+#define SHC_CScene6Height                       217      // 7 Bits, Bit 7-1
+#define     SHC_CScene6HeightMask 0xFE
+#define     SHC_CScene6HeightShift 1
+#define SHC_CScene6Slat                         218      // 7 Bits, Bit 7-1
+#define     SHC_CScene6SlatMask 0xFE
+#define     SHC_CScene6SlatShift 1
+#define SHC_CScene6Lock27                       216      // 5 Bits, Bit 4-0
+#define     SHC_CScene6Lock27Mask 0x1F
+#define     SHC_CScene6Lock27Shift 0
+#define SHC_CScene6Lock9                        216      // 5 Bits, Bit 4-0
+#define     SHC_CScene6Lock9Mask 0x1F
+#define     SHC_CScene6Lock9Shift 0
+#define SHC_CScene6Delay                        219      // 16 Bits, Bit 15-0
+#define SHC_CScene7Active                       221      // 1 Bit, Bit 7
+#define     SHC_CScene7ActiveMask 0x80
+#define     SHC_CScene7ActiveShift 7
+#define SHC_CScene7Number                       221      // 7 Bits, Bit 6-0
+#define     SHC_CScene7NumberMask 0x7F
+#define     SHC_CScene7NumberShift 0
+#define SHC_CScene7Storable                     222      // 1 Bit, Bit 7
+#define     SHC_CScene7StorableMask 0x80
+#define     SHC_CScene7StorableShift 7
+#define SHC_CScene7HeightEnabled                222      // 1 Bit, Bit 6
+#define     SHC_CScene7HeightEnabledMask 0x40
+#define     SHC_CScene7HeightEnabledShift 6
+#define SHC_CScene7SlatEnabled                  222      // 1 Bit, Bit 5
+#define     SHC_CScene7SlatEnabledMask 0x20
+#define     SHC_CScene7SlatEnabledShift 5
+#define SHC_CScene7Height                       223      // 7 Bits, Bit 7-1
+#define     SHC_CScene7HeightMask 0xFE
+#define     SHC_CScene7HeightShift 1
+#define SHC_CScene7Slat                         224      // 7 Bits, Bit 7-1
+#define     SHC_CScene7SlatMask 0xFE
+#define     SHC_CScene7SlatShift 1
+#define SHC_CScene7Lock27                       222      // 5 Bits, Bit 4-0
+#define     SHC_CScene7Lock27Mask 0x1F
+#define     SHC_CScene7Lock27Shift 0
+#define SHC_CScene7Lock9                        222      // 5 Bits, Bit 4-0
+#define     SHC_CScene7Lock9Mask 0x1F
+#define     SHC_CScene7Lock9Shift 0
+#define SHC_CScene7Delay                        225      // 16 Bits, Bit 15-0
+#define SHC_CScene8Active                       227      // 1 Bit, Bit 7
+#define     SHC_CScene8ActiveMask 0x80
+#define     SHC_CScene8ActiveShift 7
+#define SHC_CScene8Number                       227      // 7 Bits, Bit 6-0
+#define     SHC_CScene8NumberMask 0x7F
+#define     SHC_CScene8NumberShift 0
+#define SHC_CScene8Storable                     228      // 1 Bit, Bit 7
+#define     SHC_CScene8StorableMask 0x80
+#define     SHC_CScene8StorableShift 7
+#define SHC_CScene8HeightEnabled                228      // 1 Bit, Bit 6
+#define     SHC_CScene8HeightEnabledMask 0x40
+#define     SHC_CScene8HeightEnabledShift 6
+#define SHC_CScene8SlatEnabled                  228      // 1 Bit, Bit 5
+#define     SHC_CScene8SlatEnabledMask 0x20
+#define     SHC_CScene8SlatEnabledShift 5
+#define SHC_CScene8Height                       229      // 7 Bits, Bit 7-1
+#define     SHC_CScene8HeightMask 0xFE
+#define     SHC_CScene8HeightShift 1
+#define SHC_CScene8Slat                         230      // 7 Bits, Bit 7-1
+#define     SHC_CScene8SlatMask 0xFE
+#define     SHC_CScene8SlatShift 1
+#define SHC_CScene8Lock27                       228      // 5 Bits, Bit 4-0
+#define     SHC_CScene8Lock27Mask 0x1F
+#define     SHC_CScene8Lock27Shift 0
+#define SHC_CScene8Lock9                        228      // 5 Bits, Bit 4-0
+#define     SHC_CScene8Lock9Mask 0x1F
+#define     SHC_CScene8Lock9Shift 0
+#define SHC_CScene8Delay                        231      // 16 Bits, Bit 15-0
+#define SHC_CScene9Active                       233      // 1 Bit, Bit 7
+#define     SHC_CScene9ActiveMask 0x80
+#define     SHC_CScene9ActiveShift 7
+#define SHC_CScene9Number                       233      // 7 Bits, Bit 6-0
+#define     SHC_CScene9NumberMask 0x7F
+#define     SHC_CScene9NumberShift 0
+#define SHC_CScene9Storable                     234      // 1 Bit, Bit 7
+#define     SHC_CScene9StorableMask 0x80
+#define     SHC_CScene9StorableShift 7
+#define SHC_CScene9HeightEnabled                234      // 1 Bit, Bit 6
+#define     SHC_CScene9HeightEnabledMask 0x40
+#define     SHC_CScene9HeightEnabledShift 6
+#define SHC_CScene9SlatEnabled                  234      // 1 Bit, Bit 5
+#define     SHC_CScene9SlatEnabledMask 0x20
+#define     SHC_CScene9SlatEnabledShift 5
+#define SHC_CScene9Height                       235      // 7 Bits, Bit 7-1
+#define     SHC_CScene9HeightMask 0xFE
+#define     SHC_CScene9HeightShift 1
+#define SHC_CScene9Slat                         236      // 7 Bits, Bit 7-1
+#define     SHC_CScene9SlatMask 0xFE
+#define     SHC_CScene9SlatShift 1
+#define SHC_CScene9Lock27                       234      // 5 Bits, Bit 4-0
+#define     SHC_CScene9Lock27Mask 0x1F
+#define     SHC_CScene9Lock27Shift 0
+#define SHC_CScene9Lock9                        234      // 5 Bits, Bit 4-0
+#define     SHC_CScene9Lock9Mask 0x1F
+#define     SHC_CScene9Lock9Shift 0
+#define SHC_CScene9Delay                        237      // 16 Bits, Bit 15-0
+#define SHC_CScene10Active                      239      // 1 Bit, Bit 7
+#define     SHC_CScene10ActiveMask 0x80
+#define     SHC_CScene10ActiveShift 7
+#define SHC_CScene10Number                      239      // 7 Bits, Bit 6-0
+#define     SHC_CScene10NumberMask 0x7F
+#define     SHC_CScene10NumberShift 0
+#define SHC_CScene10Storable                    240      // 1 Bit, Bit 7
+#define     SHC_CScene10StorableMask 0x80
+#define     SHC_CScene10StorableShift 7
+#define SHC_CScene10HeightEnabled               240      // 1 Bit, Bit 6
+#define     SHC_CScene10HeightEnabledMask 0x40
+#define     SHC_CScene10HeightEnabledShift 6
+#define SHC_CScene10SlatEnabled                 240      // 1 Bit, Bit 5
+#define     SHC_CScene10SlatEnabledMask 0x20
+#define     SHC_CScene10SlatEnabledShift 5
+#define SHC_CScene10Height                      241      // 7 Bits, Bit 7-1
+#define     SHC_CScene10HeightMask 0xFE
+#define     SHC_CScene10HeightShift 1
+#define SHC_CScene10Slat                        242      // 7 Bits, Bit 7-1
+#define     SHC_CScene10SlatMask 0xFE
+#define     SHC_CScene10SlatShift 1
+#define SHC_CScene10Lock27                      240      // 5 Bits, Bit 4-0
+#define     SHC_CScene10Lock27Mask 0x1F
+#define     SHC_CScene10Lock27Shift 0
+#define SHC_CScene10Lock9                       240      // 5 Bits, Bit 4-0
+#define     SHC_CScene10Lock9Mask 0x1F
+#define     SHC_CScene10Lock9Shift 0
+#define SHC_CScene10Delay                       243      // 16 Bits, Bit 15-0
+#define SHC_CScene11Active                      245      // 1 Bit, Bit 7
+#define     SHC_CScene11ActiveMask 0x80
+#define     SHC_CScene11ActiveShift 7
+#define SHC_CScene11Number                      245      // 7 Bits, Bit 6-0
+#define     SHC_CScene11NumberMask 0x7F
+#define     SHC_CScene11NumberShift 0
+#define SHC_CScene11Storable                    246      // 1 Bit, Bit 7
+#define     SHC_CScene11StorableMask 0x80
+#define     SHC_CScene11StorableShift 7
+#define SHC_CScene11HeightEnabled               246      // 1 Bit, Bit 6
+#define     SHC_CScene11HeightEnabledMask 0x40
+#define     SHC_CScene11HeightEnabledShift 6
+#define SHC_CScene11SlatEnabled                 246      // 1 Bit, Bit 5
+#define     SHC_CScene11SlatEnabledMask 0x20
+#define     SHC_CScene11SlatEnabledShift 5
+#define SHC_CScene11Height                      247      // 7 Bits, Bit 7-1
+#define     SHC_CScene11HeightMask 0xFE
+#define     SHC_CScene11HeightShift 1
+#define SHC_CScene11Slat                        248      // 7 Bits, Bit 7-1
+#define     SHC_CScene11SlatMask 0xFE
+#define     SHC_CScene11SlatShift 1
+#define SHC_CScene11Lock27                      246      // 5 Bits, Bit 4-0
+#define     SHC_CScene11Lock27Mask 0x1F
+#define     SHC_CScene11Lock27Shift 0
+#define SHC_CScene11Lock9                       246      // 5 Bits, Bit 4-0
+#define     SHC_CScene11Lock9Mask 0x1F
+#define     SHC_CScene11Lock9Shift 0
+#define SHC_CScene11Delay                       249      // 16 Bits, Bit 15-0
+#define SHC_CScene12Active                      251      // 1 Bit, Bit 7
+#define     SHC_CScene12ActiveMask 0x80
+#define     SHC_CScene12ActiveShift 7
+#define SHC_CScene12Number                      251      // 7 Bits, Bit 6-0
+#define     SHC_CScene12NumberMask 0x7F
+#define     SHC_CScene12NumberShift 0
+#define SHC_CScene12Storable                    252      // 1 Bit, Bit 7
+#define     SHC_CScene12StorableMask 0x80
+#define     SHC_CScene12StorableShift 7
+#define SHC_CScene12HeightEnabled               252      // 1 Bit, Bit 6
+#define     SHC_CScene12HeightEnabledMask 0x40
+#define     SHC_CScene12HeightEnabledShift 6
+#define SHC_CScene12SlatEnabled                 252      // 1 Bit, Bit 5
+#define     SHC_CScene12SlatEnabledMask 0x20
+#define     SHC_CScene12SlatEnabledShift 5
+#define SHC_CScene12Height                      253      // 7 Bits, Bit 7-1
+#define     SHC_CScene12HeightMask 0xFE
+#define     SHC_CScene12HeightShift 1
+#define SHC_CScene12Slat                        254      // 7 Bits, Bit 7-1
+#define     SHC_CScene12SlatMask 0xFE
+#define     SHC_CScene12SlatShift 1
+#define SHC_CScene12Lock27                      252      // 5 Bits, Bit 4-0
+#define     SHC_CScene12Lock27Mask 0x1F
+#define     SHC_CScene12Lock27Shift 0
+#define SHC_CScene12Lock9                       252      // 5 Bits, Bit 4-0
+#define     SHC_CScene12Lock9Mask 0x1F
+#define     SHC_CScene12Lock9Shift 0
+#define SHC_CScene12Delay                       255      // 16 Bits, Bit 15-0
+#define SHC_CScene13Active                      257      // 1 Bit, Bit 7
+#define     SHC_CScene13ActiveMask 0x80
+#define     SHC_CScene13ActiveShift 7
+#define SHC_CScene13Number                      257      // 7 Bits, Bit 6-0
+#define     SHC_CScene13NumberMask 0x7F
+#define     SHC_CScene13NumberShift 0
+#define SHC_CScene13Storable                    258      // 1 Bit, Bit 7
+#define     SHC_CScene13StorableMask 0x80
+#define     SHC_CScene13StorableShift 7
+#define SHC_CScene13HeightEnabled               258      // 1 Bit, Bit 6
+#define     SHC_CScene13HeightEnabledMask 0x40
+#define     SHC_CScene13HeightEnabledShift 6
+#define SHC_CScene13SlatEnabled                 258      // 1 Bit, Bit 5
+#define     SHC_CScene13SlatEnabledMask 0x20
+#define     SHC_CScene13SlatEnabledShift 5
+#define SHC_CScene13Height                      259      // 7 Bits, Bit 7-1
+#define     SHC_CScene13HeightMask 0xFE
+#define     SHC_CScene13HeightShift 1
+#define SHC_CScene13Slat                        260      // 7 Bits, Bit 7-1
+#define     SHC_CScene13SlatMask 0xFE
+#define     SHC_CScene13SlatShift 1
+#define SHC_CScene13Lock27                      258      // 5 Bits, Bit 4-0
+#define     SHC_CScene13Lock27Mask 0x1F
+#define     SHC_CScene13Lock27Shift 0
+#define SHC_CScene13Lock9                       258      // 5 Bits, Bit 4-0
+#define     SHC_CScene13Lock9Mask 0x1F
+#define     SHC_CScene13Lock9Shift 0
+#define SHC_CScene13Delay                       261      // 16 Bits, Bit 15-0
+#define SHC_CScene14Active                      263      // 1 Bit, Bit 7
+#define     SHC_CScene14ActiveMask 0x80
+#define     SHC_CScene14ActiveShift 7
+#define SHC_CScene14Number                      263      // 7 Bits, Bit 6-0
+#define     SHC_CScene14NumberMask 0x7F
+#define     SHC_CScene14NumberShift 0
+#define SHC_CScene14Storable                    264      // 1 Bit, Bit 7
+#define     SHC_CScene14StorableMask 0x80
+#define     SHC_CScene14StorableShift 7
+#define SHC_CScene14HeightEnabled               264      // 1 Bit, Bit 6
+#define     SHC_CScene14HeightEnabledMask 0x40
+#define     SHC_CScene14HeightEnabledShift 6
+#define SHC_CScene14SlatEnabled                 264      // 1 Bit, Bit 5
+#define     SHC_CScene14SlatEnabledMask 0x20
+#define     SHC_CScene14SlatEnabledShift 5
+#define SHC_CScene14Height                      265      // 7 Bits, Bit 7-1
+#define     SHC_CScene14HeightMask 0xFE
+#define     SHC_CScene14HeightShift 1
+#define SHC_CScene14Slat                        266      // 7 Bits, Bit 7-1
+#define     SHC_CScene14SlatMask 0xFE
+#define     SHC_CScene14SlatShift 1
+#define SHC_CScene14Lock27                      264      // 5 Bits, Bit 4-0
+#define     SHC_CScene14Lock27Mask 0x1F
+#define     SHC_CScene14Lock27Shift 0
+#define SHC_CScene14Lock9                       264      // 5 Bits, Bit 4-0
+#define     SHC_CScene14Lock9Mask 0x1F
+#define     SHC_CScene14Lock9Shift 0
+#define SHC_CScene14Delay                       267      // 16 Bits, Bit 15-0
+#define SHC_CScene15Active                      269      // 1 Bit, Bit 7
+#define     SHC_CScene15ActiveMask 0x80
+#define     SHC_CScene15ActiveShift 7
+#define SHC_CScene15Number                      269      // 7 Bits, Bit 6-0
+#define     SHC_CScene15NumberMask 0x7F
+#define     SHC_CScene15NumberShift 0
+#define SHC_CScene15Storable                    270      // 1 Bit, Bit 7
+#define     SHC_CScene15StorableMask 0x80
+#define     SHC_CScene15StorableShift 7
+#define SHC_CScene15HeightEnabled               270      // 1 Bit, Bit 6
+#define     SHC_CScene15HeightEnabledMask 0x40
+#define     SHC_CScene15HeightEnabledShift 6
+#define SHC_CScene15SlatEnabled                 270      // 1 Bit, Bit 5
+#define     SHC_CScene15SlatEnabledMask 0x20
+#define     SHC_CScene15SlatEnabledShift 5
+#define SHC_CScene15Height                      271      // 7 Bits, Bit 7-1
+#define     SHC_CScene15HeightMask 0xFE
+#define     SHC_CScene15HeightShift 1
+#define SHC_CScene15Slat                        272      // 7 Bits, Bit 7-1
+#define     SHC_CScene15SlatMask 0xFE
+#define     SHC_CScene15SlatShift 1
+#define SHC_CScene15Lock27                      270      // 5 Bits, Bit 4-0
+#define     SHC_CScene15Lock27Mask 0x1F
+#define     SHC_CScene15Lock27Shift 0
+#define SHC_CScene15Lock9                       270      // 5 Bits, Bit 4-0
+#define     SHC_CScene15Lock9Mask 0x1F
+#define     SHC_CScene15Lock9Shift 0
+#define SHC_CScene15Delay                       273      // 16 Bits, Bit 15-0
+#define SHC_CScene16Active                      275      // 1 Bit, Bit 7
+#define     SHC_CScene16ActiveMask 0x80
+#define     SHC_CScene16ActiveShift 7
+#define SHC_CScene16Number                      275      // 7 Bits, Bit 6-0
+#define     SHC_CScene16NumberMask 0x7F
+#define     SHC_CScene16NumberShift 0
+#define SHC_CScene16Storable                    276      // 1 Bit, Bit 7
+#define     SHC_CScene16StorableMask 0x80
+#define     SHC_CScene16StorableShift 7
+#define SHC_CScene16HeightEnabled               276      // 1 Bit, Bit 6
+#define     SHC_CScene16HeightEnabledMask 0x40
+#define     SHC_CScene16HeightEnabledShift 6
+#define SHC_CScene16SlatEnabled                 276      // 1 Bit, Bit 5
+#define     SHC_CScene16SlatEnabledMask 0x20
+#define     SHC_CScene16SlatEnabledShift 5
+#define SHC_CScene16Height                      277      // 7 Bits, Bit 7-1
+#define     SHC_CScene16HeightMask 0xFE
+#define     SHC_CScene16HeightShift 1
+#define SHC_CScene16Slat                        278      // 7 Bits, Bit 7-1
+#define     SHC_CScene16SlatMask 0xFE
+#define     SHC_CScene16SlatShift 1
+#define SHC_CScene16Lock27                      276      // 5 Bits, Bit 4-0
+#define     SHC_CScene16Lock27Mask 0x1F
+#define     SHC_CScene16Lock27Shift 0
+#define SHC_CScene16Lock9                       276      // 5 Bits, Bit 4-0
+#define     SHC_CScene16Lock9Mask 0x1F
+#define     SHC_CScene16Lock9Shift 0
+#define SHC_CScene16Delay                       279      // 16 Bits, Bit 15-0
 #define SHC_CWindowOpenPositionControl1         34      // 4 Bits, Bit 7-4
 #define     SHC_CWindowOpenPositionControl1Mask 0xF0
 #define     SHC_CWindowOpenPositionControl1Shift 4
@@ -937,6 +1388,328 @@
 #define ParamSHC_CShadingEndSlatPositionEnabled      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CShadingEndSlatPositionEnabled)) & SHC_CShadingEndSlatPositionEnabledMask))
 // Lamellenstellung
 #define ParamSHC_CShadingEndSlatPosition             (knx.paramByte(SHC_ParamCalcIndex(SHC_CShadingEndSlatPosition)) & SHC_CShadingEndSlatPositionMask)
+// Szenen
+#define ParamSHC_CScenes                             ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScenes)) & SHC_CScenesMask))
+// freigeben
+#define ParamSHC_CScene1Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Active)) & SHC_CScene1ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene1Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Number)) & SHC_CScene1NumberMask)
+// speicherbar
+#define ParamSHC_CScene1Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Storable)) & SHC_CScene1StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene1HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1HeightEnabled)) & SHC_CScene1HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene1SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1SlatEnabled)) & SHC_CScene1SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene1Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Height)) & SHC_CScene1HeightMask) >> SHC_CScene1HeightShift)
+// Lamelle
+#define ParamSHC_CScene1Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Slat)) & SHC_CScene1SlatMask) >> SHC_CScene1SlatShift)
+// Sperren
+#define ParamSHC_CScene1Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Lock27)) & SHC_CScene1Lock27Mask)
+// Sperren
+#define ParamSHC_CScene1Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Lock9)) & SHC_CScene1Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene1Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene1Delay)))
+// freigeben
+#define ParamSHC_CScene2Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Active)) & SHC_CScene2ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene2Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Number)) & SHC_CScene2NumberMask)
+// speicherbar
+#define ParamSHC_CScene2Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Storable)) & SHC_CScene2StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene2HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2HeightEnabled)) & SHC_CScene2HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene2SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2SlatEnabled)) & SHC_CScene2SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene2Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Height)) & SHC_CScene2HeightMask) >> SHC_CScene2HeightShift)
+// Lamelle
+#define ParamSHC_CScene2Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Slat)) & SHC_CScene2SlatMask) >> SHC_CScene2SlatShift)
+// Sperren
+#define ParamSHC_CScene2Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Lock27)) & SHC_CScene2Lock27Mask)
+// Sperren
+#define ParamSHC_CScene2Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Lock9)) & SHC_CScene2Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene2Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene2Delay)))
+// freigeben
+#define ParamSHC_CScene3Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Active)) & SHC_CScene3ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene3Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Number)) & SHC_CScene3NumberMask)
+// speicherbar
+#define ParamSHC_CScene3Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Storable)) & SHC_CScene3StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene3HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3HeightEnabled)) & SHC_CScene3HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene3SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3SlatEnabled)) & SHC_CScene3SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene3Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Height)) & SHC_CScene3HeightMask) >> SHC_CScene3HeightShift)
+// Lamelle
+#define ParamSHC_CScene3Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Slat)) & SHC_CScene3SlatMask) >> SHC_CScene3SlatShift)
+// Sperren
+#define ParamSHC_CScene3Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Lock27)) & SHC_CScene3Lock27Mask)
+// Sperren
+#define ParamSHC_CScene3Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Lock9)) & SHC_CScene3Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene3Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene3Delay)))
+// freigeben
+#define ParamSHC_CScene4Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Active)) & SHC_CScene4ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene4Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Number)) & SHC_CScene4NumberMask)
+// speicherbar
+#define ParamSHC_CScene4Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Storable)) & SHC_CScene4StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene4HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4HeightEnabled)) & SHC_CScene4HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene4SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4SlatEnabled)) & SHC_CScene4SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene4Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Height)) & SHC_CScene4HeightMask) >> SHC_CScene4HeightShift)
+// Lamelle
+#define ParamSHC_CScene4Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Slat)) & SHC_CScene4SlatMask) >> SHC_CScene4SlatShift)
+// Sperren
+#define ParamSHC_CScene4Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Lock27)) & SHC_CScene4Lock27Mask)
+// Sperren
+#define ParamSHC_CScene4Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Lock9)) & SHC_CScene4Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene4Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene4Delay)))
+// freigeben
+#define ParamSHC_CScene5Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Active)) & SHC_CScene5ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene5Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Number)) & SHC_CScene5NumberMask)
+// speicherbar
+#define ParamSHC_CScene5Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Storable)) & SHC_CScene5StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene5HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5HeightEnabled)) & SHC_CScene5HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene5SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5SlatEnabled)) & SHC_CScene5SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene5Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Height)) & SHC_CScene5HeightMask) >> SHC_CScene5HeightShift)
+// Lamelle
+#define ParamSHC_CScene5Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Slat)) & SHC_CScene5SlatMask) >> SHC_CScene5SlatShift)
+// Sperren
+#define ParamSHC_CScene5Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Lock27)) & SHC_CScene5Lock27Mask)
+// Sperren
+#define ParamSHC_CScene5Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Lock9)) & SHC_CScene5Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene5Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene5Delay)))
+// freigeben
+#define ParamSHC_CScene6Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Active)) & SHC_CScene6ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene6Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Number)) & SHC_CScene6NumberMask)
+// speicherbar
+#define ParamSHC_CScene6Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Storable)) & SHC_CScene6StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene6HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6HeightEnabled)) & SHC_CScene6HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene6SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6SlatEnabled)) & SHC_CScene6SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene6Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Height)) & SHC_CScene6HeightMask) >> SHC_CScene6HeightShift)
+// Lamelle
+#define ParamSHC_CScene6Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Slat)) & SHC_CScene6SlatMask) >> SHC_CScene6SlatShift)
+// Sperren
+#define ParamSHC_CScene6Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Lock27)) & SHC_CScene6Lock27Mask)
+// Sperren
+#define ParamSHC_CScene6Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Lock9)) & SHC_CScene6Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene6Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene6Delay)))
+// freigeben
+#define ParamSHC_CScene7Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Active)) & SHC_CScene7ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene7Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Number)) & SHC_CScene7NumberMask)
+// speicherbar
+#define ParamSHC_CScene7Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Storable)) & SHC_CScene7StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene7HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7HeightEnabled)) & SHC_CScene7HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene7SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7SlatEnabled)) & SHC_CScene7SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene7Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Height)) & SHC_CScene7HeightMask) >> SHC_CScene7HeightShift)
+// Lamelle
+#define ParamSHC_CScene7Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Slat)) & SHC_CScene7SlatMask) >> SHC_CScene7SlatShift)
+// Sperren
+#define ParamSHC_CScene7Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Lock27)) & SHC_CScene7Lock27Mask)
+// Sperren
+#define ParamSHC_CScene7Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Lock9)) & SHC_CScene7Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene7Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene7Delay)))
+// freigeben
+#define ParamSHC_CScene8Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Active)) & SHC_CScene8ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene8Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Number)) & SHC_CScene8NumberMask)
+// speicherbar
+#define ParamSHC_CScene8Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Storable)) & SHC_CScene8StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene8HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8HeightEnabled)) & SHC_CScene8HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene8SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8SlatEnabled)) & SHC_CScene8SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene8Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Height)) & SHC_CScene8HeightMask) >> SHC_CScene8HeightShift)
+// Lamelle
+#define ParamSHC_CScene8Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Slat)) & SHC_CScene8SlatMask) >> SHC_CScene8SlatShift)
+// Sperren
+#define ParamSHC_CScene8Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Lock27)) & SHC_CScene8Lock27Mask)
+// Sperren
+#define ParamSHC_CScene8Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Lock9)) & SHC_CScene8Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene8Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene8Delay)))
+// freigeben
+#define ParamSHC_CScene9Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Active)) & SHC_CScene9ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene9Number                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Number)) & SHC_CScene9NumberMask)
+// speicherbar
+#define ParamSHC_CScene9Storable                     ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Storable)) & SHC_CScene9StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene9HeightEnabled                ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9HeightEnabled)) & SHC_CScene9HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene9SlatEnabled                  ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9SlatEnabled)) & SHC_CScene9SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene9Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Height)) & SHC_CScene9HeightMask) >> SHC_CScene9HeightShift)
+// Lamelle
+#define ParamSHC_CScene9Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Slat)) & SHC_CScene9SlatMask) >> SHC_CScene9SlatShift)
+// Sperren
+#define ParamSHC_CScene9Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Lock27)) & SHC_CScene9Lock27Mask)
+// Sperren
+#define ParamSHC_CScene9Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Lock9)) & SHC_CScene9Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene9Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene9Delay)))
+// freigeben
+#define ParamSHC_CScene10Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Active)) & SHC_CScene10ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene10Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Number)) & SHC_CScene10NumberMask)
+// speicherbar
+#define ParamSHC_CScene10Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Storable)) & SHC_CScene10StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene10HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10HeightEnabled)) & SHC_CScene10HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene10SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10SlatEnabled)) & SHC_CScene10SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene10Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Height)) & SHC_CScene10HeightMask) >> SHC_CScene10HeightShift)
+// Lamelle
+#define ParamSHC_CScene10Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Slat)) & SHC_CScene10SlatMask) >> SHC_CScene10SlatShift)
+// Sperren
+#define ParamSHC_CScene10Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Lock27)) & SHC_CScene10Lock27Mask)
+// Sperren
+#define ParamSHC_CScene10Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Lock9)) & SHC_CScene10Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene10Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene10Delay)))
+// freigeben
+#define ParamSHC_CScene11Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Active)) & SHC_CScene11ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene11Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Number)) & SHC_CScene11NumberMask)
+// speicherbar
+#define ParamSHC_CScene11Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Storable)) & SHC_CScene11StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene11HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11HeightEnabled)) & SHC_CScene11HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene11SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11SlatEnabled)) & SHC_CScene11SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene11Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Height)) & SHC_CScene11HeightMask) >> SHC_CScene11HeightShift)
+// Lamelle
+#define ParamSHC_CScene11Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Slat)) & SHC_CScene11SlatMask) >> SHC_CScene11SlatShift)
+// Sperren
+#define ParamSHC_CScene11Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Lock27)) & SHC_CScene11Lock27Mask)
+// Sperren
+#define ParamSHC_CScene11Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Lock9)) & SHC_CScene11Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene11Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene11Delay)))
+// freigeben
+#define ParamSHC_CScene12Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Active)) & SHC_CScene12ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene12Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Number)) & SHC_CScene12NumberMask)
+// speicherbar
+#define ParamSHC_CScene12Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Storable)) & SHC_CScene12StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene12HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12HeightEnabled)) & SHC_CScene12HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene12SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12SlatEnabled)) & SHC_CScene12SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene12Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Height)) & SHC_CScene12HeightMask) >> SHC_CScene12HeightShift)
+// Lamelle
+#define ParamSHC_CScene12Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Slat)) & SHC_CScene12SlatMask) >> SHC_CScene12SlatShift)
+// Sperren
+#define ParamSHC_CScene12Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Lock27)) & SHC_CScene12Lock27Mask)
+// Sperren
+#define ParamSHC_CScene12Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Lock9)) & SHC_CScene12Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene12Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene12Delay)))
+// freigeben
+#define ParamSHC_CScene13Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Active)) & SHC_CScene13ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene13Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Number)) & SHC_CScene13NumberMask)
+// speicherbar
+#define ParamSHC_CScene13Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Storable)) & SHC_CScene13StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene13HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13HeightEnabled)) & SHC_CScene13HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene13SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13SlatEnabled)) & SHC_CScene13SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene13Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Height)) & SHC_CScene13HeightMask) >> SHC_CScene13HeightShift)
+// Lamelle
+#define ParamSHC_CScene13Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Slat)) & SHC_CScene13SlatMask) >> SHC_CScene13SlatShift)
+// Sperren
+#define ParamSHC_CScene13Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Lock27)) & SHC_CScene13Lock27Mask)
+// Sperren
+#define ParamSHC_CScene13Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Lock9)) & SHC_CScene13Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene13Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene13Delay)))
+// freigeben
+#define ParamSHC_CScene14Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Active)) & SHC_CScene14ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene14Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Number)) & SHC_CScene14NumberMask)
+// speicherbar
+#define ParamSHC_CScene14Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Storable)) & SHC_CScene14StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene14HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14HeightEnabled)) & SHC_CScene14HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene14SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14SlatEnabled)) & SHC_CScene14SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene14Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Height)) & SHC_CScene14HeightMask) >> SHC_CScene14HeightShift)
+// Lamelle
+#define ParamSHC_CScene14Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Slat)) & SHC_CScene14SlatMask) >> SHC_CScene14SlatShift)
+// Sperren
+#define ParamSHC_CScene14Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Lock27)) & SHC_CScene14Lock27Mask)
+// Sperren
+#define ParamSHC_CScene14Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Lock9)) & SHC_CScene14Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene14Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene14Delay)))
+// freigeben
+#define ParamSHC_CScene15Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Active)) & SHC_CScene15ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene15Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Number)) & SHC_CScene15NumberMask)
+// speicherbar
+#define ParamSHC_CScene15Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Storable)) & SHC_CScene15StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene15HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15HeightEnabled)) & SHC_CScene15HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene15SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15SlatEnabled)) & SHC_CScene15SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene15Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Height)) & SHC_CScene15HeightMask) >> SHC_CScene15HeightShift)
+// Lamelle
+#define ParamSHC_CScene15Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Slat)) & SHC_CScene15SlatMask) >> SHC_CScene15SlatShift)
+// Sperren
+#define ParamSHC_CScene15Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Lock27)) & SHC_CScene15Lock27Mask)
+// Sperren
+#define ParamSHC_CScene15Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Lock9)) & SHC_CScene15Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene15Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene15Delay)))
+// freigeben
+#define ParamSHC_CScene16Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Active)) & SHC_CScene16ActiveMask))
+// KNX-Szene
+#define ParamSHC_CScene16Number                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Number)) & SHC_CScene16NumberMask)
+// speicherbar
+#define ParamSHC_CScene16Storable                    ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Storable)) & SHC_CScene16StorableMask))
+// Höhe anfahren
+#define ParamSHC_CScene16HeightEnabled               ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16HeightEnabled)) & SHC_CScene16HeightEnabledMask))
+// Lamelle anfahren
+#define ParamSHC_CScene16SlatEnabled                 ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16SlatEnabled)) & SHC_CScene16SlatEnabledMask))
+// Höhe
+#define ParamSHC_CScene16Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Height)) & SHC_CScene16HeightMask) >> SHC_CScene16HeightShift)
+// Lamelle
+#define ParamSHC_CScene16Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Slat)) & SHC_CScene16SlatMask) >> SHC_CScene16SlatShift)
+// Sperren
+#define ParamSHC_CScene16Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Lock27)) & SHC_CScene16Lock27Mask)
+// Sperren
+#define ParamSHC_CScene16Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Lock9)) & SHC_CScene16Lock9Mask)
+// Verzögerung
+#define ParamSHC_CScene16Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene16Delay)))
 // Position anfahren
 #define ParamSHC_CWindowOpenPositionControl1         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenPositionControl1)) & SHC_CWindowOpenPositionControl1Mask) >> SHC_CWindowOpenPositionControl1Shift)
 // Lamellen öffnen
@@ -1259,7 +2032,7 @@
 
 // Communication objects per channel (multiple occurrence)
 #define SHC_KoBlockOffset 420
-#define SHC_KoBlockSize 52
+#define SHC_KoBlockSize 53
 
 #define SHC_KoCalcNumber(index) (index + SHC_KoBlockOffset + _channelIndex * SHC_KoBlockSize)
 #define SHC_KoCalcIndex(number) ((number >= SHC_KoCalcNumber(0) && number < SHC_KoCalcNumber(SHC_KoBlockSize)) ? (number - SHC_KoBlockOffset) % SHC_KoBlockSize : -1)
@@ -1293,6 +2066,7 @@
 #define SHC_KoCHeading 25
 #define SHC_KoCRoomTemp 26
 #define SHC_KoCShadingReadyUser 27
+#define SHC_KoCScene 52
 #define SHC_KoCWindowOpenModeActive1 28
 #define SHC_KoCWindowOpenOpened1 29
 #define SHC_KoCWindowOpenLock1 30
@@ -1375,6 +2149,8 @@
 // 
 #define KoSHC_CShadingReadyUser                   (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCShadingReadyUser)))
 // 
+#define KoSHC_CScene                              (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCScene)))
+// 
 #define KoSHC_CWindowOpenModeActive1              (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCWindowOpenModeActive1)))
 // 
 #define KoSHC_CWindowOpenOpened1                  (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCWindowOpenOpened1)))
@@ -1423,272 +2199,272 @@
 // 
 #define KoSHC_CShading2Ready                      (knx.getGroupObject(SHC_KoCalcNumber(SHC_KoCShading2Ready)))
 
-#define LOG_VisibleChannels                     6033      // uint8_t
-#define LOG_VacationKo                          6034      // 1 Bit, Bit 7
+#define LOG_VisibleChannels                     9137      // uint8_t
+#define LOG_VacationKo                          9138      // 1 Bit, Bit 7
 #define     LOG_VacationKoMask 0x80
 #define     LOG_VacationKoShift 7
-#define LOG_HolidayKo                           6034      // 1 Bit, Bit 6
+#define LOG_HolidayKo                           9138      // 1 Bit, Bit 6
 #define     LOG_HolidayKoMask 0x40
 #define     LOG_HolidayKoShift 6
-#define LOG_VacationRead                        6034      // 1 Bit, Bit 5
+#define LOG_VacationRead                        9138      // 1 Bit, Bit 5
 #define     LOG_VacationReadMask 0x20
 #define     LOG_VacationReadShift 5
-#define LOG_HolidaySend                         6034      // 1 Bit, Bit 4
+#define LOG_HolidaySend                         9138      // 1 Bit, Bit 4
 #define     LOG_HolidaySendMask 0x10
 #define     LOG_HolidaySendShift 4
-#define LOG_Neujahr                             6035      // 1 Bit, Bit 7
+#define LOG_Neujahr                             9139      // 1 Bit, Bit 7
 #define     LOG_NeujahrMask 0x80
 #define     LOG_NeujahrShift 7
-#define LOG_DreiKoenige                         6035      // 1 Bit, Bit 6
+#define LOG_DreiKoenige                         9139      // 1 Bit, Bit 6
 #define     LOG_DreiKoenigeMask 0x40
 #define     LOG_DreiKoenigeShift 6
-#define LOG_Weiberfastnacht                     6035      // 1 Bit, Bit 5
+#define LOG_Weiberfastnacht                     9139      // 1 Bit, Bit 5
 #define     LOG_WeiberfastnachtMask 0x20
 #define     LOG_WeiberfastnachtShift 5
-#define LOG_Rosenmontag                         6035      // 1 Bit, Bit 4
+#define LOG_Rosenmontag                         9139      // 1 Bit, Bit 4
 #define     LOG_RosenmontagMask 0x10
 #define     LOG_RosenmontagShift 4
-#define LOG_Fastnachtsdienstag                  6035      // 1 Bit, Bit 3
+#define LOG_Fastnachtsdienstag                  9139      // 1 Bit, Bit 3
 #define     LOG_FastnachtsdienstagMask 0x08
 #define     LOG_FastnachtsdienstagShift 3
-#define LOG_Aschermittwoch                      6035      // 1 Bit, Bit 2
+#define LOG_Aschermittwoch                      9139      // 1 Bit, Bit 2
 #define     LOG_AschermittwochMask 0x04
 #define     LOG_AschermittwochShift 2
-#define LOG_Frauentag                           6035      // 1 Bit, Bit 1
+#define LOG_Frauentag                           9139      // 1 Bit, Bit 1
 #define     LOG_FrauentagMask 0x02
 #define     LOG_FrauentagShift 1
-#define LOG_Gruendonnerstag                     6035      // 1 Bit, Bit 0
+#define LOG_Gruendonnerstag                     9139      // 1 Bit, Bit 0
 #define     LOG_GruendonnerstagMask 0x01
 #define     LOG_GruendonnerstagShift 0
-#define LOG_Karfreitag                          6036      // 1 Bit, Bit 7
+#define LOG_Karfreitag                          9140      // 1 Bit, Bit 7
 #define     LOG_KarfreitagMask 0x80
 #define     LOG_KarfreitagShift 7
-#define LOG_Ostersonntag                        6036      // 1 Bit, Bit 6
+#define LOG_Ostersonntag                        9140      // 1 Bit, Bit 6
 #define     LOG_OstersonntagMask 0x40
 #define     LOG_OstersonntagShift 6
-#define LOG_Ostermontag                         6036      // 1 Bit, Bit 5
+#define LOG_Ostermontag                         9140      // 1 Bit, Bit 5
 #define     LOG_OstermontagMask 0x20
 #define     LOG_OstermontagShift 5
-#define LOG_TagDerArbeit                        6036      // 1 Bit, Bit 4
+#define LOG_TagDerArbeit                        9140      // 1 Bit, Bit 4
 #define     LOG_TagDerArbeitMask 0x10
 #define     LOG_TagDerArbeitShift 4
-#define LOG_Himmelfahrt                         6036      // 1 Bit, Bit 3
+#define LOG_Himmelfahrt                         9140      // 1 Bit, Bit 3
 #define     LOG_HimmelfahrtMask 0x08
 #define     LOG_HimmelfahrtShift 3
-#define LOG_Pfingstsonntag                      6036      // 1 Bit, Bit 2
+#define LOG_Pfingstsonntag                      9140      // 1 Bit, Bit 2
 #define     LOG_PfingstsonntagMask 0x04
 #define     LOG_PfingstsonntagShift 2
-#define LOG_Pfingstmontag                       6036      // 1 Bit, Bit 1
+#define LOG_Pfingstmontag                       9140      // 1 Bit, Bit 1
 #define     LOG_PfingstmontagMask 0x02
 #define     LOG_PfingstmontagShift 1
-#define LOG_Fronleichnam                        6036      // 1 Bit, Bit 0
+#define LOG_Fronleichnam                        9140      // 1 Bit, Bit 0
 #define     LOG_FronleichnamMask 0x01
 #define     LOG_FronleichnamShift 0
-#define LOG_Friedensfest                        6037      // 1 Bit, Bit 7
+#define LOG_Friedensfest                        9141      // 1 Bit, Bit 7
 #define     LOG_FriedensfestMask 0x80
 #define     LOG_FriedensfestShift 7
-#define LOG_MariaHimmelfahrt                    6037      // 1 Bit, Bit 6
+#define LOG_MariaHimmelfahrt                    9141      // 1 Bit, Bit 6
 #define     LOG_MariaHimmelfahrtMask 0x40
 #define     LOG_MariaHimmelfahrtShift 6
-#define LOG_DeutscheEinheit                     6037      // 1 Bit, Bit 5
+#define LOG_DeutscheEinheit                     9141      // 1 Bit, Bit 5
 #define     LOG_DeutscheEinheitMask 0x20
 #define     LOG_DeutscheEinheitShift 5
-#define LOG_Reformationstag                     6037      // 1 Bit, Bit 4
+#define LOG_Reformationstag                     9141      // 1 Bit, Bit 4
 #define     LOG_ReformationstagMask 0x10
 #define     LOG_ReformationstagShift 4
-#define LOG_Allerheiligen                       6037      // 1 Bit, Bit 3
+#define LOG_Allerheiligen                       9141      // 1 Bit, Bit 3
 #define     LOG_AllerheiligenMask 0x08
 #define     LOG_AllerheiligenShift 3
-#define LOG_BussBettag                          6037      // 1 Bit, Bit 2
+#define LOG_BussBettag                          9141      // 1 Bit, Bit 2
 #define     LOG_BussBettagMask 0x04
 #define     LOG_BussBettagShift 2
-#define LOG_Advent1                             6037      // 1 Bit, Bit 1
+#define LOG_Advent1                             9141      // 1 Bit, Bit 1
 #define     LOG_Advent1Mask 0x02
 #define     LOG_Advent1Shift 1
-#define LOG_Advent2                             6037      // 1 Bit, Bit 0
+#define LOG_Advent2                             9141      // 1 Bit, Bit 0
 #define     LOG_Advent2Mask 0x01
 #define     LOG_Advent2Shift 0
-#define LOG_Advent3                             6038      // 1 Bit, Bit 7
+#define LOG_Advent3                             9142      // 1 Bit, Bit 7
 #define     LOG_Advent3Mask 0x80
 #define     LOG_Advent3Shift 7
-#define LOG_Advent4                             6038      // 1 Bit, Bit 6
+#define LOG_Advent4                             9142      // 1 Bit, Bit 6
 #define     LOG_Advent4Mask 0x40
 #define     LOG_Advent4Shift 6
-#define LOG_Heiligabend                         6038      // 1 Bit, Bit 5
+#define LOG_Heiligabend                         9142      // 1 Bit, Bit 5
 #define     LOG_HeiligabendMask 0x20
 #define     LOG_HeiligabendShift 5
-#define LOG_Weihnachtstag1                      6038      // 1 Bit, Bit 4
+#define LOG_Weihnachtstag1                      9142      // 1 Bit, Bit 4
 #define     LOG_Weihnachtstag1Mask 0x10
 #define     LOG_Weihnachtstag1Shift 4
-#define LOG_Weihnachtstag2                      6038      // 1 Bit, Bit 3
+#define LOG_Weihnachtstag2                      9142      // 1 Bit, Bit 3
 #define     LOG_Weihnachtstag2Mask 0x08
 #define     LOG_Weihnachtstag2Shift 3
-#define LOG_Silvester                           6038      // 1 Bit, Bit 2
+#define LOG_Silvester                           9142      // 1 Bit, Bit 2
 #define     LOG_SilvesterMask 0x04
 #define     LOG_SilvesterShift 2
-#define LOG_Nationalfeiertag                    6038      // 1 Bit, Bit 1
+#define LOG_Nationalfeiertag                    9142      // 1 Bit, Bit 1
 #define     LOG_NationalfeiertagMask 0x02
 #define     LOG_NationalfeiertagShift 1
-#define LOG_MariaEmpfaengnis                    6038      // 1 Bit, Bit 0
+#define LOG_MariaEmpfaengnis                    9142      // 1 Bit, Bit 0
 #define     LOG_MariaEmpfaengnisMask 0x01
 #define     LOG_MariaEmpfaengnisShift 0
-#define LOG_NationalfeiertagSchweiz             6039      // 1 Bit, Bit 7
+#define LOG_NationalfeiertagSchweiz             9143      // 1 Bit, Bit 7
 #define     LOG_NationalfeiertagSchweizMask 0x80
 #define     LOG_NationalfeiertagSchweizShift 7
-#define LOG_Totensonntag                        6039      // 1 Bit, Bit 6
+#define LOG_Totensonntag                        9143      // 1 Bit, Bit 6
 #define     LOG_TotensonntagMask 0x40
 #define     LOG_TotensonntagShift 6
-#define LOG_Weltkindertag                       6039      // 1 Bit, Bit 5
+#define LOG_Weltkindertag                       9143      // 1 Bit, Bit 5
 #define     LOG_WeltkindertagMask 0x20
 #define     LOG_WeltkindertagShift 5
-#define LOG_UserFormula1                        6040      // char*, 99 Byte
+#define LOG_UserFormula1                        9144      // char*, 99 Byte
 #define     LOG_UserFormula1Length 99
-#define LOG_UserFormula1Active                  6139      // 1 Bit, Bit 7
+#define LOG_UserFormula1Active                  9243      // 1 Bit, Bit 7
 #define     LOG_UserFormula1ActiveMask 0x80
 #define     LOG_UserFormula1ActiveShift 7
-#define LOG_UserFormula2                        6140      // char*, 99 Byte
+#define LOG_UserFormula2                        9244      // char*, 99 Byte
 #define     LOG_UserFormula2Length 99
-#define LOG_UserFormula2Active                  6239      // 1 Bit, Bit 7
+#define LOG_UserFormula2Active                  9343      // 1 Bit, Bit 7
 #define     LOG_UserFormula2ActiveMask 0x80
 #define     LOG_UserFormula2ActiveShift 7
-#define LOG_UserFormula3                        6240      // char*, 99 Byte
+#define LOG_UserFormula3                        9344      // char*, 99 Byte
 #define     LOG_UserFormula3Length 99
-#define LOG_UserFormula3Active                  6339      // 1 Bit, Bit 7
+#define LOG_UserFormula3Active                  9443      // 1 Bit, Bit 7
 #define     LOG_UserFormula3ActiveMask 0x80
 #define     LOG_UserFormula3ActiveShift 7
-#define LOG_UserFormula4                        6340      // char*, 99 Byte
+#define LOG_UserFormula4                        9444      // char*, 99 Byte
 #define     LOG_UserFormula4Length 99
-#define LOG_UserFormula4Active                  6439      // 1 Bit, Bit 7
+#define LOG_UserFormula4Active                  9543      // 1 Bit, Bit 7
 #define     LOG_UserFormula4ActiveMask 0x80
 #define     LOG_UserFormula4ActiveShift 7
-#define LOG_UserFormula5                        6440      // char*, 99 Byte
+#define LOG_UserFormula5                        9544      // char*, 99 Byte
 #define     LOG_UserFormula5Length 99
-#define LOG_UserFormula5Active                  6539      // 1 Bit, Bit 7
+#define LOG_UserFormula5Active                  9643      // 1 Bit, Bit 7
 #define     LOG_UserFormula5ActiveMask 0x80
 #define     LOG_UserFormula5ActiveShift 7
-#define LOG_UserFormula6                        6540      // char*, 99 Byte
+#define LOG_UserFormula6                        9644      // char*, 99 Byte
 #define     LOG_UserFormula6Length 99
-#define LOG_UserFormula6Active                  6639      // 1 Bit, Bit 7
+#define LOG_UserFormula6Active                  9743      // 1 Bit, Bit 7
 #define     LOG_UserFormula6ActiveMask 0x80
 #define     LOG_UserFormula6ActiveShift 7
-#define LOG_UserFormula7                        6640      // char*, 99 Byte
+#define LOG_UserFormula7                        9744      // char*, 99 Byte
 #define     LOG_UserFormula7Length 99
-#define LOG_UserFormula7Active                  6739      // 1 Bit, Bit 7
+#define LOG_UserFormula7Active                  9843      // 1 Bit, Bit 7
 #define     LOG_UserFormula7ActiveMask 0x80
 #define     LOG_UserFormula7ActiveShift 7
-#define LOG_UserFormula8                        6740      // char*, 99 Byte
+#define LOG_UserFormula8                        9844      // char*, 99 Byte
 #define     LOG_UserFormula8Length 99
-#define LOG_UserFormula8Active                  6839      // 1 Bit, Bit 7
+#define LOG_UserFormula8Active                  9943      // 1 Bit, Bit 7
 #define     LOG_UserFormula8ActiveMask 0x80
 #define     LOG_UserFormula8ActiveShift 7
-#define LOG_UserFormula9                        6840      // char*, 99 Byte
+#define LOG_UserFormula9                        9944      // char*, 99 Byte
 #define     LOG_UserFormula9Length 99
-#define LOG_UserFormula9Active                  6939      // 1 Bit, Bit 7
+#define LOG_UserFormula9Active                  10043      // 1 Bit, Bit 7
 #define     LOG_UserFormula9ActiveMask 0x80
 #define     LOG_UserFormula9ActiveShift 7
-#define LOG_UserFormula10                       6940      // char*, 99 Byte
+#define LOG_UserFormula10                       10044      // char*, 99 Byte
 #define     LOG_UserFormula10Length 99
-#define LOG_UserFormula10Active                 7039      // 1 Bit, Bit 7
+#define LOG_UserFormula10Active                 10143      // 1 Bit, Bit 7
 #define     LOG_UserFormula10ActiveMask 0x80
 #define     LOG_UserFormula10ActiveShift 7
-#define LOG_UserFormula11                       7040      // char*, 99 Byte
+#define LOG_UserFormula11                       10144      // char*, 99 Byte
 #define     LOG_UserFormula11Length 99
-#define LOG_UserFormula11Active                 7139      // 1 Bit, Bit 7
+#define LOG_UserFormula11Active                 10243      // 1 Bit, Bit 7
 #define     LOG_UserFormula11ActiveMask 0x80
 #define     LOG_UserFormula11ActiveShift 7
-#define LOG_UserFormula12                       7140      // char*, 99 Byte
+#define LOG_UserFormula12                       10244      // char*, 99 Byte
 #define     LOG_UserFormula12Length 99
-#define LOG_UserFormula12Active                 7239      // 1 Bit, Bit 7
+#define LOG_UserFormula12Active                 10343      // 1 Bit, Bit 7
 #define     LOG_UserFormula12ActiveMask 0x80
 #define     LOG_UserFormula12ActiveShift 7
-#define LOG_UserFormula13                       7240      // char*, 99 Byte
+#define LOG_UserFormula13                       10344      // char*, 99 Byte
 #define     LOG_UserFormula13Length 99
-#define LOG_UserFormula13Active                 7339      // 1 Bit, Bit 7
+#define LOG_UserFormula13Active                 10443      // 1 Bit, Bit 7
 #define     LOG_UserFormula13ActiveMask 0x80
 #define     LOG_UserFormula13ActiveShift 7
-#define LOG_UserFormula14                       7340      // char*, 99 Byte
+#define LOG_UserFormula14                       10444      // char*, 99 Byte
 #define     LOG_UserFormula14Length 99
-#define LOG_UserFormula14Active                 7439      // 1 Bit, Bit 7
+#define LOG_UserFormula14Active                 10543      // 1 Bit, Bit 7
 #define     LOG_UserFormula14ActiveMask 0x80
 #define     LOG_UserFormula14ActiveShift 7
-#define LOG_UserFormula15                       7440      // char*, 99 Byte
+#define LOG_UserFormula15                       10544      // char*, 99 Byte
 #define     LOG_UserFormula15Length 99
-#define LOG_UserFormula15Active                 7539      // 1 Bit, Bit 7
+#define LOG_UserFormula15Active                 10643      // 1 Bit, Bit 7
 #define     LOG_UserFormula15ActiveMask 0x80
 #define     LOG_UserFormula15ActiveShift 7
-#define LOG_UserFormula16                       7540      // char*, 99 Byte
+#define LOG_UserFormula16                       10644      // char*, 99 Byte
 #define     LOG_UserFormula16Length 99
-#define LOG_UserFormula16Active                 7639      // 1 Bit, Bit 7
+#define LOG_UserFormula16Active                 10743      // 1 Bit, Bit 7
 #define     LOG_UserFormula16ActiveMask 0x80
 #define     LOG_UserFormula16ActiveShift 7
-#define LOG_UserFormula17                       7640      // char*, 99 Byte
+#define LOG_UserFormula17                       10744      // char*, 99 Byte
 #define     LOG_UserFormula17Length 99
-#define LOG_UserFormula17Active                 7739      // 1 Bit, Bit 7
+#define LOG_UserFormula17Active                 10843      // 1 Bit, Bit 7
 #define     LOG_UserFormula17ActiveMask 0x80
 #define     LOG_UserFormula17ActiveShift 7
-#define LOG_UserFormula18                       7740      // char*, 99 Byte
+#define LOG_UserFormula18                       10844      // char*, 99 Byte
 #define     LOG_UserFormula18Length 99
-#define LOG_UserFormula18Active                 7839      // 1 Bit, Bit 7
+#define LOG_UserFormula18Active                 10943      // 1 Bit, Bit 7
 #define     LOG_UserFormula18ActiveMask 0x80
 #define     LOG_UserFormula18ActiveShift 7
-#define LOG_UserFormula19                       7840      // char*, 99 Byte
+#define LOG_UserFormula19                       10944      // char*, 99 Byte
 #define     LOG_UserFormula19Length 99
-#define LOG_UserFormula19Active                 7939      // 1 Bit, Bit 7
+#define LOG_UserFormula19Active                 11043      // 1 Bit, Bit 7
 #define     LOG_UserFormula19ActiveMask 0x80
 #define     LOG_UserFormula19ActiveShift 7
-#define LOG_UserFormula20                       7940      // char*, 99 Byte
+#define LOG_UserFormula20                       11044      // char*, 99 Byte
 #define     LOG_UserFormula20Length 99
-#define LOG_UserFormula20Active                 8039      // 1 Bit, Bit 7
+#define LOG_UserFormula20Active                 11143      // 1 Bit, Bit 7
 #define     LOG_UserFormula20ActiveMask 0x80
 #define     LOG_UserFormula20ActiveShift 7
-#define LOG_UserFormula21                       8040      // char*, 99 Byte
+#define LOG_UserFormula21                       11144      // char*, 99 Byte
 #define     LOG_UserFormula21Length 99
-#define LOG_UserFormula21Active                 8139      // 1 Bit, Bit 7
+#define LOG_UserFormula21Active                 11243      // 1 Bit, Bit 7
 #define     LOG_UserFormula21ActiveMask 0x80
 #define     LOG_UserFormula21ActiveShift 7
-#define LOG_UserFormula22                       8140      // char*, 99 Byte
+#define LOG_UserFormula22                       11244      // char*, 99 Byte
 #define     LOG_UserFormula22Length 99
-#define LOG_UserFormula22Active                 8239      // 1 Bit, Bit 7
+#define LOG_UserFormula22Active                 11343      // 1 Bit, Bit 7
 #define     LOG_UserFormula22ActiveMask 0x80
 #define     LOG_UserFormula22ActiveShift 7
-#define LOG_UserFormula23                       8240      // char*, 99 Byte
+#define LOG_UserFormula23                       11344      // char*, 99 Byte
 #define     LOG_UserFormula23Length 99
-#define LOG_UserFormula23Active                 8339      // 1 Bit, Bit 7
+#define LOG_UserFormula23Active                 11443      // 1 Bit, Bit 7
 #define     LOG_UserFormula23ActiveMask 0x80
 #define     LOG_UserFormula23ActiveShift 7
-#define LOG_UserFormula24                       8340      // char*, 99 Byte
+#define LOG_UserFormula24                       11444      // char*, 99 Byte
 #define     LOG_UserFormula24Length 99
-#define LOG_UserFormula24Active                 8439      // 1 Bit, Bit 7
+#define LOG_UserFormula24Active                 11543      // 1 Bit, Bit 7
 #define     LOG_UserFormula24ActiveMask 0x80
 #define     LOG_UserFormula24ActiveShift 7
-#define LOG_UserFormula25                       8440      // char*, 99 Byte
+#define LOG_UserFormula25                       11544      // char*, 99 Byte
 #define     LOG_UserFormula25Length 99
-#define LOG_UserFormula25Active                 8539      // 1 Bit, Bit 7
+#define LOG_UserFormula25Active                 11643      // 1 Bit, Bit 7
 #define     LOG_UserFormula25ActiveMask 0x80
 #define     LOG_UserFormula25ActiveShift 7
-#define LOG_UserFormula26                       8540      // char*, 99 Byte
+#define LOG_UserFormula26                       11644      // char*, 99 Byte
 #define     LOG_UserFormula26Length 99
-#define LOG_UserFormula26Active                 8639      // 1 Bit, Bit 7
+#define LOG_UserFormula26Active                 11743      // 1 Bit, Bit 7
 #define     LOG_UserFormula26ActiveMask 0x80
 #define     LOG_UserFormula26ActiveShift 7
-#define LOG_UserFormula27                       8640      // char*, 99 Byte
+#define LOG_UserFormula27                       11744      // char*, 99 Byte
 #define     LOG_UserFormula27Length 99
-#define LOG_UserFormula27Active                 8739      // 1 Bit, Bit 7
+#define LOG_UserFormula27Active                 11843      // 1 Bit, Bit 7
 #define     LOG_UserFormula27ActiveMask 0x80
 #define     LOG_UserFormula27ActiveShift 7
-#define LOG_UserFormula28                       8740      // char*, 99 Byte
+#define LOG_UserFormula28                       11844      // char*, 99 Byte
 #define     LOG_UserFormula28Length 99
-#define LOG_UserFormula28Active                 8839      // 1 Bit, Bit 7
+#define LOG_UserFormula28Active                 11943      // 1 Bit, Bit 7
 #define     LOG_UserFormula28ActiveMask 0x80
 #define     LOG_UserFormula28ActiveShift 7
-#define LOG_UserFormula29                       8840      // char*, 99 Byte
+#define LOG_UserFormula29                       11944      // char*, 99 Byte
 #define     LOG_UserFormula29Length 99
-#define LOG_UserFormula29Active                 8939      // 1 Bit, Bit 7
+#define LOG_UserFormula29Active                 12043      // 1 Bit, Bit 7
 #define     LOG_UserFormula29ActiveMask 0x80
 #define     LOG_UserFormula29ActiveShift 7
-#define LOG_UserFormula30                       8940      // char*, 99 Byte
+#define LOG_UserFormula30                       12044      // char*, 99 Byte
 #define     LOG_UserFormula30Length 99
-#define LOG_UserFormula30Active                 9039      // 1 Bit, Bit 7
+#define LOG_UserFormula30Active                 12143      // 1 Bit, Bit 7
 #define     LOG_UserFormula30ActiveMask 0x80
 #define     LOG_UserFormula30ActiveShift 7
 
@@ -1937,7 +2713,7 @@
 #define LOG_ChannelCount 50
 
 // Parameter per channel
-#define LOG_ParamBlockOffset 9040
+#define LOG_ParamBlockOffset 12144
 #define LOG_ParamBlockSize 89
 #define LOG_ParamCalcIndex(index) (index + LOG_ParamBlockOffset + _channelIndex * LOG_ParamBlockSize)
 
@@ -3842,7 +4618,7 @@
 // Ausgang
 #define KoLOG_KOfO                                (knx.getGroupObject(LOG_KoCalcNumber(LOG_KoKOfO)))
 
-#define FCB_VisibleChannels                     13490      // uint8_t
+#define FCB_VisibleChannels                     16594      // uint8_t
 
 // Verfügbare Kanäle
 #define ParamFCB_VisibleChannels                     (knx.paramByte(FCB_VisibleChannels))
@@ -3850,7 +4626,7 @@
 #define FCB_ChannelCount 15
 
 // Parameter per channel
-#define FCB_ParamBlockOffset 13491
+#define FCB_ParamBlockOffset 16595
 #define FCB_ParamBlockSize 81
 #define FCB_ParamCalcIndex(index) (index + FCB_ParamBlockOffset + _channelIndex * FCB_ParamBlockSize)
 
