@@ -1,0 +1,29 @@
+# Check OAM
+# Copyright (C) 2026 Cornelius Koepp (OpenKNX); For Usage in OpenKNX-Project only
+
+on: [push]
+
+jobs:
+  check:
+    name: Check '${{ matrix.target }}' in '${{ matrix.oam }}'
+    strategy:
+      fail-fast: false
+      matrix:
+
+        # [BUILD]: all build targets
+        target:
+          - Release
+          - ""
+
+        # [REF]: same commit and (newest on) branch
+        restore_branch:
+          - false
+          - true
+
+    uses: openknx/actions/.github/workflows/openknx-oam-check.yml@v0
+    with:
+      KNXPROD_PREFIX: ShutterController
+      # oam: use this repo as default
+      # oam_ref: use current branch as default -> ${{ github.ref_name }}
+      restore_branch: ${{ matrix.restore_branch }}
+      target: ${{ matrix.target }}
