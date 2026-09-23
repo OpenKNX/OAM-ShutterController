@@ -541,6 +541,9 @@
 #define     SHC_CScene1Lock9Mask 0x1F
 #define     SHC_CScene1Lock9Shift 0
 #define SHC_CScene1Delay                        189      // 16 Bits, Bit 15-0
+#define SHC_CScene1Hold                         187      // 1 Bit, Bit 0
+#define     SHC_CScene1HoldMask 0x01
+#define     SHC_CScene1HoldShift 0
 #define SHC_CScene2Active                       191      // 1 Bit, Bit 7
 #define     SHC_CScene2ActiveMask 0x80
 #define     SHC_CScene2ActiveShift 7
@@ -569,6 +572,9 @@
 #define     SHC_CScene2Lock9Mask 0x1F
 #define     SHC_CScene2Lock9Shift 0
 #define SHC_CScene2Delay                        195      // 16 Bits, Bit 15-0
+#define SHC_CScene2Hold                         193      // 1 Bit, Bit 0
+#define     SHC_CScene2HoldMask 0x01
+#define     SHC_CScene2HoldShift 0
 #define SHC_CScene3Active                       197      // 1 Bit, Bit 7
 #define     SHC_CScene3ActiveMask 0x80
 #define     SHC_CScene3ActiveShift 7
@@ -597,6 +603,9 @@
 #define     SHC_CScene3Lock9Mask 0x1F
 #define     SHC_CScene3Lock9Shift 0
 #define SHC_CScene3Delay                        201      // 16 Bits, Bit 15-0
+#define SHC_CScene3Hold                         199      // 1 Bit, Bit 0
+#define     SHC_CScene3HoldMask 0x01
+#define     SHC_CScene3HoldShift 0
 #define SHC_CScene4Active                       203      // 1 Bit, Bit 7
 #define     SHC_CScene4ActiveMask 0x80
 #define     SHC_CScene4ActiveShift 7
@@ -625,6 +634,9 @@
 #define     SHC_CScene4Lock9Mask 0x1F
 #define     SHC_CScene4Lock9Shift 0
 #define SHC_CScene4Delay                        207      // 16 Bits, Bit 15-0
+#define SHC_CScene4Hold                         205      // 1 Bit, Bit 0
+#define     SHC_CScene4HoldMask 0x01
+#define     SHC_CScene4HoldShift 0
 #define SHC_CScene5Active                       209      // 1 Bit, Bit 7
 #define     SHC_CScene5ActiveMask 0x80
 #define     SHC_CScene5ActiveShift 7
@@ -653,6 +665,9 @@
 #define     SHC_CScene5Lock9Mask 0x1F
 #define     SHC_CScene5Lock9Shift 0
 #define SHC_CScene5Delay                        213      // 16 Bits, Bit 15-0
+#define SHC_CScene5Hold                         211      // 1 Bit, Bit 0
+#define     SHC_CScene5HoldMask 0x01
+#define     SHC_CScene5HoldShift 0
 #define SHC_CScene6Active                       215      // 1 Bit, Bit 7
 #define     SHC_CScene6ActiveMask 0x80
 #define     SHC_CScene6ActiveShift 7
@@ -681,6 +696,9 @@
 #define     SHC_CScene6Lock9Mask 0x1F
 #define     SHC_CScene6Lock9Shift 0
 #define SHC_CScene6Delay                        219      // 16 Bits, Bit 15-0
+#define SHC_CScene6Hold                         217      // 1 Bit, Bit 0
+#define     SHC_CScene6HoldMask 0x01
+#define     SHC_CScene6HoldShift 0
 #define SHC_CScene7Active                       221      // 1 Bit, Bit 7
 #define     SHC_CScene7ActiveMask 0x80
 #define     SHC_CScene7ActiveShift 7
@@ -709,6 +727,9 @@
 #define     SHC_CScene7Lock9Mask 0x1F
 #define     SHC_CScene7Lock9Shift 0
 #define SHC_CScene7Delay                        225      // 16 Bits, Bit 15-0
+#define SHC_CScene7Hold                         223      // 1 Bit, Bit 0
+#define     SHC_CScene7HoldMask 0x01
+#define     SHC_CScene7HoldShift 0
 #define SHC_CScene8Active                       227      // 1 Bit, Bit 7
 #define     SHC_CScene8ActiveMask 0x80
 #define     SHC_CScene8ActiveShift 7
@@ -737,6 +758,9 @@
 #define     SHC_CScene8Lock9Mask 0x1F
 #define     SHC_CScene8Lock9Shift 0
 #define SHC_CScene8Delay                        231      // 16 Bits, Bit 15-0
+#define SHC_CScene8Hold                         229      // 1 Bit, Bit 0
+#define     SHC_CScene8HoldMask 0x01
+#define     SHC_CScene8HoldShift 0
 #define SHC_CScene9Active                       233      // 1 Bit, Bit 7
 #define     SHC_CScene9ActiveMask 0x80
 #define     SHC_CScene9ActiveShift 7
@@ -765,6 +789,9 @@
 #define     SHC_CScene9Lock9Mask 0x1F
 #define     SHC_CScene9Lock9Shift 0
 #define SHC_CScene9Delay                        237      // 16 Bits, Bit 15-0
+#define SHC_CScene9Hold                         235      // 1 Bit, Bit 0
+#define     SHC_CScene9HoldMask 0x01
+#define     SHC_CScene9HoldShift 0
 #define SHC_CScene10Active                      239      // 1 Bit, Bit 7
 #define     SHC_CScene10ActiveMask 0x80
 #define     SHC_CScene10ActiveShift 7
@@ -793,6 +820,9 @@
 #define     SHC_CScene10Lock9Mask 0x1F
 #define     SHC_CScene10Lock9Shift 0
 #define SHC_CScene10Delay                       243      // 16 Bits, Bit 15-0
+#define SHC_CScene10Hold                        241      // 1 Bit, Bit 0
+#define     SHC_CScene10HoldMask 0x01
+#define     SHC_CScene10HoldShift 0
 #define SHC_CScene11Active                      245      // 1 Bit, Bit 7
 #define     SHC_CScene11ActiveMask 0x80
 #define     SHC_CScene11ActiveShift 7
@@ -821,6 +851,9 @@
 #define     SHC_CScene11Lock9Mask 0x1F
 #define     SHC_CScene11Lock9Shift 0
 #define SHC_CScene11Delay                       249      // 16 Bits, Bit 15-0
+#define SHC_CScene11Hold                        247      // 1 Bit, Bit 0
+#define     SHC_CScene11HoldMask 0x01
+#define     SHC_CScene11HoldShift 0
 #define SHC_CScene12Active                      251      // 1 Bit, Bit 7
 #define     SHC_CScene12ActiveMask 0x80
 #define     SHC_CScene12ActiveShift 7
@@ -849,6 +882,9 @@
 #define     SHC_CScene12Lock9Mask 0x1F
 #define     SHC_CScene12Lock9Shift 0
 #define SHC_CScene12Delay                       255      // 16 Bits, Bit 15-0
+#define SHC_CScene12Hold                        253      // 1 Bit, Bit 0
+#define     SHC_CScene12HoldMask 0x01
+#define     SHC_CScene12HoldShift 0
 #define SHC_CScene13Active                      257      // 1 Bit, Bit 7
 #define     SHC_CScene13ActiveMask 0x80
 #define     SHC_CScene13ActiveShift 7
@@ -877,6 +913,9 @@
 #define     SHC_CScene13Lock9Mask 0x1F
 #define     SHC_CScene13Lock9Shift 0
 #define SHC_CScene13Delay                       261      // 16 Bits, Bit 15-0
+#define SHC_CScene13Hold                        259      // 1 Bit, Bit 0
+#define     SHC_CScene13HoldMask 0x01
+#define     SHC_CScene13HoldShift 0
 #define SHC_CScene14Active                      263      // 1 Bit, Bit 7
 #define     SHC_CScene14ActiveMask 0x80
 #define     SHC_CScene14ActiveShift 7
@@ -905,6 +944,9 @@
 #define     SHC_CScene14Lock9Mask 0x1F
 #define     SHC_CScene14Lock9Shift 0
 #define SHC_CScene14Delay                       267      // 16 Bits, Bit 15-0
+#define SHC_CScene14Hold                        265      // 1 Bit, Bit 0
+#define     SHC_CScene14HoldMask 0x01
+#define     SHC_CScene14HoldShift 0
 #define SHC_CScene15Active                      269      // 1 Bit, Bit 7
 #define     SHC_CScene15ActiveMask 0x80
 #define     SHC_CScene15ActiveShift 7
@@ -933,6 +975,9 @@
 #define     SHC_CScene15Lock9Mask 0x1F
 #define     SHC_CScene15Lock9Shift 0
 #define SHC_CScene15Delay                       273      // 16 Bits, Bit 15-0
+#define SHC_CScene15Hold                        271      // 1 Bit, Bit 0
+#define     SHC_CScene15HoldMask 0x01
+#define     SHC_CScene15HoldShift 0
 #define SHC_CScene16Active                      275      // 1 Bit, Bit 7
 #define     SHC_CScene16ActiveMask 0x80
 #define     SHC_CScene16ActiveShift 7
@@ -961,6 +1006,9 @@
 #define     SHC_CScene16Lock9Mask 0x1F
 #define     SHC_CScene16Lock9Shift 0
 #define SHC_CScene16Delay                       279      // 16 Bits, Bit 15-0
+#define SHC_CScene16Hold                        277      // 1 Bit, Bit 0
+#define     SHC_CScene16HoldMask 0x01
+#define     SHC_CScene16HoldShift 0
 #define SHC_CWindowOpenPositionControl1         34      // 4 Bits, Bit 7-4
 #define     SHC_CWindowOpenPositionControl1Mask 0xF0
 #define     SHC_CWindowOpenPositionControl1Shift 4
@@ -1410,6 +1458,8 @@
 #define ParamSHC_CScene1Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Lock9)) & SHC_CScene1Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene1Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene1Delay)))
+// Nach Abruf
+#define ParamSHC_CScene1Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Hold)) & SHC_CScene1HoldMask))
 // freigeben
 #define ParamSHC_CScene2Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Active)) & SHC_CScene2ActiveMask))
 // KNX-Szene
@@ -1430,6 +1480,8 @@
 #define ParamSHC_CScene2Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Lock9)) & SHC_CScene2Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene2Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene2Delay)))
+// Nach Abruf
+#define ParamSHC_CScene2Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Hold)) & SHC_CScene2HoldMask))
 // freigeben
 #define ParamSHC_CScene3Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Active)) & SHC_CScene3ActiveMask))
 // KNX-Szene
@@ -1450,6 +1502,8 @@
 #define ParamSHC_CScene3Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Lock9)) & SHC_CScene3Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene3Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene3Delay)))
+// Nach Abruf
+#define ParamSHC_CScene3Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Hold)) & SHC_CScene3HoldMask))
 // freigeben
 #define ParamSHC_CScene4Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Active)) & SHC_CScene4ActiveMask))
 // KNX-Szene
@@ -1470,6 +1524,8 @@
 #define ParamSHC_CScene4Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Lock9)) & SHC_CScene4Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene4Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene4Delay)))
+// Nach Abruf
+#define ParamSHC_CScene4Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Hold)) & SHC_CScene4HoldMask))
 // freigeben
 #define ParamSHC_CScene5Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Active)) & SHC_CScene5ActiveMask))
 // KNX-Szene
@@ -1490,6 +1546,8 @@
 #define ParamSHC_CScene5Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Lock9)) & SHC_CScene5Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene5Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene5Delay)))
+// Nach Abruf
+#define ParamSHC_CScene5Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Hold)) & SHC_CScene5HoldMask))
 // freigeben
 #define ParamSHC_CScene6Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Active)) & SHC_CScene6ActiveMask))
 // KNX-Szene
@@ -1510,6 +1568,8 @@
 #define ParamSHC_CScene6Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Lock9)) & SHC_CScene6Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene6Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene6Delay)))
+// Nach Abruf
+#define ParamSHC_CScene6Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Hold)) & SHC_CScene6HoldMask))
 // freigeben
 #define ParamSHC_CScene7Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Active)) & SHC_CScene7ActiveMask))
 // KNX-Szene
@@ -1530,6 +1590,8 @@
 #define ParamSHC_CScene7Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Lock9)) & SHC_CScene7Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene7Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene7Delay)))
+// Nach Abruf
+#define ParamSHC_CScene7Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Hold)) & SHC_CScene7HoldMask))
 // freigeben
 #define ParamSHC_CScene8Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Active)) & SHC_CScene8ActiveMask))
 // KNX-Szene
@@ -1550,6 +1612,8 @@
 #define ParamSHC_CScene8Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Lock9)) & SHC_CScene8Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene8Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene8Delay)))
+// Nach Abruf
+#define ParamSHC_CScene8Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Hold)) & SHC_CScene8HoldMask))
 // freigeben
 #define ParamSHC_CScene9Active                       ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Active)) & SHC_CScene9ActiveMask))
 // KNX-Szene
@@ -1570,6 +1634,8 @@
 #define ParamSHC_CScene9Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Lock9)) & SHC_CScene9Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene9Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene9Delay)))
+// Nach Abruf
+#define ParamSHC_CScene9Hold                         ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Hold)) & SHC_CScene9HoldMask))
 // freigeben
 #define ParamSHC_CScene10Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Active)) & SHC_CScene10ActiveMask))
 // KNX-Szene
@@ -1590,6 +1656,8 @@
 #define ParamSHC_CScene10Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Lock9)) & SHC_CScene10Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene10Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene10Delay)))
+// Nach Abruf
+#define ParamSHC_CScene10Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Hold)) & SHC_CScene10HoldMask))
 // freigeben
 #define ParamSHC_CScene11Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Active)) & SHC_CScene11ActiveMask))
 // KNX-Szene
@@ -1610,6 +1678,8 @@
 #define ParamSHC_CScene11Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Lock9)) & SHC_CScene11Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene11Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene11Delay)))
+// Nach Abruf
+#define ParamSHC_CScene11Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Hold)) & SHC_CScene11HoldMask))
 // freigeben
 #define ParamSHC_CScene12Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Active)) & SHC_CScene12ActiveMask))
 // KNX-Szene
@@ -1630,6 +1700,8 @@
 #define ParamSHC_CScene12Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Lock9)) & SHC_CScene12Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene12Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene12Delay)))
+// Nach Abruf
+#define ParamSHC_CScene12Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Hold)) & SHC_CScene12HoldMask))
 // freigeben
 #define ParamSHC_CScene13Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Active)) & SHC_CScene13ActiveMask))
 // KNX-Szene
@@ -1650,6 +1722,8 @@
 #define ParamSHC_CScene13Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Lock9)) & SHC_CScene13Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene13Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene13Delay)))
+// Nach Abruf
+#define ParamSHC_CScene13Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Hold)) & SHC_CScene13HoldMask))
 // freigeben
 #define ParamSHC_CScene14Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Active)) & SHC_CScene14ActiveMask))
 // KNX-Szene
@@ -1670,6 +1744,8 @@
 #define ParamSHC_CScene14Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Lock9)) & SHC_CScene14Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene14Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene14Delay)))
+// Nach Abruf
+#define ParamSHC_CScene14Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Hold)) & SHC_CScene14HoldMask))
 // freigeben
 #define ParamSHC_CScene15Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Active)) & SHC_CScene15ActiveMask))
 // KNX-Szene
@@ -1690,6 +1766,8 @@
 #define ParamSHC_CScene15Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Lock9)) & SHC_CScene15Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene15Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene15Delay)))
+// Nach Abruf
+#define ParamSHC_CScene15Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Hold)) & SHC_CScene15HoldMask))
 // freigeben
 #define ParamSHC_CScene16Active                      ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Active)) & SHC_CScene16ActiveMask))
 // KNX-Szene
@@ -1710,6 +1788,8 @@
 #define ParamSHC_CScene16Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Lock9)) & SHC_CScene16Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene16Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene16Delay)))
+// Nach Abruf
+#define ParamSHC_CScene16Hold                        ((bool)(knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Hold)) & SHC_CScene16HoldMask))
 // Position anfahren
 #define ParamSHC_CWindowOpenPositionControl1         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CWindowOpenPositionControl1)) & SHC_CWindowOpenPositionControl1Mask) >> SHC_CWindowOpenPositionControl1Shift)
 // Lamellen öffnen
