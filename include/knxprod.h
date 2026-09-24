@@ -1452,9 +1452,9 @@
 #define ParamSHC_CScene1Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Height)) & SHC_CScene1HeightMask) >> SHC_CScene1HeightShift)
 // Lamelle
 #define ParamSHC_CScene1Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Slat)) & SHC_CScene1SlatMask) >> SHC_CScene1SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene1Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Lock27)) & SHC_CScene1Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene1Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene1Lock9)) & SHC_CScene1Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene1Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene1Delay)))
@@ -1474,9 +1474,9 @@
 #define ParamSHC_CScene2Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Height)) & SHC_CScene2HeightMask) >> SHC_CScene2HeightShift)
 // Lamelle
 #define ParamSHC_CScene2Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Slat)) & SHC_CScene2SlatMask) >> SHC_CScene2SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene2Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Lock27)) & SHC_CScene2Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene2Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene2Lock9)) & SHC_CScene2Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene2Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene2Delay)))
@@ -1496,9 +1496,9 @@
 #define ParamSHC_CScene3Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Height)) & SHC_CScene3HeightMask) >> SHC_CScene3HeightShift)
 // Lamelle
 #define ParamSHC_CScene3Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Slat)) & SHC_CScene3SlatMask) >> SHC_CScene3SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene3Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Lock27)) & SHC_CScene3Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene3Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene3Lock9)) & SHC_CScene3Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene3Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene3Delay)))
@@ -1518,9 +1518,9 @@
 #define ParamSHC_CScene4Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Height)) & SHC_CScene4HeightMask) >> SHC_CScene4HeightShift)
 // Lamelle
 #define ParamSHC_CScene4Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Slat)) & SHC_CScene4SlatMask) >> SHC_CScene4SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene4Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Lock27)) & SHC_CScene4Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene4Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene4Lock9)) & SHC_CScene4Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene4Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene4Delay)))
@@ -1540,9 +1540,9 @@
 #define ParamSHC_CScene5Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Height)) & SHC_CScene5HeightMask) >> SHC_CScene5HeightShift)
 // Lamelle
 #define ParamSHC_CScene5Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Slat)) & SHC_CScene5SlatMask) >> SHC_CScene5SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene5Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Lock27)) & SHC_CScene5Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene5Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene5Lock9)) & SHC_CScene5Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene5Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene5Delay)))
@@ -1562,9 +1562,9 @@
 #define ParamSHC_CScene6Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Height)) & SHC_CScene6HeightMask) >> SHC_CScene6HeightShift)
 // Lamelle
 #define ParamSHC_CScene6Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Slat)) & SHC_CScene6SlatMask) >> SHC_CScene6SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene6Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Lock27)) & SHC_CScene6Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene6Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene6Lock9)) & SHC_CScene6Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene6Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene6Delay)))
@@ -1584,9 +1584,9 @@
 #define ParamSHC_CScene7Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Height)) & SHC_CScene7HeightMask) >> SHC_CScene7HeightShift)
 // Lamelle
 #define ParamSHC_CScene7Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Slat)) & SHC_CScene7SlatMask) >> SHC_CScene7SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene7Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Lock27)) & SHC_CScene7Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene7Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene7Lock9)) & SHC_CScene7Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene7Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene7Delay)))
@@ -1606,9 +1606,9 @@
 #define ParamSHC_CScene8Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Height)) & SHC_CScene8HeightMask) >> SHC_CScene8HeightShift)
 // Lamelle
 #define ParamSHC_CScene8Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Slat)) & SHC_CScene8SlatMask) >> SHC_CScene8SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene8Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Lock27)) & SHC_CScene8Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene8Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene8Lock9)) & SHC_CScene8Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene8Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene8Delay)))
@@ -1628,9 +1628,9 @@
 #define ParamSHC_CScene9Height                       ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Height)) & SHC_CScene9HeightMask) >> SHC_CScene9HeightShift)
 // Lamelle
 #define ParamSHC_CScene9Slat                         ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Slat)) & SHC_CScene9SlatMask) >> SHC_CScene9SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene9Lock27                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Lock27)) & SHC_CScene9Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene9Lock9                        (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene9Lock9)) & SHC_CScene9Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene9Delay                        (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene9Delay)))
@@ -1650,9 +1650,9 @@
 #define ParamSHC_CScene10Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Height)) & SHC_CScene10HeightMask) >> SHC_CScene10HeightShift)
 // Lamelle
 #define ParamSHC_CScene10Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Slat)) & SHC_CScene10SlatMask) >> SHC_CScene10SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene10Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Lock27)) & SHC_CScene10Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene10Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene10Lock9)) & SHC_CScene10Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene10Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene10Delay)))
@@ -1672,9 +1672,9 @@
 #define ParamSHC_CScene11Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Height)) & SHC_CScene11HeightMask) >> SHC_CScene11HeightShift)
 // Lamelle
 #define ParamSHC_CScene11Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Slat)) & SHC_CScene11SlatMask) >> SHC_CScene11SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene11Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Lock27)) & SHC_CScene11Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene11Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene11Lock9)) & SHC_CScene11Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene11Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene11Delay)))
@@ -1694,9 +1694,9 @@
 #define ParamSHC_CScene12Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Height)) & SHC_CScene12HeightMask) >> SHC_CScene12HeightShift)
 // Lamelle
 #define ParamSHC_CScene12Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Slat)) & SHC_CScene12SlatMask) >> SHC_CScene12SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene12Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Lock27)) & SHC_CScene12Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene12Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene12Lock9)) & SHC_CScene12Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene12Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene12Delay)))
@@ -1716,9 +1716,9 @@
 #define ParamSHC_CScene13Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Height)) & SHC_CScene13HeightMask) >> SHC_CScene13HeightShift)
 // Lamelle
 #define ParamSHC_CScene13Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Slat)) & SHC_CScene13SlatMask) >> SHC_CScene13SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene13Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Lock27)) & SHC_CScene13Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene13Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene13Lock9)) & SHC_CScene13Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene13Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene13Delay)))
@@ -1738,9 +1738,9 @@
 #define ParamSHC_CScene14Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Height)) & SHC_CScene14HeightMask) >> SHC_CScene14HeightShift)
 // Lamelle
 #define ParamSHC_CScene14Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Slat)) & SHC_CScene14SlatMask) >> SHC_CScene14SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene14Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Lock27)) & SHC_CScene14Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene14Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene14Lock9)) & SHC_CScene14Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene14Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene14Delay)))
@@ -1760,9 +1760,9 @@
 #define ParamSHC_CScene15Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Height)) & SHC_CScene15HeightMask) >> SHC_CScene15HeightShift)
 // Lamelle
 #define ParamSHC_CScene15Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Slat)) & SHC_CScene15SlatMask) >> SHC_CScene15SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene15Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Lock27)) & SHC_CScene15Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene15Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene15Lock9)) & SHC_CScene15Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene15Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene15Delay)))
@@ -1782,9 +1782,9 @@
 #define ParamSHC_CScene16Height                      ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Height)) & SHC_CScene16HeightMask) >> SHC_CScene16HeightShift)
 // Lamelle
 #define ParamSHC_CScene16Slat                        ((knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Slat)) & SHC_CScene16SlatMask) >> SHC_CScene16SlatShift)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene16Lock27                      (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Lock27)) & SHC_CScene16Lock27Mask)
-// Sperren
+// Sperre/Freigabe
 #define ParamSHC_CScene16Lock9                       (knx.paramByte(SHC_ParamCalcIndex(SHC_CScene16Lock9)) & SHC_CScene16Lock9Mask)
 // Verzögerung
 #define ParamSHC_CScene16Delay                       (knx.paramWord(SHC_ParamCalcIndex(SHC_CScene16Delay)))
