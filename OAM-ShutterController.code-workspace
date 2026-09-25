@@ -20,6 +20,12 @@
 		},
 		{
 			"path": "../OFM-FunctionBlocks"
+		},
+		{
+			"path": "../OFM-FileTransferModule"
+		},
+		{
+			"path": "../OGM-HardwareConfig"
 		}
 	],
 	"settings": {
