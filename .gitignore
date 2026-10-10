@@ -11,3 +11,6 @@ release/*
 include/versions.h
 Archiv Build/
 .claude/CLAUDE.md
+# Native (no-hardware) test harness and its reports: local-only, not pushed.
+/test/
+*_coverage_report.md
