@@ -11,6 +11,10 @@
 #ifdef ARDUINO_ARCH_RP2040
     #pragma message "Pico Core Version: " ARDUINO_PICO_VERSION_STR
 #endif
+#if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
+    #include "NetworkModule.h"
+    #include "InternetWeatherModule.h"
+#endif
 
 void setup()
 {
@@ -25,6 +29,13 @@ void setup()
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxFunctionBlocksModule);
     openknx.addModule(3, openknxShutterControllerModule);
+#if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
+    openknx.addModule(4, openknxNetwork);
+    openknx.addModule(5, openknxInternetWeatherModule);
+#else
+    openknx.unsupportedEtsModule(ETS_ModuleId_NET);
+    openknx.unsupportedEtsModule(ETS_ModuleId_IW);;
+#endif
     openknx.setup();
 }
   

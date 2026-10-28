@@ -1,0 +1,4 @@
+#pragma once
+
+#define BUILD_DATETIME "2026-08-18 14:00:21"
+#define BUILD_TIMESTAMP 1787054421
